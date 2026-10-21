@@ -157,7 +157,3 @@ img{max-width:none}
 .tdot{opacity:0;transition:opacity .4s 1.1s}
 #trade.in .tarcp{stroke-dashoffset:0}
 #trade.in .tdot{opacity:1}
-
-/* big pill CTA (same shape as the Verify button, brown background) */
-.cta{display:flex;align-items:center;gap:24px;height:70px;padding:0 46px 0 42px;border-radius:40px;background:#957d69;color:#fff;font:400 14px/1 'Manrope',sans-serif;letter-spacing:3.5px;text-transform:uppercase;white-space:nowrap;transition:background .25s}
-.cta:hover{background:#7d6858}
