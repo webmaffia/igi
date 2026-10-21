@@ -327,6 +327,30 @@ push(`<div class="a wrv wd3 wpills" style="left:518px;top:1365px;width:883px;hei
   `<a class="wpill" href="#" style="left:748px;width:135px">Leadership</a></div>`);
 push('</section>');
 
+/* ---------- epilogue: media & events (#epilogue) ---------- */
+const E0 = 12448, EH = 1404;               // directly below #world
+const ARR = '<svg width="20" height="12" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5"/></svg>';
+const CARDS_E = [
+  { x: 105, w: 640, img: 1, tag: 'PRESS RELEASE', tagX: 15, tagW: 165, title: 'Headline For The Lead Press Release Sits<br>Here, Across Two Lines.', sub: 'Short standfirst summarising the announcement. \u00b7 [Date]' },
+  { x: 798, w: 501, img: 2, tag: 'TRADE SHOWS', tagX: 31, tagW: 155, title: 'Meet Our Experts At The Next<br>International Fair.', sub: 'See the calendar and book a meeting.' },
+  { x: 1332, w: 502, img: 3, tag: 'BLOG', tagX: 29, tagW: 82, title: 'Natural Or Lab-Grown? What<br>Your Report Tells You.', sub: 'A plain-language guide for buyers.' }
+];
+push(`<section class="a" id="epilogue" style="left:0;top:${E0}px;width:1920px;height:${EH}px;background:#fbfaf8;overflow:hidden">`);
+// faint capsule outlines, top right (behind everything)
+push(`<svg class="a" style="left:0;top:0;width:1920px;height:640px;pointer-events:none" viewBox="0 0 1920 640" fill="none" stroke="#e3e1dc" stroke-width="1.3"><rect x="1115" y="31" width="1100" height="570" rx="285"/><rect x="1213" y="129" width="1000" height="374" rx="187"/></svg>`);
+push(box('left:105px;top:93px', 'Epilogue \u00b7 Media &amp; Events', 'eyebrow erv'));
+push(box('left:105px;top:255px;font-size:81px;line-height:110px;color:#12202b;white-space:nowrap', 'The Story <span style="color:#b99a6a">Continues.</span>', 'mont5 erv ed1'));
+push(`<a class="a erv ed1 enews" href="#" style="left:1638px;top:284px"><span>NEWSROOM</span><i class="ecirc">${ARR}</i></a>`);
+CARDS_E.forEach((c, i) => push(`<a class="a ecard erv ed${i + 2}" href="#" style="left:${c.x}px;top:452px;width:${c.w}px;height:556px">` +
+  `<div class="eimg"><img src="assets/blog/${c.img}.png" alt="" draggable="false"></div>` +
+  `<span class="etag" style="left:${c.tagX}px;width:${c.tagW}px">${c.tag}</span>` +
+  `<div class="etitle">${c.title}</div>` +
+  `<div class="esub">${c.sub}</div>` +
+  `<i class="ecirc ecb" style="right:${i ? 58 : 46}px">${ARR}</i></a>`));
+[['Press Kit', 108], ['Experiences', 298], ['Blogs', 523]].forEach(([t, x]) =>
+  push(`<a class="a elink erv ed5" href="#" style="left:${x}px;top:1080px">${t.toUpperCase()}<svg width="16" height="10" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h17M13 1l5 5-5 5"/></svg></a>`));
+push('</section>');
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
