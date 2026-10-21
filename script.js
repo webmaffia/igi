@@ -16,7 +16,7 @@
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
-  var trade = document.getElementById('trade'), tradeIn = false, worldIn = false, epiIn = false, susIn = false, footIn = false, TRADE_Y = 8143;
+  var trade = document.getElementById('trade'), tradeIn = false, TRADE_Y = 8143;
   function countUp() {
     [].slice.call(trade.querySelectorAll('.cnt')).forEach(function (b) {
       var to = +b.dataset.to, suf = b.dataset.s || '', from = to > 1000 ? 1900 : 0, t0 = performance.now();
@@ -72,10 +72,6 @@
     var momentInView = botY > 5480 && topY < 5740;
     fab.classList.toggle('show', s > run * 0.95 && !momentInView);
     // #trade: counters count up and the arcs draw in the first time the row comes on screen
-    if (!footIn && botY > 14809 + 450) { footIn = true; document.getElementById('footer').classList.add('in'); }
-    if (!susIn && botY > 13638 + 700) { susIn = true; document.getElementById('sustain').classList.add('in'); }
-    if (!epiIn && botY > 12448 + 650) { epiIn = true; document.getElementById('epilogue').classList.add('in'); }
-    if (!worldIn && botY > 10888 + 700) { worldIn = true; document.getElementById('world').classList.add('in'); }
     if (!tradeIn && botY > TRADE_Y + 1250) { tradeIn = true; trade.classList.add('in'); countUp(); }
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
@@ -302,6 +298,8 @@
     m.textContent = 'Thank you \u2014 we\u2019ll keep you updated.';
     document.getElementById('femail').value = '';
   });
+
+  document.getElementById('world').classList.add('in'); // starts the soft pulse on the Antwerp dot
 
   fitWords();
   fitTitles();
