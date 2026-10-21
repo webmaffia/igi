@@ -54,3 +54,9 @@ img{max-width:none}
 .late{will-change:opacity,translate}
 #site-header{will-change:opacity,translate}
 .fill-disc{border-radius:50%;background:rgba(149,125,105,.1);--a:90deg;-webkit-mask:conic-gradient(#000 var(--a),transparent var(--a));mask:conic-gradient(#000 var(--a),transparent var(--a))}
+
+/* natural / lab-grown comparison */
+.cmp img{pointer-events:none;user-select:none}
+.knob{cursor:grab;touch-action:none;border-radius:50%;outline:none}
+.knob.drag{cursor:grabbing}
+.knob:focus-visible{box-shadow:0 0 0 3px rgba(149,125,105,.6)}

@@ -82,14 +82,17 @@ push(rot(960.01, 1633.46, 388.529, 777.058, 0,
   `<div style="position:relative;width:777.058px;height:388.529px;transform:rotate(90deg)"><div class="a" style="inset:-0.64% -0.32% 0 -0.32%">${img('ellipse17', 'svg', 'class="fill"')}</div></div>`).replace('<div style="transform:rotate(0deg)">', '<div>'));
 push(line(1349, 2029, 8, 0, 'line10').replace('left:1345px', 'left:1345px'));
 push(line(960, 1630, 8, 90, 'line11'));
-push(box('left:calc(50% + .11px);top:1852px;width:542px;height:361px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"')));
-push(`<div class="a" style="left:calc(50% + .21px);top:1851.55px;width:541.785px;height:361.19px;transform:translateX(-50%);-webkit-mask:url(assets/diamondmask.svg) 13.215px -60.888px/257.974px 477.491px no-repeat;mask:url(assets/diamondmask.svg) 13.215px -60.888px/257.974px 477.491px no-repeat;mix-blend-mode:screen"><img class="cover" style="opacity:.96" src="assets/diamond.png" alt=""></div>`);
 push(box('left:502.18px;top:1564.17px;width:915.642px;height:915.642px', img('ellipse13', 'svg', 'class="fill"')));
 push(line(960, 2029, 1060, 90, 'line8'));
 push(line(960, 2411, 8, 90, 'line11'));
 push(line(960, 2029, 1060, 0, 'line9'));
-push(box('left:903.91px;top:1965.89px;width:112.187px;height:112.187px', img('ellipse14', 'svg', 'class="fill"')));
-push(box('left:939.62px;top:2014.58px;width:40.7637px;height:14.8479px', img('group26', 'svg', 'class="fill"')));
+// draggable natural / lab-grown comparison: natural on the left of the handle, lab-grown on the right
+push(`<div class="a cmp" id="cmp" style="left:689px;top:1791px;width:542px;height:477px">` +
+  img('natural', 'png', 'class="fill" draggable="false"') +
+  img('lab', 'png', 'class="fill" id="cmp-lab" draggable="false" style="clip-path:inset(0 0 0 50%)"') + `</div>`);
+push(`<div class="a knob" id="knob" role="slider" tabindex="0" aria-label="Compare natural and lab-grown diamond" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="left:903.91px;top:1965.89px;width:112.187px;height:112.187px">` +
+  img('ellipse14', 'svg', 'class="fill" draggable="false"') +
+  `<div class="a" style="left:35.7px;top:48.7px;width:40.7637px;height:14.8479px">${img('group26', 'svg', 'class="fill" draggable="false"')}</div></div>`);
 push(line(571, 2030, 8, 0, 'line10'));
 
 const side = (left, top, eyebrow, l1, l2, body, lh) => {

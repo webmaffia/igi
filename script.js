@@ -79,6 +79,30 @@
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
 
+  // draggable comparison: lab-grown shows to the right of the handle, natural to the left
+  (function () {
+    var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
+    var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, pos = 0.5, dragging = false;
+    function set(p) {
+      pos = clamp(p, 0, 1);
+      var cx = CMP_L + pos * CMP_W;
+      knob.style.left = (cx - KNOB_R) + 'px';
+      lab.style.clipPath = 'inset(0 0 0 ' + pos * 100 + '%)';
+      knob.setAttribute('aria-valuenow', Math.round(pos * 100));
+    }
+    function fromEvent(e) { return ((e.clientX - stage.getBoundingClientRect().left) / scale - CMP_L) / CMP_W; }
+    knob.addEventListener('pointerdown', function (e) { dragging = true; knob.classList.add('drag'); knob.setPointerCapture(e.pointerId); e.preventDefault(); });
+    knob.addEventListener('pointermove', function (e) { if (dragging) set(fromEvent(e)); });
+    var end = function () { dragging = false; knob.classList.remove('drag'); };
+    knob.addEventListener('pointerup', end);
+    knob.addEventListener('pointercancel', end);
+    cmp.addEventListener('pointerdown', function (e) { set(fromEvent(e)); });
+    knob.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { set(pos - 0.05); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { set(pos + 0.05); e.preventDefault(); }
+    });
+  })();
+
   fitWords();
   fit();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWords(); render(); });
