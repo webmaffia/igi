@@ -40,6 +40,7 @@ push(`<div class="a hdr-row" style="left:1470px;top:30px">` +
   hbtn('frame') + hbtn('frame1') + hpill('pill', 'frame2', 'Verify Report', 146.5) + hbtn('frame3') + hpill('pill1', null, 'Menu', 79) + `</div>`);
 
 /* ---------- hero ---------- */
+push(`<div class="a" id="hero" style="left:0;top:0">`);
 // hero ring: circle outline + rotatable quarter disc (wedge + arc) + cross lines that appear last
 push(`<div class="a" id="hero-ring">` +
   box('left:579px;top:261px;width:680px;height:680px', img('ellipse2', 'svg', 'class="fill"')) +
@@ -64,6 +65,7 @@ push(box('left:325px;top:875px;transform:translateX(-50%);font-size:36.7px;line-
 const btn = (top, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:1571px;top:${top}px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
 push(btn(716.3, 'EXPLORE IGI', 'arrow', 'solid', 4));
 push(btn(773.88, 'VERIFY A REPORT', 'arrow1', 'ghost', 5));
+push('</div>');
 push(line(960.5, 3598.5, 1649, 0, 'line18'));
 push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"')));
 

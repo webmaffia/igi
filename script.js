@@ -8,6 +8,8 @@
   var pin = document.getElementById('pin');
   var stage = document.getElementById('stage');
   var wedge = document.getElementById('wedge');
+  var hero = document.getElementById('hero');
+  var RING_CY = 601;
   var words = [].slice.call(document.querySelectorAll('.word'));
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,6 +50,9 @@
       w.style.opacity = v;
       w.style.translate = '0 ' + y + 'px';
     });
+    // keep the ring centred on screen while the words play, then glide to the design position
+    var dy = (window.innerHeight / 2) / scale - RING_CY;
+    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
     var q = clamp((p - 0.74) / 0.26, 0, 1);
     lates.forEach(function (el) {
       var t = easeOut((q - (+el.dataset.d) * 0.07) / 0.6);
