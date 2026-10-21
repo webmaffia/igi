@@ -178,6 +178,78 @@
     note.textContent = v ? 'Design prototype \u2014 this will connect to IGI\u2019s report verification service.' : 'Please enter your IGI report number.';
   });
 
+  // #cust: 4Cs wheel - tabs pick the C, the knob rides the dial, the right-hand copy follows
+  (function () {
+    var tabsC = [].slice.call(document.querySelectorAll('.wtab')), knob = document.getElementById('cknob'), ticksEl = document.getElementById('cticks');
+    var cwedge = document.getElementById('cwedge'), cgem = document.getElementById('cgem'), gimg = document.getElementById('cgemimg');
+    var incl = document.getElementById('cincl'), spark = document.getElementById('cspark');
+    var title = document.getElementById('cr-title'), val = document.getElementById('cr-val'), sub = document.getElementById('cr-sub'), desc = document.getElementById('cr-desc');
+    var CX = 859, CY = 6589, KR = 516, TR = 538, A0 = -42, A1 = 42; // wheel centre, knob/tick radii, dial span in degrees
+    var QUAD = { carat: 0, color: 90, clarity: 180, cut: 270 };   // quadrant (clockwise from top-right) of each tab
+    var C = {
+      carat: { d: 'Carat measures weight, not size. One carat equals 0.2 grams \u2014 and larger stones are rarer.', s: ['0.25', '0.50', '1.00', '2.00', '3.00'] },
+      color: { d: 'Graded from D (colourless) to Z (light yellow or brown). The less colour, the rarer the stone.', s: ['D', 'G', 'J', 'M', 'Z'] },
+      clarity: { d: 'The absence of inclusions and blemishes, from Flawless to Included, under 10\u00d7 magnification.', s: ['FL', 'VVS', 'VS', 'SI', 'I'] },
+      cut: { d: 'How well the facets interact with light. Excellent proportions mean maximum brilliance and fire.', s: ['Poor', 'Fair', 'Good', 'V.Good', 'Excellent'] }
+    };
+    var colorG = 'DEFGHIJKLMNOPQRSTUVWXYZ'.split(''), clar = ['FL', 'IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1', 'I2', 'I3'], cutG = ['Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+    var st = { carat: 8.53, color: 10, clarity: 20, cut: 90 }, cur = 'carat', dragging = false; // knob starts at the design's 0.55 ct
+    var carat = function (v) { return 0.25 + Math.pow(v / 100, 0.9) * 2.75; };
+
+    function drawKnob() {
+      var a = (A0 + (A1 - A0) * st[cur] / 100) * Math.PI / 180;
+      knob.style.left = (CX + KR * Math.cos(a) - 22) + 'px';
+      knob.style.top = (CY + KR * Math.sin(a) - 22) + 'px';
+      knob.setAttribute('aria-valuenow', Math.round(st[cur]));
+    }
+    function draw() {
+      drawKnob();
+      var ct = carat(st.carat), y = st.color / 100, q = st.cut / 100, V, N;
+      cgem.style.transform = 'scale(' + (1 + (ct - 0.55) * 0.07) + ')';
+      incl.style.opacity = Math.max(0, (st.clarity - 8) / 92);
+      spark.style.opacity = q;
+      gimg.style.filter = 'sepia(' + y * 0.55 + ') saturate(' + (1 + y * 0.7) + ') brightness(' + (0.82 + q * 0.2) + ') drop-shadow(0 0 ' + q * 22 + 'px rgba(150,190,255,' + q * 0.5 + '))';
+      if (cur === 'carat') { V = ct.toFixed(2) + ' ct'; N = '\u2248 ' + (ct * 0.2).toFixed(2) + ' grams'; }
+      if (cur === 'color') { V = colorG[Math.min(22, Math.round(y * 22))]; N = V <= 'F' ? 'Colourless' : V <= 'J' ? 'Near colourless' : V <= 'M' ? 'Faint' : V <= 'R' ? 'Very light' : 'Light'; }
+      if (cur === 'clarity') { V = clar[Math.min(10, Math.round(st.clarity / 10))]; N = V === 'FL' ? 'Flawless' : V === 'IF' ? 'Internally flawless' : V.indexOf('VVS') === 0 ? 'Very, very slightly included' : V.indexOf('VS') === 0 ? 'Very slightly included' : V.indexOf('SI') === 0 ? 'Slightly included' : 'Included'; }
+      if (cur === 'cut') { V = cutG[Math.min(4, Math.round(q * 4))]; N = 'Light return & sparkle'; }
+      val.textContent = V; sub.textContent = N;
+    }
+    function setC(c) {
+      cur = c;
+      title.textContent = c;
+      desc.textContent = C[c].d;
+      ticksEl.innerHTML = C[c].s.map(function (t, i) {
+        var a = -40 + 20 * i;
+        return '<div class="tk" style="transform:rotate(' + a + 'deg) translateX(' + TR + 'px) rotate(90deg) translate(-50%,-50%)">' + t + '</div>';
+      }).join('');
+      tabsC.forEach(function (t) { t.classList.toggle('on', t.dataset.c === c); });
+      cwedge.style.rotate = QUAD[c] + 'deg';
+      draw();
+    }
+    function fromPointer(e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / scale - CX, yy = (e.clientY - r.top) / scale - CY;
+      var a = Math.atan2(yy, x) * 180 / Math.PI;
+      st[cur] = clamp((a - A0) / (A1 - A0) * 100, 0, 100);
+      draw();
+    }
+    tabsC.forEach(function (t) {
+      t.addEventListener('click', function () { setC(t.dataset.c); });
+      t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setC(t.dataset.c); } });
+    });
+    knob.addEventListener('pointerdown', function (e) { dragging = true; knob.classList.add('drag'); knob.setPointerCapture(e.pointerId); e.preventDefault(); });
+    knob.addEventListener('pointermove', function (e) { if (dragging) fromPointer(e); });
+    var stop = function () { dragging = false; knob.classList.remove('drag'); };
+    knob.addEventListener('pointerup', stop);
+    knob.addEventListener('pointercancel', stop);
+    knob.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowLeft' || e.key === 'ArrowDown' ? -2 : e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 2 : 0;
+      if (d) { st[cur] = clamp(st[cur] + d, 0, 100); draw(); e.preventDefault(); }
+    });
+    setC('carat');
+  })();
+
   fitWords();
   fitTitles();
   fit();

@@ -200,47 +200,46 @@ push(`<form class="a vform" id="vform" style="left:274px;top:5575px;width:681px;
 push(box('left:274px;top:5688px;width:681px;text-align:center;font-size:17px;line-height:24px;color:#7a7a7a', 'Can\u2019t find your number? <a href="#">How to read your report</a>', 'man4 vnote" id="vnote'));
 push('</div>');
 
-/* ---------- carat wheel ---------- */
+/* ---------- 4Cs wheel (#cust: tabs, dial slider and right-hand copy) ---------- */
 const cx = 859, cy = 6589;
+push('<div class="a" id="cust" style="left:0;top:0;width:1920px">');
 push(`<div class="a" id="wheel">` +
   box('left:519px;top:6249px;width:680px;height:680px', img('ellipse5', 'svg', 'class="fill"')) +
-  box('left:519px;top:6249px;width:680px;height:680px', `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse6', 'svg', 'class="fill"')}</div>`) +
-  box('left:859px;top:6249px;width:340px;height:340px', `<div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse7', 'svg', 'class="fill"')}</div>`) +
+  // the grey quarter + its arc rotate to the quadrant of the active tab
+  `<div class="a" id="cwedge" style="left:519px;top:6249px;width:680px;height:680px">` +
+    `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse6', 'svg', 'class="fill"')}</div>` +
+    `<div class="a" style="left:50%;top:0;width:50%;height:50%"><div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse7', 'svg', 'class="fill"')}</div></div>` +
+  `</div>` +
   rot(886, 6239.1, 698.602, 698.602, 0, `<div style="position:relative;width:493.986px;height:493.986px;transform:rotate(45deg)"><div class="a" style="inset:-0.51% -0.51% 0 0">${img('ellipse8', 'svg', 'class="fill"')}</div></div>`).replace('<div style="transform:rotate(0deg)">', '<div>') +
   line(cx, cy, 921, 90, 'line13') + line(cx, cy, 920, 0, 'line16') +
   line(cx, cy, 920.008, 45, 'line15') + line(cx, cy, 920.008, 135, 'line17') +
-  box('left:549.5px;top:6397px;width:607px;height:404px', img('diamond', 'png', 'class="cover"')) + `</div>`);
-const L = (c, l, t, w, h, d, col, s = 32, iw, ih) => rot(l, t, w, h, d, `<p class="mont6 caps nw" style="font-size:${s}px;line-height:65.5px;letter-spacing:3.5px;color:${col}${iw ? `;width:${iw}px;height:${ih}px` : ''}">${c}</p>`);
-const gold = '#957d69', blk = '#010101';
-[['C', 1045, 6259, 56.307, 67.434, 34.46], ['A', 1065, 6276, 59.968, 66.532, 38.66], ['r', 1084, 6297, 63.66, 63.619, 45.04], ['A', 1105.05, 6321.14, 65.777, 61.108, 49.51], ['t', 1122, 6345, 64.429, 56.221, 52.25]]
-  .forEach(a => push(L(a[0], a[1], a[2], a[3], a[4], a[5], gold)));
-[['C', 1125.79, 6772, 67.434, 56.307, 124.46], ['o', 1110.94, 6792, 65.282, 58.406, 128.66], ['l', 1094.43, 6811, 60.788, 60.834, 135.04], ['o', 1067.69, 6832.05, 63.39, 67.725, 139.51], ['r', 1047.84, 6849, 59.384, 66.878, 142.25]]
-  .forEach(a => push(L(a[0], a[1], a[2], a[3], a[4], a[5], blk)));
-[['C', 549.58, 6324.7, 65.452, 59.885, -50.25], ['u', 568.71, 6301.45, 65.563, 64.523, -46.05], ['t', 591.88, 6284.96, 57.526, 63.57, -39.67]]
-  .forEach(a => push(L(a[0], a[1], a[2], a[3], a[4], a[5], blk)));
-[['C', 628.87, 6857.96, 55.795, 67.653, -146.24], ['l', 608.13, 6844.56, 56.362, 64.342, -142.05], ['a', 582.01, 6824.23, 63.293, 63.978, -135.66], ['r', 558.52, 6802.84, 65.471, 61.527, -131.19], ['i', 548.26, 6791.09, 58.526, 49.658, -128.45], ['t', 532.52, 6774.47, 65.168, 54.942, -125.96], ['y', 515.18, 6751.07, 68.164, 52.033, -119.98]]
-  .forEach(a => push(L(a[0], a[1], a[2], a[3], a[4], a[5], blk)));
-// 0.25 tick labels
-[[49.02, [1237.21, 6212.94, 42.066, 38.434], [1244.99, 6220.11, 46.244, 43.062], [1255.74, 6234.41, 46.244, 43.062]],
- [67.67, [1338.71, 6372.13, 47.219, 27.246], [1343.62, 6381.61, 50.052, 32.559], [1349.23, 6398.6, 50.052, 32.559]],
- [90.77, [1377.68, 6566.17, 46.988, 10.835], [1378.27, 6577.11, 47.905, 16.243], [1376.77, 6594.94, 47.905, 16.243]],
- [110.72, [1353.39, 6737.91, 47.436, 26.125], [1348.38, 6748.42, 50.136, 31.471], [1340.88, 6764.66, 50.136, 31.471]],
- [132.11, [1258.84, 6904.09, 41.605, 38.99], [1248.49, 6912.74, 45.851, 43.561], [1235.59, 6925.14, 45.851, 43.561]]]
-  .forEach(([d, a, b, c]) => {
-    push(L('0', a[0], a[1], a[2], a[3], d, gold, 13, 10.207, 46.855));
-    push(L('.2', b[0], b[1], b[2], b[3], d, gold, 13, 15.604, 47.7));
-    push(L('5', c[0], c[1], c[2], c[3], d, gold, 13, 15.604, 47.7));
-  });
+  // the diamond reacts to the grades (size, tint, inclusions, sparkle)
+  `<div class="a" id="cgem" style="left:549.5px;top:6397px;width:607px;height:404px">` +
+    img('diamond', 'png', 'class="cover" id="cgemimg"') +
+    `<svg class="a" id="cincl" viewBox="0 0 200 160" style="left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0" fill="#1B2A40"><circle cx="78" cy="62" r="2.4"/><circle cx="118" cy="84" r="1.8"/><circle cx="96" cy="30" r="1.5"/><path d="M110 55 l9 4" stroke="#1B2A40" stroke-width="1.4"/><circle cx="88" cy="100" r="1.6"/></svg>` +
+    `<svg class="a" id="cspark" viewBox="0 0 200 160" style="left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0" fill="#fff"><path d="M48 10l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M146 40l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/><path d="M100 12l1.2 3.2 3.2 1.2-3.2 1.2-1.2 3.2-1.2-3.2-3.2-1.2 3.2-1.2z"/></svg>` +
+  `</div></div>`);
+// word tabs: Carat / Color / Cut / Clarity (letters inherit the tab colour)
+const L = (c, l, t, w, h, d, col, s = 32, iw, ih) => rot(l, t, w, h, d, `<p class="mont6 caps nw wch" style="font-size:${s}px;line-height:65.5px;letter-spacing:3.5px;${iw ? `width:${iw}px;height:${ih}px` : ''}">${c}</p>`);
+const tab = (key, on, letters) => push(`<div class="a wtab${on ? ' on' : ''}" data-c="${key}" role="button" tabindex="0" aria-label="${key}" style="left:0;top:0">` + letters.map(a => L(a[0], a[1], a[2], a[3], a[4], a[5])).join('') + `</div>`);
+tab('carat', true, [['C', 1045, 6259, 56.307, 67.434, 34.46], ['A', 1065, 6276, 59.968, 66.532, 38.66], ['r', 1084, 6297, 63.66, 63.619, 45.04], ['A', 1105.05, 6321.14, 65.777, 61.108, 49.51], ['t', 1122, 6345, 64.429, 56.221, 52.25]]);
+tab('color', false, [['C', 1125.79, 6772, 67.434, 56.307, 124.46], ['o', 1110.94, 6792, 65.282, 58.406, 128.66], ['l', 1094.43, 6811, 60.788, 60.834, 135.04], ['o', 1067.69, 6832.05, 63.39, 67.725, 139.51], ['r', 1047.84, 6849, 59.384, 66.878, 142.25]]);
+tab('cut', false, [['C', 549.58, 6324.7, 65.452, 59.885, -50.25], ['u', 568.71, 6301.45, 65.563, 64.523, -46.05], ['t', 591.88, 6284.96, 57.526, 63.57, -39.67]]);
+tab('clarity', false, [['C', 628.87, 6857.96, 55.795, 67.653, -146.24], ['l', 608.13, 6844.56, 56.362, 64.342, -142.05], ['a', 582.01, 6824.23, 63.293, 63.978, -135.66], ['r', 558.52, 6802.84, 65.471, 61.527, -131.19], ['i', 548.26, 6791.09, 58.526, 49.658, -128.45], ['t', 532.52, 6774.47, 65.168, 54.942, -125.96], ['y', 515.18, 6751.07, 68.164, 52.033, -119.98]]);
+// dial: the tick labels are filled in by script.js; the knob rides the arc
+push(`<div class="a" id="cticks" style="left:${cx}px;top:${cy}px;width:0;height:0"></div>`);
+push(`<div class="a" id="cknob" role="slider" tabindex="0" aria-label="Grade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8" style="left:1260px;top:6271px;width:44px;height:44px">` +
+  `<div class="a" style="left:11.5px;top:11px;width:21px;height:22px">${img('ellipse21', 'svg', 'class="fill" draggable="false"')}</div>` +
+  `<div class="a" style="left:17px;top:17px;width:10px;height:10px">${img('ellipse22', 'svg', 'class="fill" draggable="false"')}</div></div>`);
 push(box('left:1356px;top:6278px;width:13px;height:13px', img('ellipse20', 'svg', 'class="fill"')));
-push(box('left:1272px;top:6282px;width:21px;height:22px', img('ellipse21', 'svg', 'class="fill"')));
-push(box('left:1278px;top:6288px;width:10px;height:10px', img('ellipse22', 'svg', 'class="fill"')));
 push(box('left:113px;top:6403px', 'For Customers', 'eyebrow'));
 push(box('left:113px;top:6498px;width:330px;color:#ccb4a0', 'Know<br>what<br>you\u2019re<br>looking<br>at.', 'h50'));
-push(box('left:1555px;top:6387px', 'CARAT', 'eyebrow'));
-push(box('left:1559px;top:6525px;font-size:16px;line-height:54.831px;color:#000', '\u2248 0.11 grams', 'mont6 caps nw'));
-push(box('left:1555px;top:6483px;width:209px;color:#957d69', '0.55 ct', 'h50'));
-push(box('left:1557px;top:6591px;width:261px', 'Carat measures weight, not size. One carat equals 0.2 grams \u2014 and larger stones are rarer.', 'body18'));
+push(box('left:1555px;top:6387px', 'Carat', 'eyebrow" id="cr-title'));
+push(box('left:1559px;top:6525px;font-size:16px;line-height:54.831px;color:#000', '\u2248 0.11 grams', 'mont6 caps nw" id="cr-sub'));
+push(box('left:1555px;top:6483px;width:260px;color:#957d69', '0.55 ct', 'h50" id="cr-val'));
+push(box('left:1557px;top:6591px;width:261px', 'Carat measures weight, not size. One carat equals 0.2 grams \u2014 and larger stones are rarer.', 'body18" id="cr-desc'));
 push(box('left:1555px;top:6750px', '<a href="#" style="text-decoration:underline">Full experience</a>', 'eyebrow'));
+push('</div>');
 
 /* ---------- outro ---------- */
 push(box('left:calc(50% - 222.99px);top:7489px', 'The Gemologists \u00b7 School of Gemology', 'eyebrow'));

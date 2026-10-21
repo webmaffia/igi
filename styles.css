@@ -109,3 +109,18 @@ img{max-width:none}
 .vform button{display:flex;align-items:center;gap:24px;height:70px;padding:0 46px 0 42px;border:0;border-radius:40px;background:#000;color:#fff;font:400 14px/1 'Manrope',sans-serif;letter-spacing:3.5px;text-transform:uppercase;cursor:pointer;transition:background .25s}
 .vform button:hover{background:#957d69}
 .vform:focus-within{box-shadow:0 0 0 2px #957d69,0 6px 30px -12px rgba(0,0,0,.12)}
+
+/* #cust: 4Cs wheel */
+.wtab{color:#010101;cursor:pointer;transition:color .3s}
+.wtab.on{color:#957d69}
+.wtab .wch{pointer-events:auto}
+.wtab:not(.on):hover{color:#957d69}
+.tk{position:absolute;left:0;top:0;font:600 13px/1 'Montserrat',sans-serif;letter-spacing:3.5px;color:#957d69;white-space:nowrap;text-transform:uppercase;pointer-events:none}
+#cknob{cursor:grab;touch-action:none;border-radius:50%;outline:none}
+#cknob.drag{cursor:grabbing}
+#cknob:focus-visible{box-shadow:0 0 0 3px rgba(149,125,105,.45)}
+#cgemimg{transition:filter .3s}
+#cgem{transition:transform .35s}
+#cincl,#cspark{transition:opacity .35s}
+#cwedge{transition:rotate .6s cubic-bezier(.2,.8,.2,1)}
+#cr-title,#cr-val,#cr-sub,#cr-desc{transition:opacity .25s}
