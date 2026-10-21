@@ -177,7 +177,7 @@ push(box('left:118px;top:4560px', '<a href="#">Reports overview</a>', 'eyebrow c
 REPORTS.forEach((r, i) => push(`<article class="rcard" data-i="${i}" style="left:${[613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252][i]}px;top:3946px;width:569px;height:888px;z-index:${100 - i}">` +
   box('left:0;top:0;width:569px;height:569px', img('ellipse18', 'svg', 'class="fill"')) +
   box('left:135px;top:97px', NUMS[i], 'eyebrow rtx') +
-  box('left:135px;top:163px;width:459px', `${r[0]}<br>Report`, 'h50 ct rtx') +
+  box('left:135px;top:163px;width:350px', `${r[0]}<br>Report`, 'h50 ct rtx rtitle') +
   box('left:145px;top:330px;width:301px;font-size:16px;line-height:28.1px', r[1], 'body rtx') +
   box('left:145px;top:440px;width:129px', '<a href="#">Learn more</a>', 'eyebrow rtx') +
   `<div class="a rc" style="left:226px;top:628px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px;overflow:visible;text-align:left">${r[0]}</div></div>` +

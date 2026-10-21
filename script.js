@@ -155,9 +155,23 @@
     });
   })();
 
+  // report titles: keep every line inside the circle and clear of the description by shrinking until they fit
+  var rtitles = [].slice.call(document.querySelectorAll('.rtitle'));
+  function fitTitles() {
+    rtitles.forEach(function (el) {
+      var size = 50;
+      el.style.fontSize = size + 'px'; el.style.lineHeight = '54.831px';
+      while ((el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > 160) && size > 26) {
+        size -= 1;
+        el.style.fontSize = size + 'px'; el.style.lineHeight = (size * 1.0966) + 'px';
+      }
+    });
+  }
+
   fitWords();
+  fitTitles();
   fit();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWords(); render(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWords(); fitTitles(); render(); });
   window.addEventListener('resize', fit);
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href="#lab"]');

@@ -97,3 +97,4 @@ img{max-width:none}
 @keyframes chipPop{0%{transform:translateY(14px) scale(.85);opacity:0}100%{transform:none;opacity:1}}
 .rcard .rtx{opacity:0;transition:opacity .45s}
 .rcard.on .rtx{opacity:1}
+.rtitle{overflow:visible}
