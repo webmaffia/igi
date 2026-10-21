@@ -169,7 +169,7 @@ push(`<div class="a steps" style="left:136px;top:3526px;width:1700px;height:65.5
   push(box(`left:${x}px;top:3597.5px;width:${w}px;height:2px;background:#000;transform-origin:0 50%;transform:scaleX(0)`, '', 'tabfill')));
 push('</div>');
 
-/* ---------- reports (#reports: coverflow of nine report cards) ---------- */
+/* ---------- reports (#reports: pinned, nine stacked report cards driven by scroll) ---------- */
 const REPORTS = [
   ['Natural Diamond', 'A complete assessment of a natural diamond\u2019s 4Cs, proportions and characteristics.'],
   ['Lab Grown Diamond', 'Clear disclosure of laboratory-grown origin, with the same rigorous 4Cs grading.'],
@@ -189,28 +189,16 @@ push(box('left:118px;top:4279px;width:387px', 'Every stone, setting and story de
 push(box('left:118px;top:4440px;width:387px', 'Reports &amp; Certification', 'eyebrow'));
 push(box('left:118px;top:4492px;width:387px;color:#111;font-size:26px;line-height:34px', 'Nine reports. One standard of truth.', 'man4'));
 push(box('left:118px;top:4560px', '<a href="#">Reports overview</a>', 'eyebrow clink'));
-// coverflow: every card is a 569px circle centred on x=1210; JS spreads them (active large, neighbours smaller)
-REPORTS.forEach((r, i) => push(`<article class="rcard${i ? '' : ' on'}" data-i="${i}" role="group" aria-label="${r[0]} Report" style="left:925.5px;top:3946px;width:569px;height:888px;z-index:${200 - i}">` +
-  `<div class="a rring" style="left:-22px;top:-22px;width:613px;height:613px"></div>` +
+// card k is a 569px circle plus its vertical label; JS places the cards along the stack as you scroll
+REPORTS.forEach((r, i) => push(`<article class="rcard" data-i="${i}" style="left:${[613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252][i]}px;top:3946px;width:569px;height:888px;z-index:${100 - i}">` +
   box('left:0;top:0;width:569px;height:569px', img('ellipse18', 'svg', 'class="fill"'), 'rcirc') +
-  // full copy: shown on the active card
-  `<div class="a rfull" style="left:0;top:0;width:569px;height:569px">` +
-    box('left:135px;top:97px', NUMS[i], 'eyebrow') +
-    box('left:135px;top:163px;width:350px', `${r[0]}<br>Report`, 'h50 ct rtitle') +
-    box('left:145px;top:330px;width:301px;font-size:16px;line-height:28.1px', r[1], 'body') +
-    box('left:145px;top:440px;width:129px', '<a href="#">Learn more</a>', 'eyebrow') +
-  `</div>` +
-  // mini copy: number + title, centred, shown on the side cards
-  `<div class="a rmini" style="left:0;top:0;width:569px;height:569px"><span class="rmn">${String(i + 1).padStart(2, '0')}</span><span class="rmt">${r[0]}<br>Report</span></div>` +
-  // stem + vertical title under the active card
-  `<div class="a rstem" style="left:0;top:569px;width:569px;height:319px">` +
-    `<div class="a rc" style="left:226px;top:59px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px;overflow:visible;text-align:left">${r[0]}</div></div>` +
-    `<div class="a" style="left:284.5px;top:0;width:0;height:319px"><div style="position:absolute;left:0;top:0;width:319px;height:1px;transform-origin:0 0;transform:rotate(90deg)"><img class="ln" src="assets/vector2.svg" alt=""></div></div>` +
-  `</div>` +
+  box('left:135px;top:97px', NUMS[i], 'eyebrow rtx') +
+  box('left:135px;top:163px;width:350px', `${r[0]}<br>Report`, 'h50 ct rtx rtitle') +
+  box('left:145px;top:330px;width:301px;font-size:16px;line-height:28.1px', r[1], 'body rtx') +
+  box('left:145px;top:440px;width:129px', '<a href="#">Learn more</a>', 'eyebrow rtx') +
+  `<div class="a rc rlab" style="left:226px;top:628px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px;overflow:visible;text-align:left">${r[0]}</div></div>` +
+  `<div class="a" style="left:284.5px;top:569px;width:0;height:319px"><div style="position:absolute;left:0;top:0;width:319px;height:1px;transform-origin:0 0;transform:rotate(90deg)"><img class="ln" src="assets/vector2.svg" alt=""></div></div>` +
   `</article>`));
-// prev / next
-push(`<button class="a rnav" id="rprev" type="button" aria-label="Previous report" style="left:118px;top:4655px"><svg width="34" height="14" viewBox="0 0 34 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M33 7H2M8 1 2 7l6 6"/></svg></button>`);
-push(`<button class="a rnav" id="rnext" type="button" aria-label="Next report" style="left:226px;top:4655px"><svg width="34" height="14" viewBox="0 0 34 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h31M26 1l6 6-6 6"/></svg></button>`);
 push('</div>');
 
 /* ---------- the moment (#moment) ---------- */

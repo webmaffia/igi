@@ -33,6 +33,8 @@
   var LAB_CENTER = 3200; // design y that sits mid-screen while the #lab steps play
   var rcards = [].slice.call(document.querySelectorAll('.rcard'));
   var REP_CENTER = 4420;
+  // x of a card by its distance from the active card: -1 is tucked away on the left, 0 is the front card
+  var REP_SLOTS = [430, 613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252];
   var scale = 1, run = 0, labRun = 0, yLab = 0, repRun = 0, yRep = 0, repActive = -1, labStep = -1, ticking = false;
 
   var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
@@ -180,48 +182,19 @@
     });
   }
 
-  // #reports: coverflow. The active card is large in the middle, neighbours shrink to each side.
-  // Click a card (or use the arrows / arrow keys / swipe) to bring it to the middle.
-  var RX = [0, 385, 500, 600], RS = [1, 0.55, 0.34, 0.26], RO = [1, 0.95, 0.6, 0];
-  var rprev = document.getElementById('rprev'), rnext = document.getElementById('rnext');
+  // #reports: hover a card (its circle or its vertical label) to bring it to the front, in place
   function setRep(i) {
-    i = clamp(i, 0, rcards.length - 1);
+    if (i === repActive) return;
     repActive = i;
     rcards.forEach(function (el, k) {
-      var d = k - i, a = Math.abs(d), n = Math.min(a, 3), sg = d < 0 ? -1 : 1;
-      el.style.transform = 'translate(' + (a ? sg * RX[n] : 0) + 'px,' + (a ? 0 : -10) + 'px) scale(' + RS[n] + ')';
-      el.style.opacity = RO[n];
-      el.style.zIndex = a ? 100 - a : 200;
-      el.classList.toggle('on', a === 0);
-      el.querySelector('.rcirc').style.pointerEvents = RO[n] > 0.3 ? 'auto' : 'none';
+      el.classList.toggle('on', k === i);
+      el.style.zIndex = k === i ? 200 : 100 - k;
     });
-    rprev.disabled = i === 0;
-    rnext.disabled = i === rcards.length - 1;
   }
   rcards.forEach(function (el, i) {
-    el.querySelector('.rcirc').addEventListener('click', function () { if (i !== repActive) setRep(i); });
-    el.addEventListener('focusin', function () { if (i !== repActive) setRep(i); });
+    el.querySelectorAll('.rcirc, .rlab').forEach(function (t) { t.addEventListener('pointerenter', function () { setRep(i); }); });
+    el.addEventListener('focusin', function () { setRep(i); });
   });
-  rprev.addEventListener('click', function () { setRep(repActive - 1); });
-  rnext.addEventListener('click', function () { setRep(repActive + 1); });
-  document.addEventListener('keydown', function (e) {
-    var t = (document.activeElement && document.activeElement.tagName) || '';
-    if (t === 'INPUT' || t === 'TEXTAREA') return;
-    var topY = (parseFloat(stage.style.transform.split(',')[1]) || 0) * -1 / scale;
-    if (topY + window.innerHeight / scale < 3946 || topY > 4834) return;       // only while the section is on screen
-    if (e.key === 'ArrowLeft') setRep(repActive - 1);
-    if (e.key === 'ArrowRight') setRep(repActive + 1);
-  });
-  (function () {
-    var x0 = null;
-    var zone = document.getElementById('reports');
-    zone.addEventListener('pointerdown', function (e) { if (e.target.closest('.rcirc')) x0 = e.clientX; });
-    window.addEventListener('pointerup', function (e) {
-      if (x0 === null) return;
-      var dx = e.clientX - x0; x0 = null;
-      if (Math.abs(dx) > 70) setRep(repActive + (dx < 0 ? 1 : -1));
-    });
-  })();
   setRep(0);
 
   // #moment: report number form (prototype, no verification service yet)
