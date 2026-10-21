@@ -79,18 +79,24 @@
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
 
-  // draggable comparison: lab-grown shows to the right of the handle, natural to the left
+  // draggable comparison: lab-grown shows to the right of the handle, natural to the left.
+  // The handle can travel the full width of the screen; the copy on the side it moves toward hides.
   (function () {
     var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
-    var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, pos = 0.5, dragging = false;
-    function set(p) {
-      pos = clamp(p, 0, 1);
-      var cx = CMP_L + pos * CMP_W;
+    var txtNat = document.getElementById('txt-nat'), txtLab = document.getElementById('txt-lab');
+    var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, cx = MID, dragging = false;
+    function set(x) {
+      cx = clamp(x, KNOB_R, DESIGN_W - KNOB_R);
       knob.style.left = (cx - KNOB_R) + 'px';
-      lab.style.clipPath = 'inset(0 0 0 ' + pos * 100 + '%)';
-      knob.setAttribute('aria-valuenow', Math.round(pos * 100));
+      lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
+      var t = (cx - MID) / (MID - KNOB_R);              // -1 (far left) .. 1 (far right)
+      var labV = clamp(1 - Math.max(0, t) * 2.2, 0, 1);  // moving right hides the lab-grown copy
+      var natV = clamp(1 + Math.min(0, t) * 2.2, 0, 1);  // moving left hides the natural copy
+      txtLab.style.opacity = labV; txtLab.style.translate = (1 - labV) * 40 + 'px 0';
+      txtNat.style.opacity = natV; txtNat.style.translate = -(1 - natV) * 40 + 'px 0';
+      knob.setAttribute('aria-valuenow', Math.round(cx / DESIGN_W * 100));
     }
-    function fromEvent(e) { return ((e.clientX - stage.getBoundingClientRect().left) / scale - CMP_L) / CMP_W; }
+    function fromEvent(e) { return (e.clientX - stage.getBoundingClientRect().left) / scale; }
     knob.addEventListener('pointerdown', function (e) { dragging = true; knob.classList.add('drag'); knob.setPointerCapture(e.pointerId); e.preventDefault(); });
     knob.addEventListener('pointermove', function (e) { if (dragging) set(fromEvent(e)); });
     var end = function () { dragging = false; knob.classList.remove('drag'); };
@@ -98,8 +104,8 @@
     knob.addEventListener('pointercancel', end);
     cmp.addEventListener('pointerdown', function (e) { set(fromEvent(e)); });
     knob.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') { set(pos - 0.05); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { set(pos + 0.05); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { set(cx - 60); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { set(cx + 60); e.preventDefault(); }
     });
   })();
 

@@ -95,13 +95,15 @@ push(`<div class="a knob" id="knob" role="slider" tabindex="0" aria-label="Compa
   `<div class="a" style="left:35.7px;top:48.7px;width:40.7637px;height:14.8479px">${img('group26', 'svg', 'class="fill" draggable="false"')}</div></div>`);
 push(line(571, 2030, 8, 0, 'line10'));
 
-const side = (left, top, eyebrow, l1, l2, body, lh) => {
+const side = (left, top, eyebrow, l1, l2, body, id) => {
+  push(`<div class="a side" id="${id}" style="left:0;top:0">`);
   push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
   push(box(`left:${left}px;top:${top + 96}px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
   push(box(`left:${left + 2}px;top:${top + 222}px;width:282px`, body, 'body18'));
+  push('</div>');
 };
-side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', 'Created deep within the Earth under intense heat and pressure over millions of years.');
-side(1511, 1795, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', 'Created deep within the Earth under intense heat and pressure over millions of years.');
+side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', 'Created deep within the Earth under intense heat and pressure over millions of years.', 'txt-nat');
+side(1511, 1795, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', 'Created deep within the Earth under intense heat and pressure over millions of years.', 'txt-lab');
 
 /* ---------- process / inscription ---------- */
 push(box('left:126px;top:2770px', 'STEP ONE', 'eyebrow'));
