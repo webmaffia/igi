@@ -62,8 +62,8 @@ const words = [['L', 'VE'], ['CR', 'WN'], ['GL', 'W'], ['ST', 'NE']];
 // glow.png has a white backdrop: only its outer rim is feathered, the whole picture stays visible
 const SOFT = '-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%)';
 const WIMG = [
-  // LOVE: the whole picture (its empty left 480px dropped) fitted inside the same 640x427 box as the diamond, rim feathered
-  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;${SOFT}"><img src="assets/hero/love.png" alt="" draggable="false" style="position:absolute;left:58px;top:0;width:524px;height:427px;object-fit:cover;object-position:100% 0;max-width:none"></div>`,
+  // LOVE: love.png is now 512x341 like the crown and glow: same 640x427 box as the diamond, rim feathered like the glow
+  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;${SOFT}">${img('hero/love', 'png', 'class="cover" draggable="false" style="transform:scale(1.2)"')}</div>`,
   // CROWN / GLOW / STONE: full pictures in exactly the diamond's box (640x427)
   `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('hero/Crown-cut', 'png', 'class="cover" draggable="false"')}</div>`,
   `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;${SOFT}">${img('hero/glow', 'png', 'class="cover" draggable="false" style="transform:scale(1.3)"')}</div>`,
