@@ -2,9 +2,9 @@
 <g id="Mask group">
 <mask id="mask0_0_24" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="282" y="488" width="2255" height="1956">
 <g id="Group 39" opacity="0.1">
-<path id="Line 13" d="M1972.92 2442.65L844.642 488.411" stroke-width="1.5" stroke="black"/>
-<path id="Line 14" d="M1974.22 490.525L847.169 2442.64" stroke-width="1.5" stroke="black"/>
-<path id="Line 15" d="M2536.5 1465.91L282.377 1465.91" stroke-width="1.5" stroke="black"/>
+<path id="Line 13" d="M1972.92 2442.65L844.642 488.411" stroke-width="0.7" stroke="black"/>
+<path id="Line 14" d="M1974.22 490.525L847.169 2442.64" stroke-width="0.7" stroke="black"/>
+<path id="Line 15" d="M2536.5 1465.91L282.377 1465.91" stroke-width="0.7" stroke="black"/>
 </g>
 </mask>
 <g mask="url(#mask0_0_24)">

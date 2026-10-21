@@ -13,7 +13,7 @@ const rot = (l, t, w, h, deg, inner, cls = '') =>
   `<div class="a rc ${cls}" style="left:${l}px;top:${t}px;width:${w}px;height:${h}px"><div style="transform:rotate(${deg}deg)">${inner}</div></div>`;
 // thin line image centred at (cx,cy), length len, rotated deg
 const line = (cx, cy, len, deg, name) =>
-  `<div class="a" style="left:${px(cx - len / 2)};top:${px(cy)};width:${len}px;height:0;transform:rotate(${deg}deg)"><img class="ln${/^line(13|14|15|16|17|8|9)$/.test(name) ? ' thin' : ''}" src="assets/${name}.svg" alt=""></div>`;
+  `<div class="a" style="left:${px(cx - len / 2)};top:${px(cy)};width:${len}px;height:0;transform:rotate(${deg}deg)"><img class="ln${/^line(13|14|15|16|17|18|8|9)$/.test(name) ? ' thin' : ''}" src="assets/${name}.svg" alt=""></div>`;
 
 const out = [];
 const push = (s) => out.push(s);
@@ -154,11 +154,11 @@ push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:tr
 // overlays drawn over the diamond: scan (screening), guides (grading), laser (inscription), stamp (report)
 push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;overflow:visible;pointer-events:none" viewBox="0 0 582 388">
   <defs><mask id="dmask" maskUnits="userSpaceOnUse" x="0" y="0" width="582" height="388" style="mask-type:alpha"><image href="assets/diamond.png" x="0" y="0" width="582" height="388"/></mask></defs>
-  <g class="ov o1" mask="url(#dmask)"><rect class="scanline" x="0" y="0" width="582" height="3" fill="#2FB8DD" opacity=".9"/><rect class="scanline" x="0" y="-12" width="582" height="16" fill="#2FB8DD" opacity=".2"/></g>
-  <g class="ov o2" fill="none" stroke="#957d69" stroke-width="1.6" stroke-dasharray="7 7">
+  <g class="ov o1" mask="url(#dmask)"><rect class="scanline" x="0" y="0" width="582" height="2" fill="#2FB8DD" opacity=".9"/><rect class="scanline" x="0" y="-12" width="582" height="16" fill="#2FB8DD" opacity=".2"/></g>
+  <g class="ov o2" fill="none" stroke="#957d69" stroke-width="1" stroke-dasharray="7 7">
     <line x1="60" y1="418" x2="522" y2="418"/><line x1="60" y1="406" x2="60" y2="430"/><line x1="522" y1="406" x2="522" y2="430"/>
     <line x1="560" y1="70" x2="560" y2="372"/><circle cx="226" cy="150" r="20"/></g>
-  <g class="ov o3"><line x1="700" y1="40" x2="406" y2="116" stroke="#FF5F7A" stroke-width="3.5"/><circle cx="406" cy="116" r="11" fill="#FF8FA2"/><circle cx="406" cy="116" r="29" fill="#FF5F7A" opacity=".25"/></g>
+  <g class="ov o3"><line x1="700" y1="40" x2="406" y2="116" stroke="#FF5F7A" stroke-width="2"/><circle cx="406" cy="116" r="11" fill="#FF8FA2"/><circle cx="406" cy="116" r="29" fill="#FF5F7A" opacity=".25"/></g>
 </svg>`);
 // the card sits in front of the diamond (the diamond's top tucks behind it)
 push(box('left:973px;top:2846px;width:567px;height:248px;background:#fbfbfb'));
@@ -168,7 +168,7 @@ push(box('left:1095px;top:3300px', 'IGI<br>VERIFIED', 'stamp ov o4'));
 push(`<div class="a steps" style="left:136px;top:3526px;width:1700px;height:65.5px">` +
   STEPS.map((st, i) => `<span class="${i ? 'mont6' : 'mont7 on'}" style="left:${[0, 331, 663, 995, 1331][i]}px">${st.tab}</span>`).join('') + `</div>`);
 [[136, 319.29], [466.437, 318.49], [800.059, 318.49], [1129.7, 319.29], [1465.71, 319.29]].forEach(([x, w]) =>
-  push(box(`left:${x}px;top:3597.5px;width:${w}px;height:2px;background:#000;transform-origin:0 50%;transform:scaleX(0)`, '', 'tabfill')));
+  push(box(`left:${x}px;top:3597.5px;width:${w}px;height:1px;background:#000;transform-origin:0 50%;transform:scaleX(0)`, '', 'tabfill')));
 push('</div>');
 
 /* ---------- reports (#reports: pinned, nine stacked report cards driven by scroll) ---------- */
