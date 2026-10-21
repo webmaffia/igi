@@ -44,7 +44,8 @@
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep
-    wedge.style.rotate = (90 + 90 * xs) + 'deg';
+    // LOVE top-right, COLOR bottom-right, GROWN bottom-left, STONE back round to top-right
+    wedge.style.rotate = (xs <= 2 ? 90 * xs : 180 + 180 * (xs - 2)) + 'deg';
     words.forEach(function (w, i) {
       var d = xs - i, v, y;
       if (i === words.length - 1 && d >= 0) { v = 1; y = 0; }
