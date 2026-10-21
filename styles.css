@@ -253,3 +253,7 @@ img{max-width:none}
 .rpt-stamp{width:60px;height:60px;border:1.5px solid #957d69;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font:700 8.5px/11px 'Montserrat',sans-serif;letter-spacing:1.8px;color:#957d69;rotate:-12deg;flex:none}
 .cpanel,.cpoly{transition:opacity .6s}
 #lab[data-s="4"] .cpanel,#lab[data-s="4"] .cpoly{opacity:0}
+/* Report step: the big word and the diamond slide left so the whole word clears the report page */
+.lstep.bigw[data-i="4"]{transform:translateX(-348px) scale(.92)}
+.diaw{transition:translate .8s cubic-bezier(.2,.7,.2,1)}
+#lab[data-s="4"] .diaw{translate:-348px 0}
