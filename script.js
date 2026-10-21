@@ -54,8 +54,8 @@
       w.style.translate = '0 ' + y + 'px';
     });
     // keep the ring centred on screen while the words play, then glide to the design position
-    // once STONE lands the quarter disc sweeps round to a full circle, holds, then settles back
-    var sweep = smooth((p - 0.5) / 0.12) * (1 - smooth((p - 0.72) / 0.12));
+    // once STONE lands the quarter disc sweeps round to a full circle and stays; scrolling back up un-fills it
+    var sweep = smooth((p - 0.5) / 0.12);
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
