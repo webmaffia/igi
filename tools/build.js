@@ -59,12 +59,13 @@ push(`<div class="a" id="hero-ring">` +
 // scroll-driven words: the diamond sits where the O is; STONE is the final word
 // each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, CROWN = crown, GLOW = glow, STONE = the diamond
 const words = [['L', 'VE'], ['CR', 'WN'], ['GL', 'W'], ['ST', 'NE']];
-const SOFT = '-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);mask-image:radial-gradient(closest-side,#000 62%,transparent 100%)';
+// glow.png has a white backdrop: only its outer rim is feathered, the whole picture stays visible
+const SOFT = '-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 80%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 80%,transparent 100%)';
 const WIMG = [
-  // LOVE: love.png is 1920x1174; show the fingertips, ring box and hands (crop x 1060..1700, y 480..907) with soft edges
-  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;overflow:hidden;${SOFT}"><img src="assets/hero/love.png" alt="" draggable="false" style="position:absolute;left:-1060px;top:-480px;width:1920px;height:1174px;max-width:none"></div>`,
+  // LOVE: the whole picture (its empty left 480px dropped) at half size, centred in the O slot (915,585), outer rim feathered
+  `<div class="a wpic" style="left:555px;top:292px;width:720px;height:587px;overflow:hidden;${SOFT}"><img src="assets/hero/love.png" alt="" draggable="false" style="position:absolute;left:-240px;top:0;width:960px;height:587px;max-width:none"></div>`,  // CROWN / GLOW / STONE: full pictures in exactly the diamond's box (640x427)
   `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('hero/Crown-cut', 'png', 'class="cover" draggable="false"')}</div>`,
-  `<div class="a wpic" style="left:625px;top:391px;width:580px;height:387px;${SOFT}">${img('hero/glow', 'png', 'class="cover" draggable="false"')}</div>`,
+  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;${SOFT}">${img('hero/glow', 'png', 'class="cover" draggable="false"')}</div>`,
   `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
 ];
 push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
