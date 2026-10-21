@@ -83,13 +83,14 @@
   // The handle can travel the full width of the screen; the copy on the side it moves toward hides.
   (function () {
     var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
-    var txtNat = document.getElementById('txt-nat'), txtLab = document.getElementById('txt-lab');
+    var txtNat = document.getElementById('txt-nat'), txtLab = document.getElementById('txt-lab'), arc = document.getElementById('arc');
     var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, cx = MID, dragging = false;
     function set(x) {
       cx = clamp(x, KNOB_R, DESIGN_W - KNOB_R);
       knob.style.left = (cx - KNOB_R) + 'px';
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
       var t = (cx - MID) / (MID - KNOB_R);              // -1 (far left) .. 1 (far right)
+      arc.style.rotate = (t * 90) + 'deg';              // the grey arc swings round the ring with the handle
       var labV = clamp(1 - Math.max(0, t) * 2.2, 0, 1);  // moving right hides the lab-grown copy
       var natV = clamp(1 + Math.min(0, t) * 2.2, 0, 1);  // moving left hides the natural copy
       txtLab.style.opacity = labV; txtLab.style.translate = (1 - labV) * 40 + 'px 0';

@@ -61,3 +61,4 @@ img{max-width:none}
 .knob.drag{cursor:grabbing}
 .knob:focus-visible{box-shadow:0 0 0 3px rgba(149,125,105,.6)}
 .side{will-change:opacity,translate}
+#arc{will-change:rotate;transition:rotate .18s ease-out}
