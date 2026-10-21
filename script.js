@@ -15,7 +15,11 @@
   var words = [].slice.call(document.querySelectorAll('.word'));
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var scale = 1, run = 0, ticking = false;
+  var lab = document.getElementById('lab');
+  var lsteps = [].slice.call(lab.querySelectorAll('.lstep')), csteps = [].slice.call(lab.querySelectorAll('.cstep'));
+  var tabs = [].slice.call(lab.querySelectorAll('.steps span')), fills = [].slice.call(lab.querySelectorAll('.tabfill'));
+  var LAB_CENTER = 3200; // design y that sits mid-screen while the #lab steps play
+  var scale = 1, run = 0, labRun = 0, yLab = 0, labStep = -1, ticking = false;
 
   var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
   var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
@@ -36,7 +40,15 @@
 
   function render() {
     ticking = false;
-    var p = run ? clamp(window.scrollY / run, 0, 1) : 1;
+    var s = window.scrollY;
+    // scroll engine: the stage is fixed and moved by hand so it can pin at the hero and again at #lab
+    var sLab = run + yLab, off;
+    if (s <= run) off = 0;
+    else if (s <= sLab) off = s - run;
+    else if (s <= sLab + labRun) off = yLab;
+    else off = s - run - labRun;
+    stage.style.transform = 'translate3d(0,' + (-off) + 'px,0) scale(' + scale + ')';
+    var p = run ? clamp(s / run, 0, 1) : 1;
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep
@@ -67,14 +79,25 @@
       el.style.translate = '0 ' + (1 - t) * 30 + 'px';
       el.style.pointerEvents = t < 0.5 ? 'none' : '';
     });
+    // #lab: five steps driven by scroll while it is pinned
+    var lp = labRun ? clamp((s - sLab) / labRun, 0, 1) : 0;
+    var st = Math.min(4, Math.floor(lp * 5)), local = lp >= 1 ? 1 : (lp * 5) % 1;
+    if (st !== labStep) {
+      labStep = st;
+      lab.dataset.s = st;
+      lsteps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+      csteps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+      tabs.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+    }
+    fills.forEach(function (f, i) { f.style.transform = 'scaleX(' + (i < st ? 1 : i === st ? local : 0) + ')'; });
   }
 
   function fit() {
     scale = window.innerWidth / DESIGN_W;
-    stage.style.transform = 'scale(' + scale + ')';
-    pin.style.height = DESIGN_H * scale + 'px';
     run = reduced ? 0 : window.innerHeight * 3.5;
-    viewport.style.height = DESIGN_H * scale + run + 'px';
+    labRun = reduced ? 0 : window.innerHeight * 4.5;
+    yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
+    viewport.style.height = DESIGN_H * scale + run + labRun + 'px';
     render();
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
@@ -114,5 +137,9 @@
   fit();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitWords(); render(); });
   window.addEventListener('resize', fit);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#lab"]');
+    if (a) { e.preventDefault(); window.scrollTo({ top: run + yLab + 1, behavior: 'smooth' }); }
+  });
   window.addEventListener('scroll', onScroll, { passive: true });
 })();

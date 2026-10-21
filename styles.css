@@ -46,7 +46,8 @@ img{max-width:none}
 .ln.thin{height:1px;opacity:.38}
 
 /* hero scroll animation */
-#pin{position:sticky;top:0;overflow:hidden}
+#pin{position:fixed;inset:0;overflow:hidden}
+#stage{will-change:transform}
 .word{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity,translate}
 .word.final{opacity:1}
 .wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:500;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
@@ -62,3 +63,25 @@ img{max-width:none}
 .knob:focus-visible{box-shadow:0 0 0 3px rgba(149,125,105,.6)}
 .side{will-change:opacity,translate}
 #arc{will-change:rotate;transition:rotate .18s ease-out}
+
+/* #lab: scroll-driven grading steps */
+.lstep,.cstep{opacity:0;translate:0 30px;pointer-events:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),translate .7s cubic-bezier(.2,.7,.2,1)}
+.lstep.on,.cstep.on{opacity:1;translate:0 0;pointer-events:auto}
+.clink a{text-decoration:underline}
+.oklist .ok{position:relative;padding-left:22px}
+.oklist .ok::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:#43c08a;box-shadow:0 0 8px #43c08a}
+.callout .cl{display:block;font:600 11px/20px 'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#6d6d6d}
+.callout .cv{display:block;font:600 34px/40px 'Montserrat',sans-serif;color:#ccb4a0;text-transform:uppercase;white-space:nowrap}
+.inscr{font:600 13px/20px 'Courier New',monospace;letter-spacing:.3em;color:#957d69;white-space:nowrap;border:1px solid rgba(149,125,105,.4);padding:8px 14px}
+.typed{display:inline-block;vertical-align:bottom}
+.typed>span{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0;transition:width 1.6s steps(15)}
+#lab[data-s="3"] .typed>span{width:15ch}
+.ov{opacity:0;transition:opacity .6s}
+#lab[data-s="1"] .o1,#lab[data-s="2"] .o2,#lab[data-s="3"] .o3,#lab[data-s="4"] .o4{opacity:1}
+.scanline{animation:scan 2.2s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateY(10px)}50%{transform:translateY(372px)}}
+.stamp{width:150px;height:150px;border:3px solid #957d69;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font:700 20px/26px 'Montserrat',sans-serif;letter-spacing:3px;color:#957d69;transform:rotate(-12deg) scale(.6);transition:opacity .6s,transform .8s cubic-bezier(.2,.9,.3,1.3)}
+#lab[data-s="4"] .stamp{transform:rotate(-12deg) scale(1)}
+.steps span{opacity:.4;transition:opacity .4s}
+.steps span.on{opacity:1}
+.tabfill{will-change:transform}

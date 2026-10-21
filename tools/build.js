@@ -105,20 +105,52 @@ const side = (left, top, eyebrow, l1, l2, body, id) => {
 side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', 'Created deep within the Earth under intense heat and pressure over millions of years.', 'txt-nat');
 side(1511, 1795, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', 'Created deep within the Earth under intense heat and pressure over millions of years.', 'txt-lab');
 
-/* ---------- process / inscription ---------- */
-push(box('left:126px;top:2770px', 'STEP ONE', 'eyebrow'));
-push(box('left:126px;top:2866px', '<span style="color:#ccb4a0">It arrives</span><br><span style="color:#000">without a name.</span>', 'h50'));
-push(box('left:128px;top:2992px;width:387px', 'Every stone is logged anonymously. Our graders never know who sent it \u2014 so nothing but the stone itself can influence the result.', 'body18'));
+/* ---------- process / inscription (#lab: pinned, five scroll-driven steps) ---------- */
+const STEPS = [
+  { n: 'Step one',   h1: 'It arrives',       h2: 'without a name.', p: 'Every stone is logged anonymously. Our graders never know who sent it \u2014 so nothing but the stone itself can influence the result.', tab: 'Intake' },
+  { n: 'Step two',   h1: 'We ask where',     h2: 'it came from.',   p: 'Advanced screening instruments confirm whether a diamond is natural or laboratory-grown, and detect treatments invisible to the eye.', tab: 'Screening', link: 'How gems are tested' },
+  { n: 'Step three', h1: 'Several experts.', h2: 'One standard.',   p: 'Multiple gemologists independently assess the 4Cs \u2014 Carat, Color, Clarity and Cut \u2014 under controlled lighting and magnification.', tab: 'Grading', link: 'Explore the 4Cs' },
+  { n: 'Step four',  h1: 'A signature,',     h2: 'in light.',       p: 'A microscopic laser inscription on the girdle links the stone permanently to its report \u2014 invisible to the eye, readable under a loupe.', tab: 'Inscription', link: 'Laser inscription' },
+  { n: 'Step five',  h1: 'Its story,',       h2: 'on record.',      p: 'A secure IGI report is issued and stored online \u2014 so anyone, anywhere, can verify it in seconds.', tab: 'Report', link: 'Verify a report' }
+];
+const cardX = 1011.99;
+const cardLink = (t) => t ? box('left:1240px;top:2866px;width:270px;text-align:right', `<a href="#">${t}</a>`, 'eyebrow clink') : '';
+const CARDS = [
+  box(`left:${cardX}px;top:2866px`, 'Intake', 'eyebrow') + box(`left:${cardX}px;top:2914px;color:#ccb4a0`, 'Sample A\u201148213', 'h50') + box(`left:${cardX}px;top:2969px;width:387px`, 'Client identity: anonymised', 'body18'),
+  box(`left:${cardX}px;top:2866px`, 'Screening', 'eyebrow') + box(`left:${cardX}px;top:2914px;color:#ccb4a0`, 'Natural origin', 'h50') +
+    box(`left:${cardX}px;top:2975px;width:480px`, '<div class="ok">Origin confirmed</div><div class="ok">No treatment detected</div><div class="ok">Not a simulant</div>', 'body18 oklist'),
+  box(`left:${cardX}px;top:2866px`, 'Grading', 'eyebrow') +
+    [['Carat', '1.02', 0, 0], ['Color', 'F', 250, 0], ['Clarity', 'VVS2', 0, 80], ['Cut', 'Excellent', 250, 80]].map(c =>
+      box(`left:${cardX + c[2]}px;top:${2916 + c[3]}px`, `<span class="cl">${c[0]}</span><span class="cv">${c[1]}</span>`, 'callout')).join(''),
+  box(`left:${cardX}px;top:2866px`, 'Inscription', 'eyebrow') + box(`left:${cardX}px;top:2914px;color:#ccb4a0`, 'Laser etched', 'h50') +
+    box(`left:${cardX}px;top:2985px`, 'GIRDLE \u00b7 <span class="typed"><span>IGI XX000000000</span></span>', 'inscr'),
+  box(`left:${cardX}px;top:2866px`, 'Report', 'eyebrow') + box(`left:${cardX}px;top:2914px;color:#ccb4a0`, 'Report issued', 'h50') +
+    box(`left:${cardX}px;top:2969px;width:420px`, 'Natural Diamond Report \u00b7 No. XX 000 000 000<br>Verify online \u00b7 igi.org', 'body18')
+];
+push('<div class="a" id="lab" data-s="0" style="left:0;top:0;width:1920px">');
+STEPS.forEach((st, i) => push(`<div class="a lstep${i ? '' : ' on'}" data-i="${i}" style="left:0;top:0">` +
+  box('left:126px;top:2770px', st.n, 'eyebrow') +
+  box('left:126px;top:2866px', `<span style="color:#ccb4a0">${st.h1}</span><br><span style="color:#000">${st.h2}</span>`, 'h50') +
+  box('left:128px;top:2992px;width:387px', st.p, 'body18') + `</div>`));
 push(box('left:973px;top:2846px;width:567px;height:248px;background:#fbfbfb'));
 push(rot(947, 3052, 81.962, 81.962, -150, `<div style="position:relative;width:60px;height:60px"><div class="a" style="left:6.7%;right:6.7%;top:0;bottom:25%">${img('polygon1', 'svg', 'class="fill"')}</div></div>`));
-push(box('left:1011.99px;top:2866px', 'Intake', 'eyebrow'));
-push(box('left:1011.99px;top:2914px;color:#ccb4a0', 'Sample A\u201148213', 'h50'));
-push(box('left:1011.99px;top:2969px;width:387px', 'Client identity: anonymised', 'body18'));
+STEPS.forEach((st, i) => push(`<div class="a cstep${i ? '' : ' on'}" data-i="${i}" style="left:0;top:0">` + CARDS[i] + cardLink(st.link) + `</div>`));
 push(box('left:77px;top:3241px;width:1843px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center', 'Inscription', 'mont7 caps'));
 push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"')));
+// overlays drawn over the diamond: scan (screening), guides (grading), laser (inscription), stamp (report)
+push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;overflow:visible;pointer-events:none" viewBox="0 0 582 388">
+  <g class="ov o1"><rect class="scanline" x="60" y="0" width="462" height="3" fill="#2FB8DD" opacity=".9"/><rect class="scanline" x="60" y="-12" width="462" height="16" fill="#2FB8DD" opacity=".15"/></g>
+  <g class="ov o2" fill="none" stroke="#957d69" stroke-width="1.6" stroke-dasharray="7 7">
+    <line x1="60" y1="418" x2="522" y2="418"/><line x1="60" y1="406" x2="60" y2="430"/><line x1="522" y1="406" x2="522" y2="430"/>
+    <line x1="560" y1="70" x2="560" y2="372"/><circle cx="226" cy="150" r="20"/></g>
+  <g class="ov o3"><line x1="700" y1="40" x2="406" y2="116" stroke="#FF5F7A" stroke-width="3.5"/><circle cx="406" cy="116" r="11" fill="#FF8FA2"/><circle cx="406" cy="116" r="29" fill="#FF5F7A" opacity=".25"/></g>
+</svg>`);
+push(box('left:1095px;top:3300px', 'IGI<br>VERIFIED', 'stamp ov o4'));
 push(`<div class="a steps" style="left:136px;top:3526px;width:1700px;height:65.5px">` +
-  ['Intake ', 'Screening', 'Grading', 'Inscription', 'Report'].map((s, i) => `<span class="${i ? 'mont6' : 'mont7'}" style="left:${[0, 331, 663, 995, 1331][i]}px">${s}</span>`).join('') + `</div>`);
-push(box('left:137px;top:3597.5px;width:319px;height:0', `<div class="a" style="inset:-1px 0">${img('vector1', 'svg', 'class="fill"')}</div>`));
+  STEPS.map((st, i) => `<span class="${i ? 'mont6' : 'mont7 on'}" style="left:${[0, 331, 663, 995, 1331][i]}px">${st.tab}</span>`).join('') + `</div>`);
+[[136, 319.29], [466.437, 318.49], [800.059, 318.49], [1129.7, 319.29], [1465.71, 319.29]].forEach(([x, w]) =>
+  push(box(`left:${x}px;top:3597.5px;width:${w}px;height:2px;background:#000;transform-origin:0 50%;transform:scaleX(0)`, '', 'tabfill')));
+push('</div>');
 
 /* ---------- reports ---------- */
 push(`<span id="reports"></span>`);
