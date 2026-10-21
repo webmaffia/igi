@@ -3,7 +3,7 @@
 (function () {
   var DESIGN_W = 1920, DESIGN_H = 8552;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
-  var LEFT_EDGE = 103, RIGHT_START = 1320, LEFT_ROOM = 450, RIGHT_ROOM = 540;
+  var LEFT_END = 510, LEFT_ROOM = 470, RIGHT_ROOM = 570; // right-align left halves at LEFT_END; right halves start at 1320
   var viewport = document.getElementById('viewport');
   var pin = document.getElementById('pin');
   var stage = document.getElementById('stage');
@@ -15,26 +15,27 @@
   var words = [].slice.call(document.querySelectorAll('.word'));
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var scale = 1, run = 0, ticking = false, leftEdge = 510;
+  var scale = 1, run = 0, ticking = false;
 
   var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
   var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
   var easeOut = function (t) { t = clamp(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
 
-  // size each word so both halves fit around the diamond, keeping one shared baseline
+  // one shared size for every word (the widest half decides), same baseline, diamond slot fixed
   function fitWords() {
-    var stone = words[words.length - 1];
-    var sl = stone.querySelector('.wl');
-    sl.style.left = LEFT_EDGE + 'px';
-    leftEdge = LEFT_EDGE + sl.offsetWidth;
+    words.forEach(function (w) {
+      w.querySelectorAll('.wl, .wr').forEach(function (el) { el.style.fontSize = WORD_FONT + 'px'; });
+    });
+    var f = 1;
+    words.forEach(function (w) {
+      f = Math.min(f, LEFT_ROOM / w.querySelector('.wl').offsetWidth, RIGHT_ROOM / w.querySelector('.wr').offsetWidth);
+    });
+    var size = WORD_FONT * f, top = BASELINE - ASCENT * size;
     words.forEach(function (w) {
       var l = w.querySelector('.wl'), r = w.querySelector('.wr');
-      l.style.fontSize = r.style.fontSize = WORD_FONT + 'px';
-      var f = Math.min(1, LEFT_ROOM / l.offsetWidth, RIGHT_ROOM / r.offsetWidth);
-      var size = WORD_FONT * f, top = BASELINE - ASCENT * size;
       l.style.fontSize = r.style.fontSize = size + 'px';
       l.style.top = r.style.top = top + 'px';
-      l.style.left = (leftEdge - l.offsetWidth) + 'px';
+      l.style.left = (LEFT_END - l.offsetWidth) + 'px';
     });
   }
 

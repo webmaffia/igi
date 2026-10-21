@@ -49,7 +49,7 @@ img{max-width:none}
 #pin{position:sticky;top:0;overflow:hidden}
 .word{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity,translate}
 .word.final{opacity:1}
-.wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:400;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
+.wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:700;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
 .wr{left:1320px}
 #wedge{will-change:rotate}
 .late{will-change:opacity,translate}
