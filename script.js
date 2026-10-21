@@ -59,8 +59,8 @@
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
-    // menu stays out of the way while the words play, then slides back down
-    var h = easeOut((p - 0.72) / 0.2);
+    // menu shows at the start, slides up as soon as scrolling begins, and returns with STONE
+    var h = Math.max(1 - smooth(p / 0.05), easeOut((p - 0.72) / 0.2));
     header.style.opacity = h;
     header.style.translate = '0 ' + (-(1 - h) * 70) + 'px';
     header.style.pointerEvents = h < 0.5 ? 'none' : '';
