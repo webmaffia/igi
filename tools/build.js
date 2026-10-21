@@ -98,16 +98,24 @@ push(line(571, 2030, 8, 0, 'line10'));
 const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
   push(`<div class="a side" id="${id}" style="left:0;top:0">`);
   push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
-  push(box(`left:${left}px;top:${top + 96}px;font-size:36px;line-height:47px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
-  push(box(`left:${left + 2}px;top:${top + 222}px;width:330px`, body, 'body18'));
-  push(`<a class="btn solid" href="#" style="left:${left + 2}px;top:2395px"><span>${cta}</span>${img('arrow', 'svg', 'class="btn-arrow"')}</a>`);
+  if (cta) {
+    // long copy (shown while dragging): smaller heading so it clears the rings, plus a CTA
+    push(box(`left:${left}px;top:${top + 96}px;font-size:36px;line-height:47px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
+    push(box(`left:${left + 2}px;top:${top + 222}px;width:330px`, body, 'body18'));
+    push(`<a class="btn solid" href="#" style="left:${left + 2}px;top:2395px"><span>${cta}</span>${img('arrow', 'svg', 'class="btn-arrow"')}</a>`);
+  } else {
+    // original design copy (shown at the start, with the handle in the middle)
+    push(box(`left:${left}px;top:${top + 96}px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
+    push(box(`left:${left + 2}px;top:${top + 222}px;width:282px`, body, 'body18'));
+  }
   push('</div>');
 };
 const NAT = ['NATURAL DIAMOND', 'Formed', 'by time', 'Born deep within the Earth, natural diamonds are formed over billions of years under extraordinary heat and pressure. Brought closer to the surface through ancient volcanic activity, each diamond carries a story shaped by nature. Rare, enduring and timeless, no two are exactly alike. A natural wonder, made to last for generations.', 'NATURAL DIAMONDS'];
 const LAB = ['LAB-GROWN DIAMOND', 'Created', 'by innovation', 'Crafted using advanced technology that replicates the natural diamond-growing process, lab-grown diamonds share the same essential physical, chemical and optical properties as natural diamonds. Grown in controlled environments, they offer another way to experience the brilliance of a diamond. Modern in origin, identical in fundamental composition, and designed to shine just as beautifully.', 'LAB GROWN DIAMONDS'];
-// default layout: natural on the left, lab-grown on the right; the other two copies appear when the handle is dragged toward their side
-side(126, 1815, ...NAT, 'txt-natL');
-side(1480, 1795, ...LAB, 'txt-labR');
+// start (handle in the middle): the original short copy on each side; dragging brings in the longer copy on the side you drag toward
+const ORIG = 'Created deep within the Earth under intense heat and pressure over millions of years.';
+side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', ORIG, null, 'txt-natL');
+side(1511, 1795, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', ORIG, null, 'txt-labR');
 side(126, 1815, ...LAB, 'txt-labL');
 side(1480, 1795, ...NAT, 'txt-natR');
 
