@@ -1,0 +1,46 @@
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#fff}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
+#viewport{width:100%;overflow:hidden}
+#stage{position:relative;width:1920px;height:8552px;overflow:hidden;background:#fff;transform-origin:0 0}
+.a{position:absolute}
+.rc{display:flex;align-items:center;justify-content:center}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:none}
+.fill{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ln{display:block;width:100%;height:auto}
+.nw{white-space:nowrap}
+.caps{text-transform:uppercase}
+.cap{text-transform:capitalize}
+.mont4,.mont5,.mont6,.mont7,.eyebrow,.h50{font-family:'Montserrat',sans-serif}
+.mont4{font-weight:400}.mont5{font-weight:500}.mont6{font-weight:600}.mont7{font-weight:700}
+.man3,.man4,.body18,.body,.navlink,.btn{font-family:'Manrope',sans-serif}
+.man3{font-weight:300}.man4{font-weight:400}
+.dark{color:#1e1e1e;white-space:nowrap;text-transform:uppercase}
+.eyebrow{font-weight:600;font-size:13px;line-height:65.5px;letter-spacing:3.5px;text-transform:uppercase;color:#010101;white-space:nowrap}
+.h50{font-weight:600;font-size:50px;line-height:54.831px;text-transform:uppercase;white-space:nowrap}
+.body18,.body{font-weight:400;font-size:18px;line-height:28.1px;letter-spacing:.5px;color:#6d6d6d}
+.navlink{position:absolute;top:0;font-size:13.846px;line-height:20.769px;letter-spacing:1.1077px;text-transform:uppercase;color:rgba(0,0,0,.72);white-space:nowrap;transition:color .2s}
+.navlink:hover{color:#000}
+.btn{position:absolute;display:flex;align-items:center;gap:15.753px;height:47.26px;padding:0 19.692px;border-radius:39.383px;font-weight:300;font-size:11.815px;line-height:17.723px;letter-spacing:1.4178px;white-space:nowrap;transition:background .2s,color .2s}
+.btn-arrow{width:23.63px;height:23.63px;display:block}
+.btn.solid{background:#957d69;color:#fff}
+.btn.solid:hover{background:#7d6858}
+.btn.ghost{border:.25px solid #111;color:#111}
+.btn.ghost:hover{background:#111;color:#fff}
+.steps span{position:absolute;top:0;font-size:13px;line-height:65.5px;letter-spacing:3.5px;text-transform:uppercase;white-space:pre;color:#010101}
+.card{display:contents}
+.card .ct{color:#b3b3b3;white-space:normal;transition:color .25s}
+.card.on .ct,.card:hover .ct{color:#ccb4a0}
+.card .eyebrow a:hover{text-decoration:underline}
+.inter{font-family:'Inter',sans-serif;font-weight:400;font-size:12.5px;color:#0a0a0a;white-space:nowrap;line-height:normal}
+.hdr-row{display:flex;align-items:center;gap:7px;height:45px}
+.hbtn,.hpill{position:relative;display:flex;align-items:center;justify-content:center;flex:none;height:44.8px}
+.hbtn{width:41px;height:41px}
+.hbg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hico{position:relative;display:block;flex:none}
+.hin{position:relative;display:flex;align-items:center;gap:11px}
+.hbtn:hover .hbg,.hpill:hover .hbg{opacity:.6}
+.ln.thin{height:1px;opacity:.38}
