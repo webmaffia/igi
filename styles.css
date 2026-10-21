@@ -64,8 +64,8 @@ img{max-width:none}
 #arc,#arcL{transition:opacity .45s}
 
 /* #lab: scroll-driven grading steps */
-.lstep,.cstep{opacity:0;pointer-events:none;transition:opacity .6s ease}
-.lstep.on,.cstep.on{opacity:1;pointer-events:auto}
+.lstep,.cstep{opacity:0;translate:0 30px;pointer-events:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),translate .7s cubic-bezier(.2,.7,.2,1)}
+.lstep.on,.cstep.on{opacity:1;translate:0 0;pointer-events:auto}
 .clink a{text-decoration:underline}
 .oklist .ok{position:relative;padding-left:22px}
 .oklist .ok::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:#43c08a;box-shadow:0 0 8px #43c08a}
