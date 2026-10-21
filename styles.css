@@ -53,4 +53,4 @@ img{max-width:none}
 #wedge{will-change:rotate}
 .late{will-change:opacity,translate}
 #site-header{will-change:opacity,translate}
-.fill-disc{border-radius:50%;background:rgba(149,125,105,.1);--a:90deg;-webkit-mask:conic-gradient(transparent 0 90deg,#000 90deg var(--a),transparent var(--a));mask:conic-gradient(transparent 0 90deg,#000 90deg var(--a),transparent var(--a))}
+.fill-disc{border-radius:50%;background:rgba(149,125,105,.1);--a:90deg;-webkit-mask:conic-gradient(#000 var(--a),transparent var(--a));mask:conic-gradient(#000 var(--a),transparent var(--a))}
