@@ -112,7 +112,7 @@ const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
   }
   push('</div>');
 };
-const NAT = ['NATURAL DIAMOND', 'Formed', 'by time', 'Born deep within the Earth, natural diamonds form over billions of years under extraordinary heat and pressure. Rare, enduring and timeless, each carries a story shaped by nature — and no two are exactly alike.', 'Natural diamonds'];
+const NAT = ['NATURAL DIAMOND', 'Shaped', 'by nature', 'Born deep within the Earth, natural diamonds form over billions of years under extraordinary heat and pressure. Rare, enduring and timeless, each carries a story shaped by nature — and no two are exactly alike.', 'Natural diamonds'];
 const LAB = ['LAB-GROWN DIAMOND', 'Created', 'by innovation', 'Grown with advanced technology that replicates nature’s own process, lab-grown diamonds share the same physical, chemical and optical properties as natural ones. Modern in origin, identical in composition, and made to shine just as beautifully.', 'Lab grown diamonds'];
 // start (handle in the middle): the original short copy on each side; dragging brings in the longer copy on the side you drag toward
 const ORIG = 'Created deep within the Earth under intense heat and pressure over millions of years.';
