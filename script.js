@@ -130,7 +130,7 @@
   // The handle travels out to the outer ring on either side; the copy on the side it moves toward hides.
   (function () {
     var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
-    var natL = document.getElementById('txt-natL'), labR = document.getElementById('txt-labR'), labL = document.getElementById('txt-labL'), natR = document.getElementById('txt-natR'), arc = document.getElementById('arc');
+    var natL = document.getElementById('txt-natL'), labR = document.getElementById('txt-labR'), labL = document.getElementById('txt-labL'), natR = document.getElementById('txt-natR'), arc = document.getElementById('arc'), arcL = document.getElementById('arcL');
     var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, REACH = 448, cx = MID, dragging = false; // REACH: handle stops at the outer ring
     function show(el, v, dir) {
       el.style.opacity = v;
@@ -142,7 +142,9 @@
       knob.style.left = (cx - KNOB_R) + 'px';
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
       var t = (cx - MID) / REACH;                       // -1 (left stop) .. 1 (right stop)
-      arc.style.rotate = (t * 90) + 'deg';              // the grey arc swings round the ring with the handle
+      // the grey half-arc stays left/right: right half while lab-grown, left half once natural takes over
+      arc.style.opacity = t <= 0 ? 1 : clamp(1 - t * 2.2, 0, 1);
+      arcL.style.opacity = clamp(t * 2.2, 0, 1);
       // dragged left: the new lab-grown copy takes the left side and the original lab-grown copy stays on the right.
       // dragged right: the new natural copy takes the right side and the original natural copy stays on the left.
       show(natL, t >= 0 ? 1 : clamp(1 + t * 2.2, 0, 1), -1);
