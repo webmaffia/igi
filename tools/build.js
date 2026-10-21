@@ -135,7 +135,8 @@ STEPS.forEach((st, i) => push(`<div class="a lstep${i ? '' : ' on'}" data-i="${i
 push(box('left:973px;top:2846px;width:567px;height:248px;background:#fbfbfb'));
 push(rot(947, 3052, 81.962, 81.962, -150, `<div style="position:relative;width:60px;height:60px"><div class="a" style="left:6.7%;right:6.7%;top:0;bottom:25%">${img('polygon1', 'svg', 'class="fill"')}</div></div>`));
 STEPS.forEach((st, i) => push(`<div class="a cstep${i ? '' : ' on'}" data-i="${i}" style="left:0;top:0">` + CARDS[i] + cardLink(st.link) + `</div>`));
-push(box('left:77px;top:3241px;width:1843px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center', 'Inscription', 'mont7 caps'));
+// the big word follows the step (the diamond stays centred over its middle letters)
+STEPS.forEach((st, i) => push(box('left:0;top:3241px;width:1920px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center;justify-content:center;white-space:nowrap', st.tab, `mont7 caps lstep${i ? '' : ' on'}" data-i="${i}`)));
 push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"')));
 // overlays drawn over the diamond: scan (screening), guides (grading), laser (inscription), stamp (report)
 push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;overflow:visible;pointer-events:none" viewBox="0 0 582 388">

@@ -85,8 +85,8 @@
     if (st !== labStep) {
       labStep = st;
       lab.dataset.s = st;
-      lsteps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
-      csteps.forEach(function (el, i) { el.classList.toggle('on', i === st); });
+      lsteps.forEach(function (el) { el.classList.toggle('on', +el.dataset.i === st); });
+      csteps.forEach(function (el) { el.classList.toggle('on', +el.dataset.i === st); });
       tabs.forEach(function (el, i) { el.classList.toggle('on', i === st); });
     }
     fills.forEach(function (f, i) { f.style.transform = 'scaleX(' + (i < st ? 1 : i === st ? local : 0) + ')'; });
