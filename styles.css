@@ -124,3 +124,4 @@ img{max-width:none}
 #cincl,#cspark{transition:opacity .35s}
 #cwedge{transition:rotate .6s cubic-bezier(.2,.8,.2,1)}
 #cr-title,#cr-val,#cr-sub,#cr-desc{transition:opacity .25s}
+.nopt{pointer-events:none}

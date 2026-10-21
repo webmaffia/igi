@@ -70,7 +70,7 @@ push(btn(716.3, 'EXPLORE IGI', 'arrow', 'solid', 4));
 push(btn(773.88, 'VERIFY A REPORT', 'arrow1', 'ghost', 5));
 push('</div>');
 push(line(960.5, 3598.5, 1649, 0, 'line18'));
-push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"')));
+push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"'), 'nopt'));
 
 /* ---------- natural vs lab ---------- */
 push(box('left:699px;top:1218px;font-size:64px;line-height:103.054px;color:#ccb4a0', 'ONE WAS BORN', 'mont6 caps nw'));
@@ -244,7 +244,7 @@ push('</div>');
 /* ---------- outro ---------- */
 push(box('left:calc(50% - 222.99px);top:7489px', 'The Gemologists \u00b7 School of Gemology', 'eyebrow'));
 push(box('left:calc(50% + 5.5px);top:7740px;width:1419px;height:662px;transform:translateX(-50%);text-align:center;font-size:94.9px;line-height:103.054px;color:#1e1e1e', 'Behind every grade is a trained eye, a steady hand and years of practice. We don\u2019t just grade diamonds \u2014 we teach the world how.', 'mont5 cap'));
-push(box('left:calc(50% - 24.56px);top:6415px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup1', 'svg', 'class="fill"')));
+push(box('left:calc(50% - 24.56px);top:6415px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup1', 'svg', 'class="fill"'), 'nopt'));
 
 const html = `<!doctype html>
 <html lang="en">
