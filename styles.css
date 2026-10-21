@@ -143,8 +143,12 @@ img{max-width:none}
 .trnum{font:500 20px/30px 'Montserrat',sans-serif;color:#6d6d6d}
 .trtitle{display:flex;align-items:center;font:500 27px/34px 'Montserrat',sans-serif;color:#1e1e1e}
 .trdesc{display:flex;align-items:center;font:400 16px/30px 'Manrope',sans-serif;color:#6d6d6d;letter-spacing:.2px}
-.trbtn{display:flex;align-items:center;justify-content:center;border:1px solid #c3c3c3;border-radius:50%;color:#8c8c8c;transition:background .3s,color .3s,border-color .3s}
-.trow:hover .trbtn,.trbtn:focus-visible{background:#111;border-color:#111;color:#fff}
+.trbtn{display:flex;align-items:center;justify-content:center;border-radius:50%;background:transparent;transition:background .3s}
+.trb-rest{position:absolute;left:0;top:0;width:61px;height:61px;max-width:none;transition:opacity .3s}
+.trb-plus{position:relative;opacity:0;transition:opacity .3s}
+.trow:hover .trbtn,.trbtn:focus-visible{background:#262626;outline:none}
+.trow:hover .trb-rest,.trbtn:focus-visible .trb-rest{opacity:0}
+.trow:hover .trb-plus,.trbtn:focus-visible .trb-plus{opacity:1}
 .tricon{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .trow:hover .tricon{transform:scale(1.06) rotate(-4deg)}
 .trtitle,.trdesc,.trnum{transition:transform .4s}

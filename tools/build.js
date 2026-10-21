@@ -296,7 +296,7 @@ ROWS.forEach((r, i) => push(`<div class="a trow" style="left:40px;top:${ROW_TOP 
   `<div class="a trtitle" style="left:589px;top:0;width:420px;height:${ROW_H}px">${r[0]}</div>` +
   `<div class="a" style="left:1003px;top:${ROW_H / 2 - 50}px;width:1px;height:100px;background:#d6d6d6"></div>` +
   `<div class="a trdesc" style="left:1073px;top:0;width:430px;height:${ROW_H}px;white-space:nowrap">${r[1]}</div>` +
-  `<a class="a trbtn" href="#" aria-label="${r[0].replace(/<br>/g, ' ')}" style="left:1508px;top:${ROW_H / 2 - 32}px;width:64px;height:64px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M10 2v16M2 10h16"/></svg></a>` +
+  `<a class="a trbtn" href="#" aria-label="${r[0].replace(/<br>/g, ' ')}" style="left:1510px;top:${ROW_H / 2 - 30.5}px;width:61px;height:61px">${img('list/button', 'svg', 'class="trb-rest" draggable="false"')}<svg class="trb-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"><path d="M10 2v16M2 10h16"/></svg></a>` +
   `</div>`));
 push('</section>');
 
