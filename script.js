@@ -130,19 +130,25 @@
   // The handle travels out to the outer ring on either side; the copy on the side it moves toward hides.
   (function () {
     var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
-    var txtNat = document.getElementById('txt-nat'), txtLab = document.getElementById('txt-lab'), arc = document.getElementById('arc');
+    var natL = document.getElementById('txt-natL'), labR = document.getElementById('txt-labR'), labL = document.getElementById('txt-labL'), natR = document.getElementById('txt-natR'), arc = document.getElementById('arc');
     var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, REACH = 448, cx = MID, dragging = false; // REACH: handle stops at the outer ring
+    function show(el, v, dir) {
+      el.style.opacity = v;
+      el.style.translate = dir * (1 - v) * 40 + 'px 0';
+      el.style.pointerEvents = v < 0.3 ? 'none' : '';
+    }
     function set(x) {
       cx = clamp(x, MID - REACH, MID + REACH);
       knob.style.left = (cx - KNOB_R) + 'px';
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
       var t = (cx - MID) / REACH;                       // -1 (left stop) .. 1 (right stop)
       arc.style.rotate = (t * 90) + 'deg';              // the grey arc swings round the ring with the handle
-      var labV = clamp(1 - Math.max(0, t) * 2.2, 0, 1);  // moving right hides the lab-grown copy
-      var natV = clamp(1 + Math.min(0, t) * 2.2, 0, 1);  // moving left hides the natural copy
-      txtLab.style.opacity = labV; txtLab.style.translate = (1 - labV) * 40 + 'px 0';
-      txtNat.style.opacity = natV; txtNat.style.translate = -(1 - natV) * 40 + 'px 0';
-      txtLab.style.pointerEvents = labV < 0.3 ? 'none' : ''; txtNat.style.pointerEvents = natV < 0.3 ? 'none' : '';
+      // dragged left: the lab-grown copy appears on the left; dragged right: the natural copy appears on the right
+      var A = Math.abs(t);
+      show(natL, clamp(1 - A * 2.2, 0, 1), -1);
+      show(labR, clamp(1 - A * 2.2, 0, 1), 1);
+      show(labL, clamp(-t * 2.2, 0, 1), -1);
+      show(natR, clamp(t * 2.2, 0, 1), 1);
       knob.setAttribute('aria-valuenow', Math.round(cx / DESIGN_W * 100));
     }
     function fromEvent(e) { return (e.clientX - stage.getBoundingClientRect().left) / scale; }
@@ -156,6 +162,7 @@
       if (e.key === 'ArrowLeft') { set(cx - 60); e.preventDefault(); }
       if (e.key === 'ArrowRight') { set(cx + 60); e.preventDefault(); }
     });
+    set(MID);
   })();
 
   // report titles: keep every line inside the circle and clear of the description by shrinking until they fit
