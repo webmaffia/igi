@@ -219,6 +219,9 @@ push(`<div class="a" id="wheel">` +
     `<svg class="a" id="cincl" viewBox="0 0 200 160" style="left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0" fill="#1B2A40"><circle cx="78" cy="62" r="2.4"/><circle cx="118" cy="84" r="1.8"/><circle cx="96" cy="30" r="1.5"/><path d="M110 55 l9 4" stroke="#1B2A40" stroke-width="1.4"/><circle cx="88" cy="100" r="1.6"/></svg>` +
     `<svg class="a" id="cspark" viewBox="0 0 200 160" style="left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0" fill="#fff"><path d="M48 10l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M146 40l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/><path d="M100 12l1.2 3.2 3.2 1.2-3.2 1.2-1.2 3.2-1.2-3.2-3.2-1.2 3.2-1.2z"/></svg>` +
   `</div></div>`);
+// each quarter of the wheel is a click target for its tab (the word stays in the tab too)
+push([['carat', 859, 6249, 'top-right'], ['color', 859, 6589, 'bottom-right'], ['clarity', 519, 6589, 'bottom-left'], ['cut', 519, 6249, 'top-left']]
+  .map(q => `<div class="a wquad" data-c="${q[0]}" style="left:${q[1]}px;top:${q[2]}px;width:340px;height:340px;border-${q[3]}-radius:340px"></div>`).join(''));
 // word tabs: Carat / Color / Cut / Clarity (letters inherit the tab colour)
 const L = (c, l, t, w, h, d, col, s = 32, iw, ih) => rot(l, t, w, h, d, `<p class="mont6 caps nw wch" style="font-size:${s}px;line-height:65.5px;letter-spacing:3.5px;${iw ? `width:${iw}px;height:${ih}px` : ''}">${c}</p>`);
 const tab = (key, on, letters) => push(`<div class="a wtab${on ? ' on' : ''}" data-c="${key}" role="button" tabindex="0" aria-label="${key}" style="left:0;top:0">` + letters.map(a => L(a[0], a[1], a[2], a[3], a[4], a[5])).join('') + `</div>`);

@@ -180,7 +180,8 @@
 
   // #cust: 4Cs wheel - tabs pick the C, the knob rides the dial, the right-hand copy follows
   (function () {
-    var tabsC = [].slice.call(document.querySelectorAll('.wtab')), knob = document.getElementById('cknob'), ticksEl = document.getElementById('cticks');
+    var quads = [].slice.call(document.querySelectorAll('.wquad')),
+    tabsC = [].slice.call(document.querySelectorAll('.wtab')), knob = document.getElementById('cknob'), ticksEl = document.getElementById('cticks');
     var cwedge = document.getElementById('cwedge'), cgem = document.getElementById('cgem'), gimg = document.getElementById('cgemimg');
     var incl = document.getElementById('cincl'), spark = document.getElementById('cspark');
     var title = document.getElementById('cr-title'), val = document.getElementById('cr-val'), sub = document.getElementById('cr-sub'), desc = document.getElementById('cr-desc');
@@ -224,6 +225,7 @@
         return '<div class="tk" style="transform:rotate(' + a + 'deg) translateX(' + TR + 'px) rotate(90deg) translate(-50%,-50%)">' + t + '</div>';
       }).join('');
       tabsC.forEach(function (t) { t.classList.toggle('on', t.dataset.c === c); });
+      quads.forEach(function (q) { q.classList.toggle('on', q.dataset.c === c); });
       cwedge.style.rotate = QUAD[c] + 'deg';
       draw();
     }
@@ -234,6 +236,12 @@
       st[cur] = clamp((a - A0) / (A1 - A0) * 100, 0, 100);
       draw();
     }
+    quads.forEach(function (q) {
+      var tw = document.querySelector('.wtab[data-c="' + q.dataset.c + '"]');
+      q.addEventListener('click', function () { setC(q.dataset.c); });
+      q.addEventListener('pointerenter', function () { tw.classList.add('hov'); });
+      q.addEventListener('pointerleave', function () { tw.classList.remove('hov'); });
+    });
     tabsC.forEach(function (t) {
       t.addEventListener('click', function () { setC(t.dataset.c); });
       t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setC(t.dataset.c); } });

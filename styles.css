@@ -125,3 +125,9 @@ img{max-width:none}
 #cwedge{transition:rotate .6s cubic-bezier(.2,.8,.2,1)}
 #cr-title,#cr-val,#cr-sub,#cr-desc{transition:opacity .25s}
 .nopt{pointer-events:none}
+.wquad{cursor:pointer;transition:background .3s}
+.wquad:hover{background:rgba(149,125,105,.06)}
+.wquad.on{cursor:default}
+.wquad.on:hover{background:transparent}
+.wtab.hov{color:#957d69}
+#cgem{pointer-events:none}
