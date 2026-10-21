@@ -161,8 +161,12 @@ STEPS.forEach((st, i) => push(`<div class="a lstep${i ? '' : ' on'}" data-i="${i
 // the big word follows the step (the diamond stays centred over its middle letters)
 STEPS.forEach((st, i) => push(box('left:0;top:3241px;width:1920px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center;justify-content:center;white-space:nowrap', st.tab, `mont7 caps lstep bigw${i ? '' : ' on'}" data-i="${i}`)));
 push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"'), 'diaw'));
-// Report step: the report picture takes the diamond's place (it already contains the IGI VERIFIED stamp)
-push(box('left:690px;top:3102px;width:540px;height:423px', img('report/report', 'png', 'class="cover" draggable="false"'), 'ov o4 rpimg'));
+// Report step: a built report card takes the diamond's place
+const RROWS = [['Shape &amp; Cut', 'Round Brilliant'], ['Carat Weight', '1.02 ct'], ['Color Grade', 'F'], ['Clarity Grade', 'VVS2'], ['Cut Grade', 'Excellent'], ['Inscription', 'IGI XX000000000']];
+push(`<div class="a ov o4 rpt" style="left:700px;top:3118px;width:520px;height:400px">` +
+  `<div class="rpt-top">${img('social/logo', 'png', 'class="rpt-logo" draggable="false"')}<div class="rpt-ttl"><b>Natural Diamond Report</b><span>Sample · No. XX 000 000 000</span></div></div>` +
+  RROWS.map(r => `<div class="rpt-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('') +
+  `<div class="rpt-foot"><span>Verify online · igi.org</span><div class="rpt-stamp">IGI<br>VERIFIED</div></div></div>`);
 // overlays drawn over the diamond: scan (screening), guides (grading), laser (inscription), stamp (report)
 push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;overflow:visible;pointer-events:none" viewBox="0 0 582 388">
   <defs><mask id="dmask" maskUnits="userSpaceOnUse" x="0" y="0" width="582" height="388" style="mask-type:alpha"><image href="assets/diamond.png" x="0" y="0" width="582" height="388"/></mask></defs>
