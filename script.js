@@ -97,20 +97,12 @@
     }
     // #reports: the nine cards advance along the stack as you scroll, the front one pops up
     var rp = repRun ? clamp((s - sRep) / repRun, 0, 1) : 0;
-    var rx = rp * (rcards.length - 1), rfl = Math.min(Math.floor(rx), rcards.length - 2);
-    var rf = rp >= 1 ? rcards.length - 1 : rfl + smooth((rx - rfl - 0.3) / 0.4); // dwell on each card, then glide
-    var ra = Math.round(rf);
+    var ra = Math.min(rcards.length - 1, Math.floor(rp * rcards.length)); // one card per slice of scroll
     rcards.forEach(function (el, i) {
-      var r = i - rf, k = Math.floor(r), t = r - k;
-      var x = r <= -1 ? REP_SLOTS[0] : r >= 8 ? REP_SLOTS[9] : REP_SLOTS[k + 1] + (REP_SLOTS[k + 2] - REP_SLOTS[k + 1]) * t;
-      var near = Math.max(0, 1 - Math.abs(r));
-      el.style.left = x + 'px';
-      el.style.opacity = r < 0 ? clamp(1 + r * 1.4, 0, 1) : 1;
-      el.style.transform = 'translateY(' + (-14 * near) + 'px) scale(' + (1 + 0.035 * near) + ')';
-      el.style.transformOrigin = '285px 285px';
-      el.style.pointerEvents = Math.abs(r) < 0.5 ? 'auto' : 'none';
-      el.classList.toggle('on', i === ra);
-      el.style.setProperty('--co', r <= 1 ? 1 : clamp(2 - r, 0, 1)); // text of the cards waiting behind the front one fades out
+      var front = i === ra;
+      el.classList.toggle('on', front);
+      el.style.zIndex = front ? 200 : 100 - i;       // the active card comes to the front, in place
+      el.style.pointerEvents = front ? 'auto' : 'none';
     });
     if (ra !== repActive) {
       repActive = ra;
