@@ -167,6 +167,7 @@ img{max-width:none}
 /* the big word: the old word vanishes at once, the new one rises from well below */
 .lstep.bigw{translate:0 170px;transition:none}
 .lstep.bigw.on{translate:0 0;transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),translate 1.1s cubic-bezier(.2,.7,.2,1)}
-/* left step text (label, heading, paragraph): the old step vanishes at once, the new one just fades in */
-.lstep:not(.bigw){translate:0 0;transition:none}
-.lstep:not(.bigw).on{transition:opacity .9s ease}
+/* left step text (label, heading, paragraph): the new step fades in over the old one, which then vanishes at once
+   (no empty moment in between, so no blink) */
+.lstep:not(.bigw){translate:0 0;transition:opacity 0s linear .6s}
+.lstep:not(.bigw).on{z-index:2;transition:opacity .9s ease}
