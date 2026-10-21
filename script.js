@@ -19,7 +19,11 @@
   var lsteps = [].slice.call(lab.querySelectorAll('.lstep')), csteps = [].slice.call(lab.querySelectorAll('.cstep'));
   var tabs = [].slice.call(lab.querySelectorAll('.steps span')), fills = [].slice.call(lab.querySelectorAll('.tabfill'));
   var LAB_CENTER = 3200; // design y that sits mid-screen while the #lab steps play
-  var scale = 1, run = 0, labRun = 0, yLab = 0, labStep = -1, ticking = false;
+  var rcards = [].slice.call(document.querySelectorAll('.rcard')), rchip = document.getElementById('rchip');
+  var REP_CENTER = 4420, REP_NAMES = ['Natural Diamond', 'Lab Grown Diamond', 'Light Performance', 'Fancy Colored Diamond', 'Hearts & Arrows', 'Identification', 'Colored Stone', 'Jewellery', 'Pearl'];
+  // x of a card by its distance from the active card: -1 is tucked away on the left, 0 is the front card
+  var REP_SLOTS = [430, 613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252];
+  var scale = 1, run = 0, labRun = 0, yLab = 0, repRun = 0, yRep = 0, repActive = -1, labStep = -1, ticking = false;
 
   var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
   var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
@@ -42,11 +46,13 @@
     ticking = false;
     var s = window.scrollY;
     // scroll engine: the stage is fixed and moved by hand so it can pin at the hero and again at #lab
-    var sLab = run + yLab, off;
+    var sLab = run + yLab, sRep = run + labRun + yRep, off;
     if (s <= run) off = 0;
     else if (s <= sLab) off = s - run;
     else if (s <= sLab + labRun) off = yLab;
-    else off = s - run - labRun;
+    else if (s <= sRep) off = s - run - labRun;
+    else if (s <= sRep + repRun) off = yRep;
+    else off = s - run - labRun - repRun;
     stage.style.transform = 'translate3d(0,' + (-off) + 'px,0) scale(' + scale + ')';
     var p = run ? clamp(s / run, 0, 1) : 1;
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
@@ -89,6 +95,28 @@
       csteps.forEach(function (el) { el.classList.toggle('on', +el.dataset.i === st); });
       tabs.forEach(function (el, i) { el.classList.toggle('on', i === st); });
     }
+    // #reports: the nine cards advance along the stack as you scroll, the front one pops up
+    var rp = repRun ? clamp((s - sRep) / repRun, 0, 1) : 0;
+    var rx = rp * (rcards.length - 1), rfl = Math.min(Math.floor(rx), rcards.length - 2);
+    var rf = rp >= 1 ? rcards.length - 1 : rfl + smooth((rx - rfl - 0.3) / 0.4); // dwell on each card, then glide
+    var ra = Math.round(rf);
+    rcards.forEach(function (el, i) {
+      var r = i - rf, k = Math.floor(r), t = r - k;
+      var x = r <= -1 ? REP_SLOTS[0] : r >= 8 ? REP_SLOTS[9] : REP_SLOTS[k + 1] + (REP_SLOTS[k + 2] - REP_SLOTS[k + 1]) * t;
+      var near = Math.max(0, 1 - Math.abs(r));
+      el.style.left = x + 'px';
+      el.style.opacity = r < 0 ? clamp(1 + r * 1.4, 0, 1) : 1;
+      el.style.transform = 'translateY(' + (-14 * near) + 'px) scale(' + (1 + 0.035 * near) + ')';
+      el.style.transformOrigin = '285px 285px';
+      el.style.pointerEvents = Math.abs(r) < 0.5 ? 'auto' : 'none';
+      el.classList.toggle('on', i === ra);
+      el.style.setProperty('--co', r <= 1 ? 1 : clamp(2 - r, 0, 1)); // text of the cards waiting behind the front one fades out
+    });
+    if (ra !== repActive) {
+      repActive = ra;
+      rchip.innerHTML = '<b>0' + (ra + 1) + '</b> / 09 \u00b7 <span>' + REP_NAMES[ra] + ' Report</span>';
+      rchip.classList.remove('pop'); void rchip.offsetWidth; rchip.classList.add('pop');
+    }
     fills.forEach(function (f, i) { f.style.transform = 'scaleX(' + (i < st ? 1 : i === st ? local : 0) + ')'; });
   }
 
@@ -97,7 +125,9 @@
     run = reduced ? 0 : window.innerHeight * 3.5;
     labRun = reduced ? 0 : window.innerHeight * 4.5;
     yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
-    viewport.style.height = DESIGN_H * scale + run + labRun + 'px';
+    repRun = reduced ? 0 : window.innerHeight * 5;
+    yRep = Math.max(yLab, REP_CENTER * scale - window.innerHeight / 2);
+    viewport.style.height = DESIGN_H * scale + run + labRun + repRun + 'px';
     render();
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }

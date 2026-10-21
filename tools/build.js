@@ -153,23 +153,38 @@ push(`<div class="a steps" style="left:136px;top:3526px;width:1700px;height:65.5
   push(box(`left:${x}px;top:3597.5px;width:${w}px;height:2px;background:#000;transform-origin:0 50%;transform:scaleX(0)`, '', 'tabfill')));
 push('</div>');
 
-/* ---------- reports ---------- */
-push(`<span id="reports"></span>`);
+/* ---------- reports (#reports: pinned, nine stacked report cards driven by scroll) ---------- */
+const REPORTS = [
+  ['Natural Diamond', 'A complete assessment of a natural diamond\u2019s 4Cs, proportions and characteristics.'],
+  ['Lab Grown Diamond', 'Clear disclosure of laboratory-grown origin, with the same rigorous 4Cs grading.'],
+  ['Light Performance', 'Measures brilliance, fire and scintillation \u2014 how a diamond returns light.'],
+  ['Fancy Colored Diamond', 'Hue, tone, saturation and origin of colour, beyond the D\u2013Z scale.'],
+  ['Hearts & Arrows', 'Confirms precise optical symmetry with Hearts & Arrows imagery.'],
+  ['Identification', 'Natural, laboratory-grown, treated or simulant \u2014 confirmed.'],
+  ['Colored Stone', 'Species, variety and treatment disclosure for coloured gemstones.'],
+  ['Jewellery', 'Metal, centre and accent stones of a finished piece, in one document.'],
+  ['Pearl', 'Pearl type, size, shape, lustre, surface and colour.']
+];
+const NUMS = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+push('<div class="a" id="reports" style="left:0;top:0;width:1920px">');
 push(box('left:116px;top:4057px', 'The Report', 'eyebrow'));
 push(box('left:116px;top:4153px;width:459px', '<span style="color:#ccb4a0">A promise,</span><br><span style="color:#000">written down.</span>', 'h50'));
 push(box('left:118px;top:4279px;width:387px', 'Every stone, setting and story deserves the right document. Explore IGI\u2019s family of reports.', 'body18'));
-[1112, 1050, 977, 896, 790, 613].forEach((x, i, arr) => {
-  const active = x === 613;
-  push(`<article class="card${active ? ' on' : ''}">` +
-    box(`left:${x}px;top:3946px;width:569px;height:569px`, img('ellipse18', 'svg', 'class="fill"')) +
-    box(`left:${x + 145}px;top:4276px;width:301px;font-size:16px;line-height:28.1px`, 'Reports overview 01 Natural Diamond Report A complete assessment of a natural diamond\u2019s 4Cs, proportions and characteristics.', 'body') +
-    box(`left:${x + 135}px;top:4109px;width:459px`, 'Natural Diamond<br>Report', 'h50 ct') +
-    box(`left:${x + 145}px;top:4386px;width:129px`, '<a href="#">Learn more</a>', 'eyebrow') +
-    box(`left:${x + 135}px;top:4043px`, 'ONE', 'eyebrow') +
-    `<div class="a rc" style="left:${x + 226}px;top:4574px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px">Buying a diamond</div></div>` +
-    `<div class="a" style="left:${x + 284.5}px;top:4515px;width:0;height:319px"><div style="position:absolute;left:0;top:0;width:319px;height:1px;transform-origin:0 0;transform:rotate(90deg)"><img class="ln" src="assets/vector2.svg" alt=""></div></div>` +
-    `</article>`);
-});
+push(box('left:118px;top:4440px;width:387px', 'Reports &amp; Certification', 'eyebrow'));
+push(box('left:118px;top:4492px;width:387px;color:#111;font-size:26px;line-height:34px', 'Nine reports. One standard of truth.', 'man4'));
+push(box('left:118px;top:4560px', '<a href="#">Reports overview</a>', 'eyebrow clink'));
+// card k is a 569px circle plus its vertical label; JS places the cards along the stack as you scroll
+REPORTS.forEach((r, i) => push(`<article class="rcard" data-i="${i}" style="left:${[613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252][i]}px;top:3946px;width:569px;height:888px;z-index:${100 - i}">` +
+  box('left:0;top:0;width:569px;height:569px', img('ellipse18', 'svg', 'class="fill"')) +
+  box('left:135px;top:97px', NUMS[i], 'eyebrow rtx') +
+  box('left:135px;top:163px;width:459px', `${r[0]}<br>Report`, 'h50 ct rtx') +
+  box('left:145px;top:330px;width:301px;font-size:16px;line-height:28.1px', r[1], 'body rtx') +
+  box('left:145px;top:440px;width:129px', '<a href="#">Learn more</a>', 'eyebrow rtx') +
+  `<div class="a rc" style="left:226px;top:628px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px;overflow:visible;text-align:left">${r[0]}</div></div>` +
+  `<div class="a" style="left:284.5px;top:569px;width:0;height:319px"><div style="position:absolute;left:0;top:0;width:319px;height:1px;transform-origin:0 0;transform:rotate(90deg)"><img class="ln" src="assets/vector2.svg" alt=""></div></div>` +
+  `</article>`));
+push(`<div class="a rchip" id="rchip" style="left:770px;top:3912px"><b>01</b> / 09 \u00b7 <span>Natural Diamond Report</span></div>`);
+push('</div>');
 
 /* ---------- yes ---------- */
 push(box('left:calc(50% - 75px);top:5018px;width:1158px;height:332px;transform:translateX(-50%);text-align:center;font-size:105.363px;line-height:103.054px;color:#1e1e1e', 'Somewhere, someone is about to say <span style="color:#ccb4a0">yes.</span>', 'mont5 cap'));
