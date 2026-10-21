@@ -353,9 +353,8 @@ push('</section>');
 const S0 = 13852, SH = 1351;               // directly below the epilogue
 const SARR = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#b8863a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6"/></svg>';
 push(`<section class="a" id="sustain" style="left:0;top:${S0}px;width:1920px;height:${SH}px;background:#f4f2ef;overflow:hidden">`);
-// soft light behind the centre, then the line artwork (bg.png)
+// soft light behind the centre (the line artwork bg.png is the section's CSS background)
 push(`<div class="a" style="left:360px;top:90px;width:1200px;height:1200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 62%);pointer-events:none"></div>`);
-push(img('sustain/bg', 'png', 'class="a nopt" style="left:0;top:73px;width:1920px;height:1206px;max-width:none" draggable="false"'));
 // numbers
 push(`<div class="a srv sd1 snum" style="left:105px;top:280px"><span>01</span><i></i></div>`);
 push(`<div class="a srv sd1 snum" style="left:1685px;top:280px;width:140px;justify-content:flex-end"><i></i><span>02</span></div>`);
