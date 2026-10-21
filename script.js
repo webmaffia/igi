@@ -55,16 +55,16 @@
     });
     // keep the ring centred on screen while the words play, then glide to the design position
     // once STONE lands the quarter disc sweeps round to a full circle, holds, then settles back
-    var sweep = smooth((p - 0.58) / 0.12) * (1 - smooth((p - 0.78) / 0.14));
+    var sweep = smooth((p - 0.5) / 0.12) * (1 - smooth((p - 0.72) / 0.12));
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
-    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.78) / 0.22)) + 'px';
+    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
     // menu stays out of the way while the words play, then slides back down
-    var h = easeOut((p - 0.78) / 0.2);
+    var h = easeOut((p - 0.72) / 0.2);
     header.style.opacity = h;
     header.style.translate = '0 ' + (-(1 - h) * 70) + 'px';
     header.style.pointerEvents = h < 0.5 ? 'none' : '';
-    var q = clamp((p - 0.8) / 0.2, 0, 1);
+    var q = clamp((p - 0.74) / 0.26, 0, 1);
     lates.forEach(function (el) {
       var t = easeOut((q - (+el.dataset.d) * 0.07) / 0.6);
       el.style.opacity = t;
