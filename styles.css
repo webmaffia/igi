@@ -85,18 +85,29 @@ img{max-width:none}
 .steps span.on{opacity:1}
 .tabfill{will-change:transform}
 
-/* #reports: nine stacked report cards */
-.rcard{position:absolute;transform-origin:285px 285px;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
-.rcard.on{transform:translateY(-14px) scale(1.035)}
-.rcard .ct{color:#b3b3b3;white-space:normal;transition:color .3s}
-.rcard.on .ct{color:#ccb4a0}
-.rcard a:hover{text-decoration:underline}
+/* #reports: coverflow */
+.rcard{position:absolute;pointer-events:none;transform-origin:284.5px 284.5px;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.rcirc{border-radius:50%;pointer-events:auto;cursor:pointer;transition:filter .4s}
+.rcard.on .rcirc{cursor:default;filter:drop-shadow(0 34px 60px rgba(149,125,105,.22))}
+.rcard:not(.on):hover .rcirc{filter:drop-shadow(0 16px 30px rgba(0,0,0,.14))}
+.rfull{opacity:0;transition:opacity .45s}
+.rcard.on .rfull{opacity:1;transition-delay:.25s}
+.rcard .ct{color:#ccb4a0}
+.rfull a:hover{text-decoration:underline}
+.rcard.on .rfull{pointer-events:none}.rcard.on .rfull a{pointer-events:auto}
 .rtitle{overflow:visible}
-.rcard{pointer-events:none}
-.rcirc,.rlab{pointer-events:auto;cursor:pointer}
-.rcirc{border-radius:50%}
-.rcard .rtx{pointer-events:none}
-.rcard.on .rtx{pointer-events:auto}
+.rmini{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;opacity:1;transition:opacity .35s;pointer-events:none}
+.rcard.on .rmini{opacity:0}
+.rmn{font:600 15px/1 'Montserrat',sans-serif;letter-spacing:5px;color:#957d69}
+.rmt{font:600 40px/46px 'Montserrat',sans-serif;text-transform:uppercase;color:#b3b3b3;width:340px}
+.rstem{opacity:0;transition:opacity .5s;pointer-events:none}
+.rcard.on .rstem{opacity:1;transition-delay:.3s}
+.rring{border-radius:50%;border:1px dashed #cdbfae;opacity:0;pointer-events:none;transition:opacity .6s}
+.rcard.on .rring{opacity:1;animation:rspin 60s linear infinite}
+@keyframes rspin{to{transform:rotate(360deg)}}
+.rnav{display:flex;align-items:center;justify-content:center;width:90px;height:90px;border:1px solid #c3c3c3;border-radius:50%;background:transparent;color:#8c8c8c;cursor:pointer;padding:0;transition:background .3s,color .3s,border-color .3s}
+.rnav:hover,.rnav:focus-visible{background:#111;border-color:#111;color:#fff;outline:none}
+.rnav[disabled]{opacity:.35;pointer-events:none}
 
 /* #moment: report number form */
 .vform{display:flex;align-items:center;background:#fff;border-radius:60px;padding:0 12px 0 112px;box-shadow:0 6px 30px -12px rgba(0,0,0,.12)}
