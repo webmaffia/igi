@@ -40,26 +40,30 @@ push(`<div class="a hdr-row" style="left:1470px;top:30px">` +
   hbtn('frame') + hbtn('frame1') + hpill('pill', 'frame2', 'Verify Report', 146.5) + hbtn('frame3') + hpill('pill1', null, 'Menu', 79) + `</div>`);
 
 /* ---------- hero ---------- */
-// hero ring
+// hero ring: circle outline + rotatable quarter disc (wedge + arc) + cross lines that appear last
 push(`<div class="a" id="hero-ring">` +
   box('left:579px;top:261px;width:680px;height:680px', img('ellipse2', 'svg', 'class="fill"')) +
-  box('left:579px;top:261px;width:680px;height:680px', `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse3', 'svg', 'class="fill"')}</div>`) +
-  box('left:919px;top:261px;width:340px;height:340px', `<div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse4', 'svg', 'class="fill"')}</div>`) +
+  `<div class="a" id="wedge" style="left:579px;top:261px;width:680px;height:680px">` +
+    `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse3', 'svg', 'class="fill"')}</div>` +
+    `<div class="a" style="left:50%;top:0;width:50%;height:50%"><div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse4', 'svg', 'class="fill"')}</div></div>` +
+  `</div>` +
+  `<div class="a late" data-d="0" style="left:0;top:0">` +
   line(919, 601, 921, 90, 'line13') + line(919, 601, 920, 0, 'line14') +
   line(919, 601, 920.008, 45, 'line15') + line(919, 601, 920.008, 135, 'line17') +
-  `</div>`);
+  `</div></div>`);
 
-
-push(box('left:103px;top:377px;font-size:347.409px;line-height:339.798px', 'st', 'mont4 dark'));
-push(box('left:1320px;top:360px;width:523px;height:318px;font-size:347.409px;line-height:339.798px', 'ne', 'mont4 dark'));
-push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw'));
-push(box('left:126px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', 'Carries', 'mont6 caps nw'));
-push(box('left:126px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', 'a Story', 'mont6 caps nw'));
-push(box('left:325px;top:875px;transform:translateX(-50%);font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111;text-align:center', 'We make sure it\u2019s true', 'man4 nw'));
+// scroll-driven words: the diamond sits where the O is; STONE is the final word
+const words = [['L', 'VE'], ['C', 'LOR'], ['GR', 'WN'], ['ST', 'NE']];
+push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
+  `<div class="word${i === words.length - 1 ? ' final' : ''}" data-i="${i}"><span class="wl">${w[0]}</span><span class="wr">${w[1]}</span></div>`).join('') + `</div>`);
 push(box('left:595px;top:371px;width:640px;height:427px', img('diamond', 'png', 'class="cover"')));
-const btn = (top, label, arrow, cls) => `<a class="btn ${cls}" href="#" style="left:1571px;top:${top}px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
-push(btn(716.3, 'EXPLORE IGI', 'arrow', 'solid'));
-push(btn(773.88, 'VERIFY A REPORT', 'arrow1', 'ghost'));
+push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw late" data-d="0'));
+push(box('left:126px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', 'Carries', 'mont6 caps nw late" data-d="1'));
+push(box('left:126px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', 'a Story', 'mont6 caps nw late" data-d="2'));
+push(box('left:325px;top:875px;transform:translateX(-50%);font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111;text-align:center', 'We make sure it’s true', 'man4 nw late" data-d="3'));
+const btn = (top, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:1571px;top:${top}px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
+push(btn(716.3, 'EXPLORE IGI', 'arrow', 'solid', 4));
+push(btn(773.88, 'VERIFY A REPORT', 'arrow1', 'ghost', 5));
 push(line(960.5, 3598.5, 1649, 0, 'line18'));
 push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"')));
 
@@ -188,9 +192,9 @@ const html = `<!doctype html>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="viewport"><main id="stage">
+<div id="viewport"><div id="pin"><main id="stage">
 ${out.join('\n')}
-</main></div>
+</main></div></div>
 <script src="script.js"></script>
 </body>
 </html>`;

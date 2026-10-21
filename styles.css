@@ -1,7 +1,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
-#viewport{width:100%;overflow:hidden}
+#viewport{width:100%;overflow:clip}
 #stage{position:relative;width:1920px;height:8552px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
@@ -44,3 +44,12 @@ img{max-width:none}
 .hin{position:relative;display:flex;align-items:center;gap:11px}
 .hbtn:hover .hbg,.hpill:hover .hbg{opacity:.6}
 .ln.thin{height:1px;opacity:.38}
+
+/* hero scroll animation */
+#pin{position:sticky;top:0;overflow:hidden}
+.word{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity,translate}
+.word.final{opacity:1}
+.wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:400;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
+.wr{left:1320px}
+#wedge{will-change:rotate}
+.late{will-change:opacity,translate}
