@@ -50,8 +50,8 @@
       w.style.translate = '0 ' + y + 'px';
     });
     // keep the ring centred on screen throughout (it starts at the design position, under the menu)
-    // once STONE lands the quarter disc sweeps round to a full circle and stays; scrolling back up un-fills it
-    var sweep = smooth((p - 0.5) / 0.12);
+    // the fill grows with every word (a quarter more per word) and is a full circle when STONE lands; scrolling back un-fills it
+    var sweep = xs / 3;
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * smooth(p / 0.05) + 'px';
