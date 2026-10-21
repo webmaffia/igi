@@ -212,5 +212,5 @@ img{max-width:none}
 .scta-r{min-width:300px;justify-content:space-between}
 .scta svg{transition:transform .3s}
 .scta:hover svg{transform:translateX(6px)}
-/* bg.png starts at the top of #sustain, full width at its natural proportions */
-#sustain{background:url(assets/sustain/bg.png) center top/1920px auto no-repeat,#f4f2ef!important}
+/* bg.png: its line artwork starts ~120px below the file's top edge, so it is scaled up and pulled up to start at the section's top edge and still reach the bottom */
+#sustain{background:url(assets/sustain/bg.png) 50% -139px/2090px auto no-repeat,#f4f2ef!important}
