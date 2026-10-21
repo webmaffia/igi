@@ -47,7 +47,7 @@ push(`<div class="a" id="hero-ring">` +
     `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse3', 'svg', 'class="fill"')}</div>` +
     `<div class="a" style="left:50%;top:0;width:50%;height:50%"><div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse4', 'svg', 'class="fill"')}</div></div>` +
   `</div>` +
-  `<div class="a late" data-d="0" style="left:0;top:0">` +
+  `<div class="a" style="left:0;top:0">` +
   line(919, 601, 921, 90, 'line13') + line(919, 601, 920, 0, 'line14') +
   line(919, 601, 920.008, 45, 'line15') + line(919, 601, 920.008, 135, 'line17') +
   `</div></div>`);
