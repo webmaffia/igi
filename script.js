@@ -53,12 +53,13 @@
       w.style.opacity = v;
       w.style.translate = '0 ' + y + 'px';
     });
-    // keep the ring centred on screen while the words play, then glide to the design position
+    // keep the ring centred on screen while the words play (it starts at the design position, under the menu)
+    // then glide back to the design position
     // once STONE lands the quarter disc sweeps round to a full circle and stays; scrolling back up un-fills it
     var sweep = smooth((p - 0.5) / 0.12);
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
-    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
+    hero.style.translate = '0 ' + dy * smooth(p / 0.05) * (1 - smooth((p - 0.72) / 0.28)) + 'px';
     // menu shows at the start, slides up as soon as scrolling begins, and returns with STONE
     var h = Math.max(1 - smooth(p / 0.05), easeOut((p - 0.72) / 0.2));
     header.style.opacity = h;
