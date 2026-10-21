@@ -57,10 +57,18 @@ push(`<div class="a" id="hero-ring">` +
   `</div></div>`);
 
 // scroll-driven words: the diamond sits where the O is; STONE is the final word
+// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, CROWN = crown, GLOW = glow, STONE = the diamond
 const words = [['L', 'VE'], ['CR', 'WN'], ['GL', 'W'], ['ST', 'NE']];
+const SOFT = '-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);mask-image:radial-gradient(closest-side,#000 62%,transparent 100%)';
+const WIMG = [
+  // LOVE: love.png is 1920x1174; show the fingertips, ring box and hands (crop x 1060..1700, y 480..907) with soft edges
+  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px;overflow:hidden;${SOFT}"><img src="assets/hero/love.png" alt="" draggable="false" style="position:absolute;left:-1060px;top:-480px;width:1920px;height:1174px;max-width:none"></div>`,
+  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('hero/Crown-cut', 'png', 'class="cover" draggable="false"')}</div>`,
+  `<div class="a wpic" style="left:625px;top:391px;width:580px;height:387px;${SOFT}">${img('hero/glow', 'png', 'class="cover" draggable="false"')}</div>`,
+  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
+];
 push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
-  `<div class="word${i === words.length - 1 ? ' final' : ''}" data-i="${i}"><span class="wl">${w[0]}</span><span class="wr">${w[1]}</span></div>`).join('') + `</div>`);
-push(box('left:595px;top:371px;width:640px;height:427px', img('diamond', 'png', 'class="cover"')));
+  `<div class="word${i === words.length - 1 ? ' final' : ''}" data-i="${i}"><span class="wl">${w[0]}</span><span class="wr">${w[1]}</span>${WIMG[i]}</div>`).join('') + `</div>`);
 push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw late" data-d="0'));
 push(box('left:126px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', 'Carries', 'mont6 caps nw late" data-d="1'));
 push(box('left:126px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', 'a Story', 'mont6 caps nw late" data-d="2'));
