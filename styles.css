@@ -2,7 +2,7 @@
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #viewport{width:100%;overflow:clip}
-#stage{position:relative;width:1920px;height:14819px;overflow:hidden;background:#fff;transform-origin:0 0}
+#stage{position:relative;width:1920px;height:15704px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
 p{margin:0}
@@ -214,3 +214,21 @@ img{max-width:none}
 .scta:hover svg{transform:translateX(6px)}
 /* bg.png: its line artwork starts ~120px below the file's top edge, so it is scaled up and pulled up to start at the section's top edge and still reach the bottom */
 #sustain{background:url(assets/sustain/bg.png) 50% -139px/2090px auto no-repeat,#f4f2ef!important}
+
+/* #footer */
+.frv{opacity:0;translate:0 22px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1)}
+.fd1{transition-delay:.05s}.fd2{transition-delay:.15s}.fd3{transition-delay:.25s}.fd4{transition-delay:.35s}.fd5{transition-delay:.45s}.fd6{transition-delay:.55s}
+#footer.in .frv{opacity:1;translate:0 0}
+.fsoc{display:flex;align-items:center;justify-content:center}
+.fsoc img{display:block;max-width:none;transition:transform .3s}
+.fsoc:hover img{transform:translateY(-3px) scale(1.08)}
+.flink{font:400 17.8px/26px 'Manrope',sans-serif;color:#111;white-space:nowrap;transition:color .25s,padding-left .25s}
+.flink:hover{color:#957d69;padding-left:6px}
+.fleg{color:inherit;transition:color .25s}
+.fleg:hover{color:#111}
+.fform{display:flex;align-items:center;background:#f4f3ef;border-radius:40px;padding:0 13px 0 22px}
+.fform input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:400 17.8px/1 'Manrope',sans-serif;color:#111}
+.fform input::placeholder{color:#222}
+.fform button{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:0;border-radius:50%;background:#050505;cursor:pointer;flex:none;transition:background .25s}
+.fform button:hover{background:#957d69}
+.fform:focus-within{box-shadow:0 0 0 2px rgba(149,125,105,.5)}

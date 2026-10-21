@@ -375,6 +375,34 @@ push(`<a class="a scta scta-r srv sd5" href="#" style="left:1520px;top:1163px"><
 push('</div>');
 push('</section>');
 
+/* ---------- footer (#footer) ---------- */
+const F0 = 14809, FH = 895;                 // directly below #sustain
+const COLS = [
+  ['Company', 645, ['Careers', 'Life at IGI', 'Investors', 'Affiliations', 'RJC']],
+  ['Contact Us', 950, ['Offices', 'Schools', 'Write to Us', 'Report Concerns']],
+  ['Resources', 1292, ['API Reports', 'Glossary', 'Verify Report', 'Find a Store']],
+  ['Governance', 1624, ['Code of Conduct', 'Human Rights', 'Sustainability (ESG)', 'CSR']]
+];
+push(`<footer class="a" id="footer" style="left:0;top:${F0}px;width:1920px;height:${FH}px;background:#fff">`);
+push(box('left:0;top:632px;width:1920px;height:263px;background:#f7f7f6'));
+push(img('social/logo', 'png', 'class="a frv fd1" style="left:135px;top:125px;width:153px;height:66px;max-width:none" draggable="false"'));
+push(box('left:135px;top:236px;width:420px;font-size:18.4px;line-height:27.5px;color:#111;white-space:nowrap', 'Independent grading, certification<br>and gemological education since 1975.', 'man4 frv fd1'));
+// social icons (centres at y=334)
+[['linked in', 'LinkedIn', 150, 35], ['Insta', 'Instagram', 218, 34], ['Youtube', 'YouTube', 302, 40], ['Facebook', 'Facebook', 379, 17], ['x', 'X', 452, 30]].forEach(([f, n, cx, w], i) =>
+  push(`<a class="a fsoc frv fd2" href="#" aria-label="${n}" style="left:${cx - 24}px;top:${334 - 24}px;width:48px;height:48px"><img src="assets/social/${encodeURIComponent(f)}.svg" alt="" draggable="false" style="width:${Math.round(w * 1.08)}px"></a>`));
+push(box('left:131px;top:421px;font-size:40.5px;line-height:56px;color:#111;white-space:nowrap', 'Stay Informed', 'mont4 frv fd3'));
+push(box('left:135px;top:480px;font-size:17.8px;line-height:24px;color:#111;white-space:nowrap', 'Email for IGI updates', 'man4 frv fd3'));
+push(`<form class="a fform frv fd3" id="fform" style="left:129px;top:522px;width:306px;height:65px"><input id="femail" type="email" placeholder="Your email address" aria-label="Your email address" autocomplete="email" required><button type="submit" aria-label="Subscribe"><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h11M8 1.5 12.5 6 8 10.5"/></svg></button></form>`);
+push(box('left:135px;top:597px;font-size:15px;line-height:20px;color:#6d6d6d;white-space:nowrap', '', 'man4 fmsg" id="fmsg'));
+COLS.forEach(([h, x, links], ci) => {
+  push(box(`left:${x}px;top:132px;font-size:24.6px;line-height:36px;color:#111;white-space:nowrap`, h, `mont5 caps frv fd${ci + 2}`));
+  links.forEach((l, i) => push(`<a class="a flink frv fd${ci + 3}" href="#" style="left:${x}px;top:${226 + 77 * i}px">${l}</a>`));
+});
+push(box('left:661px;top:713px;font-size:18.6px;line-height:28px;color:#6d6d6d;white-space:nowrap', '\u00a9 2026 International Gemological Institute', 'man4 frv fd4'));
+push(box('left:1052px;top:714px;width:1px;height:32px;background:#d6d6d6', '', 'frv fd4'));
+push(`<div class="a man4 frv fd4" style="left:1077px;top:713px;font-size:18.6px;line-height:28px;color:#6d6d6d;white-space:nowrap"><a class="fleg" href="#">Privacy</a> \u00b7 <a class="fleg" href="#">Terms</a> \u00b7 <a class="fleg" href="#">Cookies</a></div>`);
+push('</footer>');
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
