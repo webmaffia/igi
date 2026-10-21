@@ -186,9 +186,18 @@ REPORTS.forEach((r, i) => push(`<article class="rcard" data-i="${i}" style="left
 push(`<div class="a rchip" id="rchip" style="left:770px;top:3912px"><b>01</b> / 09 \u00b7 <span>Natural Diamond Report</span></div>`);
 push('</div>');
 
-/* ---------- yes ---------- */
-push(box('left:calc(50% - 75px);top:5018px;width:1158px;height:332px;transform:translateX(-50%);text-align:center;font-size:105.363px;line-height:103.054px;color:#1e1e1e', 'Somewhere, someone is about to say <span style="color:#ccb4a0">yes.</span>', 'mont5 cap'));
-push(box('left:884.5px;top:5350px;width:785px;height:133px;transform:translateX(-50%);text-align:center;font-size:24px;line-height:47.09px;letter-spacing:1px;color:#111', 'Before they do, they deserve to know that what they\u2019re holding is exactly what they were promised. It takes one number.', 'man4'));
+/* ---------- the moment (#moment) ---------- */
+push('<div class="a" id="moment" style="left:0;top:0;width:1920px">');
+// thin cross lines through the ring box
+push(`<svg class="a" style="left:0;top:4834px;width:1920px;height:1174px;pointer-events:none" viewBox="0 0 1920 1174" fill="none" stroke="#9c9c9c" stroke-width="1" opacity=".45">
+  <line x1="942" y1="640" x2="1756" y2="640"/><line x1="1006" y1="281" x2="1874" y2="1145"/><line x1="1577" y1="428" x2="1356" y2="640"/></svg>`);
+push(img('moment', 'png', 'class="a" style="left:170px;top:4840px;width:1762px;height:1174px;max-width:none" draggable="false"'));
+push(box('left:276px;top:4971px', 'The Moment', 'eyebrow'));
+push(box('left:274px;top:5046px;width:1000px;font-size:103px;line-height:103.054px;color:#1e1e1e;white-space:nowrap', 'Somewhere,<br>Someone Is About<br>To Say &nbsp;<span style="color:#ccb4a0">Yes.</span>', 'mont5'));
+push(box('left:274px;top:5397px;width:728px;font-size:24px;line-height:46px;color:#111', 'Before they do, they deserve to know that what they\u2019re holding is exactly what they were promised. It takes one number.', 'man4'));
+push(`<form class="a vform" id="vform" style="left:274px;top:5575px;width:681px;height:93px"><input id="vnum" type="text" placeholder="REPORT NUMBER" aria-label="Report number" autocomplete="off"><button type="submit"><span>Verify</span><svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h25M19 1l7 7-7 7"/></svg></button></form>`);
+push(box('left:274px;top:5688px;width:681px;text-align:center;font-size:17px;line-height:24px;color:#7a7a7a', 'Can\u2019t find your number? <a href="#">How to read your report</a>', 'man4 vnote" id="vnote'));
+push('</div>');
 
 /* ---------- carat wheel ---------- */
 const cx = 859, cy = 6589;

@@ -171,6 +171,13 @@
   });
   setRep(0);
 
+  // #moment: report number form (prototype, no verification service yet)
+  document.getElementById('vform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = document.getElementById('vnum').value.trim(), note = document.getElementById('vnote');
+    note.textContent = v ? 'Design prototype \u2014 this will connect to IGI\u2019s report verification service.' : 'Please enter your IGI report number.';
+  });
+
   fitWords();
   fitTitles();
   fit();

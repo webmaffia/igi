@@ -101,3 +101,11 @@ img{max-width:none}
 .rcirc{border-radius:50%}
 .rcard .rtx{pointer-events:none}
 .rcard.on .rtx{pointer-events:auto}
+
+/* #moment: report number form */
+.vform{display:flex;align-items:center;background:#fff;border-radius:60px;padding:0 12px 0 112px;box-shadow:0 6px 30px -12px rgba(0,0,0,.12)}
+.vform input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:400 14px/1 'Manrope',sans-serif;letter-spacing:3.5px;color:#111;text-transform:uppercase}
+.vform input::placeholder{color:#8a8a8a}
+.vform button{display:flex;align-items:center;gap:24px;height:70px;padding:0 46px 0 42px;border:0;border-radius:40px;background:#000;color:#fff;font:400 14px/1 'Manrope',sans-serif;letter-spacing:3.5px;text-transform:uppercase;cursor:pointer;transition:background .25s}
+.vform button:hover{background:#957d69}
+.vform:focus-within{box-shadow:0 0 0 2px #957d69,0 6px 30px -12px rgba(0,0,0,.12)}
