@@ -98,3 +98,8 @@ img{max-width:none}
 .rcard .rtx{opacity:0;transition:opacity .45s}
 .rcard.on .rtx{opacity:1}
 .rtitle{overflow:visible}
+.rcard{pointer-events:none}
+.rcirc,.rlab{pointer-events:auto;cursor:pointer}
+.rcirc{border-radius:50%}
+.rcard .rtx{pointer-events:none}
+.rcard.on .rtx{pointer-events:auto}

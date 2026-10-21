@@ -95,20 +95,6 @@
       csteps.forEach(function (el) { el.classList.toggle('on', +el.dataset.i === st); });
       tabs.forEach(function (el, i) { el.classList.toggle('on', i === st); });
     }
-    // #reports: the nine cards advance along the stack as you scroll, the front one pops up
-    var rp = repRun ? clamp((s - sRep) / repRun, 0, 1) : 0;
-    var ra = Math.min(rcards.length - 1, Math.floor(rp * rcards.length)); // one card per slice of scroll
-    rcards.forEach(function (el, i) {
-      var front = i === ra;
-      el.classList.toggle('on', front);
-      el.style.zIndex = front ? 200 : 100 - i;       // the active card comes to the front, in place
-      el.style.pointerEvents = front ? 'auto' : 'none';
-    });
-    if (ra !== repActive) {
-      repActive = ra;
-      rchip.innerHTML = '<b>0' + (ra + 1) + '</b> / 09 \u00b7 <span>' + REP_NAMES[ra] + ' Report</span>';
-      rchip.classList.remove('pop'); void rchip.offsetWidth; rchip.classList.add('pop');
-    }
     fills.forEach(function (f, i) { f.style.transform = 'scaleX(' + (i < st ? 1 : i === st ? local : 0) + ')'; });
   }
 
@@ -117,7 +103,7 @@
     run = reduced ? 0 : window.innerHeight * 3.5;
     labRun = reduced ? 0 : window.innerHeight * 4.5;
     yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
-    repRun = reduced ? 0 : window.innerHeight * 5;
+    repRun = 0; // reports are hover-driven, no scroll pinning
     yRep = Math.max(yLab, REP_CENTER * scale - window.innerHeight / 2);
     viewport.style.height = DESIGN_H * scale + run + labRun + repRun + 'px';
     render();
@@ -167,6 +153,23 @@
       }
     });
   }
+
+  // #reports: hover a card (its circle or its vertical label) to bring it to the front, in place
+  function setRep(i) {
+    if (i === repActive) return;
+    repActive = i;
+    rcards.forEach(function (el, k) {
+      el.classList.toggle('on', k === i);
+      el.style.zIndex = k === i ? 200 : 100 - k;
+    });
+    rchip.innerHTML = '<b>0' + (i + 1) + '</b> / 09 · <span>' + REP_NAMES[i] + ' Report</span>';
+    rchip.classList.remove('pop'); void rchip.offsetWidth; rchip.classList.add('pop');
+  }
+  rcards.forEach(function (el, i) {
+    el.querySelectorAll('.rcirc, .rlab').forEach(function (t) { t.addEventListener('pointerenter', function () { setRep(i); }); });
+    el.addEventListener('focusin', function () { setRep(i); });
+  });
+  setRep(0);
 
   fitWords();
   fitTitles();
