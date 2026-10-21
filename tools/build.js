@@ -26,7 +26,7 @@ push(bg(4834, 1174));
 push(box(inset(45.15, 10.31, 44.11, 29.69), img('glow1', 'svg', 'class="fill"')));
 push(bg(0, 1093));
 push(box(inset(0.12, 22.66, 89.14, 17.34), img('glow1', 'svg', 'class="fill"')));
-push(bg(7459, 1093));
+push(bg(7050, 1093)); // closing section's background, pulled up 409px to remove the empty gap below the wheel
 
 /* ---------- header ---------- */
 push('<div class="a" id="site-header" style="left:0;top:0">');
@@ -244,7 +244,7 @@ push(box('left:1555px;top:6750px', '<a href="#" style="text-decoration:underline
 push('</div>');
 
 /* ---------- outro (the gemologists) ---------- */
-push('<div class="a" id="gem" style="left:0;top:0;width:1920px">');
+push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
 push(img('lady', 'png', 'class="a" style="left:0;top:7459px;width:1920px;height:1093px;max-width:none" draggable="false"'));
 push(box('left:209px;top:7607px', 'The Gemologists \u00b7 School of Gemology', 'eyebrow'));
 push(box('left:209px;top:7689px;width:870px;font-size:69.7px;line-height:94.8px;color:#1e1e1e', 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice. We Don\'t Just Grade Diamonds \u2014 We Teach The World How.', 'mont5'));

@@ -1,7 +1,7 @@
 // The design is authored on a fixed 1920px-wide stage; scale it to the viewport width.
 // The hero is pinned while scrolling: LOVE -> COLOR -> GROWN -> STONE, then the rest of the hero fades in.
 (function () {
-  var DESIGN_W = 1920, DESIGN_H = 8552;
+  var DESIGN_W = 1920, DESIGN_H = 8143;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
   var LEFT_END = 510, RIGHT_START = 1320, EDGE_PAD = 8; // left halves end at LEFT_END, right halves start at RIGHT_START
   var viewport = document.getElementById('viewport');
