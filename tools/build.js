@@ -183,7 +183,6 @@ REPORTS.forEach((r, i) => push(`<article class="rcard" data-i="${i}" style="left
   `<div class="a rc rlab" style="left:226px;top:628px;width:44px;height:201px"><div class="eyebrow" style="transform:rotate(-90deg);width:201px;height:44px;overflow:visible;text-align:left">${r[0]}</div></div>` +
   `<div class="a" style="left:284.5px;top:569px;width:0;height:319px"><div style="position:absolute;left:0;top:0;width:319px;height:1px;transform-origin:0 0;transform:rotate(90deg)"><img class="ln" src="assets/vector2.svg" alt=""></div></div>` +
   `</article>`));
-push(`<div class="a rchip" id="rchip" style="left:770px;top:3912px"><b>01</b> / 09 \u00b7 <span>Natural Diamond Report</span></div>`);
 push('</div>');
 
 /* ---------- the moment (#moment) ---------- */

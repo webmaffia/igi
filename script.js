@@ -31,8 +31,8 @@
   var lsteps = [].slice.call(lab.querySelectorAll('.lstep')), csteps = [].slice.call(lab.querySelectorAll('.cstep'));
   var tabs = [].slice.call(lab.querySelectorAll('.steps span')), fills = [].slice.call(lab.querySelectorAll('.tabfill'));
   var LAB_CENTER = 3200; // design y that sits mid-screen while the #lab steps play
-  var rcards = [].slice.call(document.querySelectorAll('.rcard')), rchip = document.getElementById('rchip');
-  var REP_CENTER = 4420, REP_NAMES = ['Natural Diamond', 'Lab Grown Diamond', 'Light Performance', 'Fancy Colored Diamond', 'Hearts & Arrows', 'Identification', 'Colored Stone', 'Jewellery', 'Pearl'];
+  var rcards = [].slice.call(document.querySelectorAll('.rcard'));
+  var REP_CENTER = 4420;
   // x of a card by its distance from the active card: -1 is tucked away on the left, 0 is the front card
   var REP_SLOTS = [430, 613, 790, 896, 977, 1050, 1112, 1166, 1212, 1252];
   var scale = 1, run = 0, labRun = 0, yLab = 0, repRun = 0, yRep = 0, repActive = -1, labStep = -1, ticking = false;
@@ -180,8 +180,6 @@
       el.classList.toggle('on', k === i);
       el.style.zIndex = k === i ? 200 : 100 - k;
     });
-    rchip.innerHTML = '<b>0' + (i + 1) + '</b> / 09 · <span>' + REP_NAMES[i] + ' Report</span>';
-    rchip.classList.remove('pop'); void rchip.offsetWidth; rchip.classList.add('pop');
   }
   rcards.forEach(function (el, i) {
     el.querySelectorAll('.rcirc, .rlab').forEach(function (t) { t.addEventListener('pointerenter', function () { setRep(i); }); });
