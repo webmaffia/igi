@@ -89,8 +89,7 @@ push(line(960, 2029, 1060, 90, 'line8'));
 push(line(960, 2411, 8, 90, 'line11'));
 push(line(960, 2029, 1060, 0, 'line9'));
 push(box('left:903.91px;top:1965.89px;width:112.187px;height:112.187px', img('ellipse14', 'svg', 'class="fill"')));
-push(box(inset(18.78, 48.97, 81.09, 48.97).replace(/top:[^;]+;/, 'top:1605.9px;').replace(/height:[^;]+/, 'height:11.1px'),
-  `<div class="a" style="inset:-2.94% -1.47%">${img('group26', 'svg', 'class="fill"')}</div>`));
+push(box('left:939.62px;top:2014.58px;width:40.7637px;height:14.8479px', img('group26', 'svg', 'class="fill"')));
 push(line(571, 2030, 8, 0, 'line10'));
 
 const side = (left, top, eyebrow, l1, l2, body, lh) => {
