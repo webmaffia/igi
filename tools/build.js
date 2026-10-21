@@ -152,7 +152,7 @@ push(box('left:973px;top:2846px;width:567px;height:248px;background:#fbfbfb'));
 push(rot(947, 3052, 81.962, 81.962, -150, `<div style="position:relative;width:60px;height:60px"><div class="a" style="left:6.7%;right:6.7%;top:0;bottom:25%">${img('polygon1', 'svg', 'class="fill"')}</div></div>`));
 STEPS.forEach((st, i) => push(`<div class="a cstep${i ? '' : ' on'}" data-i="${i}" style="left:0;top:0">` + CARDS[i] + cardLink(st.link) + `</div>`));
 // the big word follows the step (the diamond stays centred over its middle letters)
-STEPS.forEach((st, i) => push(box('left:0;top:3341px;width:1920px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center;justify-content:center;white-space:nowrap', st.tab, `mont7 caps lstep${i ? '' : ' on'}" data-i="${i}`)));
+STEPS.forEach((st, i) => push(box('left:0;top:3241px;width:1920px;height:30px;font-size:257.706px;line-height:88.526px;color:#010101;display:flex;align-items:center;justify-content:center;white-space:nowrap', st.tab, `mont7 caps lstep${i ? '' : ' on'}" data-i="${i}`)));
 push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"')));
 // overlays drawn over the diamond: scan (screening), guides (grading), laser (inscription), stamp (report)
 push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;overflow:visible;pointer-events:none" viewBox="0 0 582 388">
@@ -162,7 +162,7 @@ push(`<svg class="a ovl" style="left:689px;top:3047px;width:582px;height:388px;o
     <line x1="560" y1="70" x2="560" y2="372"/><circle cx="226" cy="150" r="20"/></g>
   <g class="ov o3"><line x1="700" y1="40" x2="406" y2="116" stroke="#FF5F7A" stroke-width="3.5"/><circle cx="406" cy="116" r="11" fill="#FF8FA2"/><circle cx="406" cy="116" r="29" fill="#FF5F7A" opacity=".25"/></g>
 </svg>`);
-push(box('left:1215px;top:3050px', 'IGI<br>VERIFIED', 'stamp ov o4'));
+push(box('left:1095px;top:3300px', 'IGI<br>VERIFIED', 'stamp ov o4'));
 push(`<div class="a steps" style="left:136px;top:3526px;width:1700px;height:65.5px">` +
   STEPS.map((st, i) => `<span class="${i ? 'mont6' : 'mont7 on'}" style="left:${[0, 331, 663, 995, 1331][i]}px">${st.tab}</span>`).join('') + `</div>`);
 [[136, 319.29], [466.437, 318.49], [800.059, 318.49], [1129.7, 319.29], [1465.71, 319.29]].forEach(([x, w]) =>
