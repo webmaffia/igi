@@ -143,10 +143,10 @@
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
       var t = (cx - MID) / REACH;                       // -1 (left stop) .. 1 (right stop)
       arc.style.rotate = (t * 90) + 'deg';              // the grey arc swings round the ring with the handle
-      // dragged left: the lab-grown copy appears on the left; dragged right: the natural copy appears on the right
-      var A = Math.abs(t);
-      show(natL, clamp(1 - A * 2.2, 0, 1), -1);
-      show(labR, clamp(1 - A * 2.2, 0, 1), 1);
+      // dragged left: the new lab-grown copy takes the left side and the original lab-grown copy stays on the right.
+      // dragged right: the new natural copy takes the right side and the original natural copy stays on the left.
+      show(natL, t >= 0 ? 1 : clamp(1 + t * 2.2, 0, 1), -1);
+      show(labR, t <= 0 ? 1 : clamp(1 - t * 2.2, 0, 1), 1);
       show(labL, clamp(-t * 2.2, 0, 1), -1);
       show(natR, clamp(t * 2.2, 0, 1), 1);
       knob.setAttribute('aria-valuenow', Math.round(cx / DESIGN_W * 100));
