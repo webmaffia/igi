@@ -245,7 +245,7 @@ push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
 push(img('lady', 'png', 'class="a" style="left:0;top:7459px;width:1920px;height:1093px;max-width:none" draggable="false"'));
 push(box('left:209px;top:7607px', 'The Gemologists \u00b7 School of Gemology', 'eyebrow'));
 push(box('left:209px;top:7689px;width:870px;font-size:69.7px;line-height:94.8px;color:#1e1e1e', 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice. We Don\'t Just Grade Diamonds \u2014 We Teach The World How.', 'mont5'));
-push(`<a class="btn solid" href="#" style="left:209px;top:8287px;width:190px;height:46px;padding:0 16px;gap:10px;justify-content:space-between;font-size:10.5px;letter-spacing:.6px"><span style="text-decoration:underline">CAMPUS EXPERIENCE</span>${img('arrow', 'svg', 'class="btn-arrow"')}</a>`);
+push(`<a class="a cta" href="#" style="left:209px;top:8275px"><span>Campus Experience</span><svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 8h25M19 1l7 7-7 7"/></svg></a>`);
 push('</div>');
 
 /* ---------- the trade (#trade) ---------- */
