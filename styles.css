@@ -121,7 +121,7 @@ img{max-width:none}
 #cknob:focus-visible{box-shadow:0 0 0 3px rgba(149,125,105,.45)}
 #cgemimg{transition:filter .3s}
 #cgem{transition:transform .35s}
-#cincl,#cspark{transition:opacity .35s}
+#cincl{transition:opacity .35s}
 #cwedge{transition:rotate .6s cubic-bezier(.2,.8,.2,1)}
 #cr-title,#cr-val,#cr-sub,#cr-desc{transition:opacity .25s}
 .nopt{pointer-events:none}

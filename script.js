@@ -183,7 +183,7 @@
     var quads = [].slice.call(document.querySelectorAll('.wquad')),
     tabsC = [].slice.call(document.querySelectorAll('.wtab')), knob = document.getElementById('cknob'), ticksEl = document.getElementById('cticks');
     var cwedge = document.getElementById('cwedge'), cgem = document.getElementById('cgem'), gimg = document.getElementById('cgemimg');
-    var incl = document.getElementById('cincl'), spark = document.getElementById('cspark');
+    var incl = document.getElementById('cincl');
     var title = document.getElementById('cr-title'), val = document.getElementById('cr-val'), sub = document.getElementById('cr-sub'), desc = document.getElementById('cr-desc');
     var CX = 859, CY = 6589, KR = 516, TR = 538, A0 = -42, A1 = 42; // wheel centre, knob/tick radii, dial span in degrees
     var QUAD = { carat: 0, color: 90, clarity: 180, cut: 270 };   // quadrant (clockwise from top-right) of each tab
@@ -208,7 +208,6 @@
       var ct = carat(st.carat), y = st.color / 100, q = st.cut / 100, V, N;
       cgem.style.transform = 'scale(' + (1 + (ct - 0.55) * 0.07) + ')';
       incl.style.opacity = Math.max(0, (st.clarity - 8) / 92);
-      spark.style.opacity = q;
       gimg.style.filter = 'sepia(' + y * 0.55 + ') saturate(' + (1 + y * 0.7) + ') brightness(' + (0.82 + q * 0.2) + ') drop-shadow(0 0 ' + q * 22 + 'px rgba(150,190,255,' + q * 0.5 + '))';
       if (cur === 'carat') { V = ct.toFixed(2) + ' ct'; N = '\u2248 ' + (ct * 0.2).toFixed(2) + ' grams'; }
       if (cur === 'color') { V = colorG[Math.min(22, Math.round(y * 22))]; N = V <= 'F' ? 'Colourless' : V <= 'J' ? 'Near colourless' : V <= 'M' ? 'Faint' : V <= 'R' ? 'Very light' : 'Light'; }
