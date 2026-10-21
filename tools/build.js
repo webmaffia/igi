@@ -163,7 +163,7 @@ STEPS.forEach((st, i) => push(box('left:0;top:3241px;width:1920px;height:30px;fo
 push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:translateX(-50%)', img('diamond', 'png', 'class="cover"'), 'diaw'));
 // Report step: a built report card takes the diamond's place
 const RROWS = [['Shape &amp; Cut', 'Round Brilliant'], ['Carat Weight', '1.02 ct'], ['Color Grade', 'F'], ['Clarity Grade', 'VVS2'], ['Cut Grade', 'Excellent'], ['Inscription', 'IGI XX000000000']];
-push(`<div class="a ov o4 rpt" style="left:700px;top:3118px;width:520px;height:400px">` +
+push(`<div class="a ov o4 rpt" style="left:1000px;top:3118px;width:540px;height:400px">` +
   `<div class="rpt-top">${img('social/logo', 'png', 'class="rpt-logo" draggable="false"')}<div class="rpt-ttl"><b>Natural Diamond Report</b><span>Sample · No. XX 000 000 000</span></div></div>` +
   RROWS.map(r => `<div class="rpt-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('') +
   `<div class="rpt-foot"><span>Verify online · igi.org</span><div class="rpt-stamp">IGI<br>VERIFIED</div></div></div>`);
