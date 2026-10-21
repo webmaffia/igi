@@ -8,6 +8,7 @@
   var pin = document.getElementById('pin');
   var stage = document.getElementById('stage');
   var wedge = document.getElementById('wedge');
+  var fill = document.getElementById('fill');
   var hero = document.getElementById('hero');
   var header = document.getElementById('site-header');
   var RING_CY = 601;
@@ -40,7 +41,7 @@
   function render() {
     ticking = false;
     var p = run ? clamp(window.scrollY / run, 0, 1) : 1;
-    var x = 3 * clamp(p / 0.72, 0, 1);               // 0..3 across the four words
+    var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep
     wedge.style.rotate = (90 + 90 * xs) + 'deg';
@@ -52,14 +53,17 @@
       w.style.translate = '0 ' + y + 'px';
     });
     // keep the ring centred on screen while the words play, then glide to the design position
+    // once STONE lands the quarter disc sweeps round to a full circle, holds, then settles back
+    var sweep = smooth((p - 0.58) / 0.12) * (1 - smooth((p - 0.78) / 0.14));
+    fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
     var dy = (window.innerHeight / 2) / scale - RING_CY;
-    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.72) / 0.28)) + 'px';
+    hero.style.translate = '0 ' + dy * (1 - smooth((p - 0.78) / 0.22)) + 'px';
     // menu stays out of the way while the words play, then slides back down
-    var h = easeOut((p - 0.72) / 0.2);
+    var h = easeOut((p - 0.78) / 0.2);
     header.style.opacity = h;
     header.style.translate = '0 ' + (-(1 - h) * 70) + 'px';
     header.style.pointerEvents = h < 0.5 ? 'none' : '';
-    var q = clamp((p - 0.74) / 0.26, 0, 1);
+    var q = clamp((p - 0.8) / 0.2, 0, 1);
     lates.forEach(function (el) {
       var t = easeOut((q - (+el.dataset.d) * 0.07) / 0.6);
       el.style.opacity = t;

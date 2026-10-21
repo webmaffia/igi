@@ -46,6 +46,7 @@ push(`<div class="a" id="hero" style="left:0;top:0">`);
 // hero ring: circle outline + rotatable quarter disc (wedge + arc) + cross lines that appear last
 push(`<div class="a" id="hero-ring">` +
   box('left:579px;top:261px;width:680px;height:680px', img('ellipse2', 'svg', 'class="fill"')) +
+  box('left:579px;top:261px;width:680px;height:680px', '', 'fill-disc" id="fill') +
   `<div class="a" id="wedge" style="left:579px;top:261px;width:680px;height:680px">` +
     `<div class="a" style="left:50%;right:0;top:0;bottom:50%">${img('ellipse3', 'svg', 'class="fill"')}</div>` +
     `<div class="a" style="left:50%;top:0;width:50%;height:50%"><div class="a" style="inset:-0.74% -0.74% 0 0">${img('ellipse4', 'svg', 'class="fill"')}</div></div>` +
