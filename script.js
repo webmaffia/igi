@@ -80,16 +80,16 @@
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
 
   // draggable comparison: lab-grown shows to the right of the handle, natural to the left.
-  // The handle can travel the full width of the screen; the copy on the side it moves toward hides.
+  // The handle travels out to the outer ring on either side; the copy on the side it moves toward hides.
   (function () {
     var knob = document.getElementById('knob'), cmp = document.getElementById('cmp'), lab = document.getElementById('cmp-lab');
     var txtNat = document.getElementById('txt-nat'), txtLab = document.getElementById('txt-lab'), arc = document.getElementById('arc');
-    var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, cx = MID, dragging = false;
+    var CMP_L = 689, CMP_W = 542, KNOB_R = 56.0935, MID = DESIGN_W / 2, REACH = 448, cx = MID, dragging = false; // REACH: handle stops at the outer ring
     function set(x) {
-      cx = clamp(x, KNOB_R, DESIGN_W - KNOB_R);
+      cx = clamp(x, MID - REACH, MID + REACH);
       knob.style.left = (cx - KNOB_R) + 'px';
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
-      var t = (cx - MID) / (MID - KNOB_R);              // -1 (far left) .. 1 (far right)
+      var t = (cx - MID) / REACH;                       // -1 (left stop) .. 1 (right stop)
       arc.style.rotate = (t * 90) + 'deg';              // the grey arc swings round the ring with the handle
       var labV = clamp(1 - Math.max(0, t) * 2.2, 0, 1);  // moving right hides the lab-grown copy
       var natV = clamp(1 + Math.min(0, t) * 2.2, 0, 1);  // moving left hides the natural copy
