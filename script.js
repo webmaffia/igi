@@ -1,7 +1,7 @@
 // The design is authored on a fixed 1920px-wide stage; scale it to the viewport width.
 // The hero is pinned while scrolling: LOVE -> COLOR -> GROWN -> STONE, then the rest of the hero fades in.
 (function () {
-  var DESIGN_W = 1920, DESIGN_H = 8143;
+  var DESIGN_W = 1920, DESIGN_H = 10513;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
   var LEFT_END = 510, RIGHT_START = 1320, EDGE_PAD = 8; // left halves end at LEFT_END, right halves start at RIGHT_START
   var viewport = document.getElementById('viewport');
@@ -16,6 +16,17 @@
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
+  var trade = document.getElementById('trade'), tradeIn = false, TRADE_Y = 8143;
+  function countUp() {
+    [].slice.call(trade.querySelectorAll('.cnt')).forEach(function (b) {
+      var to = +b.dataset.to, suf = b.dataset.s || '', from = to > 1000 ? 1900 : 0, t0 = performance.now();
+      (function step(t) {
+        var p = Math.min(1, (t - t0) / 1800), v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+        b.textContent = v + (p === 1 ? suf : '');
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }
   var lab = document.getElementById('lab');
   var lsteps = [].slice.call(lab.querySelectorAll('.lstep')), csteps = [].slice.call(lab.querySelectorAll('.cstep'));
   var tabs = [].slice.call(lab.querySelectorAll('.steps span')), fills = [].slice.call(lab.querySelectorAll('.tabfill'));
@@ -60,6 +71,8 @@
     var topY = off / scale, botY = (off + window.innerHeight) / scale;
     var momentInView = botY > 5480 && topY < 5740;
     fab.classList.toggle('show', s > run * 0.95 && !momentInView);
+    // #trade: counters count up and the arcs draw in the first time the row comes on screen
+    if (!tradeIn && botY > TRADE_Y + 1000) { tradeIn = true; trade.classList.add('in'); countUp(); }
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep

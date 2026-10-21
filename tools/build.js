@@ -248,6 +248,41 @@ push(box('left:209px;top:7689px;width:870px;font-size:69.7px;line-height:94.8px;
 push(`<a class="btn solid" href="#" style="left:209px;top:8287px;width:190px;height:46px;padding:0 16px;gap:10px;justify-content:space-between;font-size:10.5px;letter-spacing:.6px"><span style="text-decoration:underline">CAMPUS EXPERIENCE</span>${img('arrow', 'svg', 'class="btn-arrow"')}</a>`);
 push('</div>');
 
+/* ---------- the trade (#trade) ---------- */
+const T0 = 8143, TH = 2370;               // section top / height on the stage
+const ROWS = [
+  ['Diamond<br>Screening &amp;<br>Sorting', 'High-throughput detection of<br>laboratory-grown stones and simulants.'],
+  ['Laser Inscription', 'Microscopic inscriptions that link each<br>stone to its report.'],
+  ['Origin Services', 'Documentation that traces a diamond\u2019s<br>journey from its source.'],
+  ['Appraisals &amp;<br>Updated Reports', 'Independent valuations, duplicate and<br>updated reports.']
+];
+const COUNTS = [['1975', 1975, '', 'Founded in Antwerp'], ['30+', 30, '+', 'Laboratories worldwide'], ['10+', 10, '+', 'Countries of operation'], ['18', 18, '', 'Schools of Gemology']];
+push(`<section class="a" id="trade" style="left:0;top:${T0}px;width:1920px;height:${TH}px;background:#f4f4f4">`);
+push(img('list/top', 'png', 'class="a" style="left:943px;top:90px;width:892px;height:830px;max-width:none" draggable="false"'));
+push(box('left:290px;top:112px', 'The Trade \u00b7 Industry', 'eyebrow'));
+push(box('left:290px;top:253px;width:760px;font-size:107px;line-height:104px;color:#1e1e1e', 'Millions<br>Of Stones.<br>One<br>Standard.', 'mont5'));
+push(box('left:290px;top:717px;width:620px;font-size:24px;line-height:46.4px;color:#111;letter-spacing:1.6px', 'From manufacturers and traders to retailers<br>&nbsp;on the high street \u2014 the trade relies on IGI<br>&nbsp;to grade at scale, without ever compromising<br>&nbsp;the standard.', 'man3'));
+push(box('left:261px;top:919px;width:1391px;height:1px;background:#dcdcdc'));
+// counters
+COUNTS.forEach((c, i) => {
+  const x = 261 + 348 * i;
+  if (i) push(box(`left:${x}px;top:1015px;width:1px;height:174px;background:#dcdcdc`));
+  push(box(`left:${x + 64}px;top:1048px;font-size:78px;line-height:90px;color:#111;white-space:nowrap`, `<span class="cnt" data-to="${c[1]}" data-s="${c[2]}">${c[0]}</span>`, 'mont5'));
+  push(box(`left:${x + 64}px;top:1162px;font-size:16px;line-height:24px;color:#8a8a8a;white-space:nowrap`, c[3], 'man4'));
+  push(`<svg class="a tarc" style="left:${x + 194}px;top:1021px;width:104px;height:104px;overflow:visible" viewBox="0 0 104 104" fill="none"><path class="tarcp" d="M0 0A96 96 0 0 1 96 96" stroke="#cfcfcf" stroke-width="1.3" pathLength="1"/><circle class="tdot" cx="96" cy="96" r="4.5" fill="#957d69"/></svg>`);
+});
+// list
+for (let i = 0; i <= 4; i++) push(box(`left:261px;top:${1290 + 247 * i}px;width:1391px;height:1px;background:#dcdcdc`));
+ROWS.forEach((r, i) => push(`<div class="a trow" style="left:261px;top:${1290 + 247 * i}px;width:1391px;height:247px">` +
+  `<div class="a trnum" style="left:0;top:107px">0${i + 1}</div>` +
+  img(`list/${i + 1}`, 'png', 'class="a tricon" style="left:97px;top:31px;width:200px;height:200px;max-width:none" draggable="false"') +
+  `<div class="a trtitle" style="left:365px;top:0;width:400px;height:247px">${r[0]}</div>` +
+  `<div class="a" style="left:777px;top:73px;width:1px;height:100px;background:#d6d6d6"></div>` +
+  `<div class="a trdesc" style="left:844px;top:0;width:420px;height:247px;white-space:nowrap">${r[1]}</div>` +
+  `<a class="a trbtn" href="#" aria-label="${r[0].replace(/<br>/g, ' ')}" style="left:1283px;top:78px;width:90px;height:90px"><svg width="34" height="14" viewBox="0 0 34 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h31M26 1l6 6-6 6"/></svg></a>` +
+  `</div>`));
+push('</section>');
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
