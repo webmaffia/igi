@@ -349,6 +349,31 @@ CARDS_E.forEach((c, i) => push(`<a class="a ecard erv ed${i + 2}" href="#" style
   push(`<a class="a elink erv ed5" href="#" style="left:${x}px;top:1080px">${t.toUpperCase()}<svg width="16" height="10" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h17M13 1l5 5-5 5"/></svg></a>`));
 push('</section>');
 
+/* ---------- sustainability (#sustain) ---------- */
+const S0 = 13852, SH = 1351;               // directly below the epilogue
+const SARR = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#b8863a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6"/></svg>';
+push(`<section class="a" id="sustain" style="left:0;top:${S0}px;width:1920px;height:${SH}px;background:#f4f2ef;overflow:hidden">`);
+// soft light behind the centre + crosshair and rings
+push(`<div class="a" style="left:360px;top:90px;width:1200px;height:1200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 62%);pointer-events:none"></div>`);
+push(`<svg class="a" style="left:0;top:0;width:1920px;height:${SH}px;pointer-events:none" viewBox="0 0 1920 ${SH}" fill="none"><circle cx="962" cy="734" r="275" stroke="#e7e3dd" stroke-width="1.3"/><circle cx="962" cy="734" r="192" stroke="#e7e3dd" stroke-width="1.3"/><line x1="962" y1="437" x2="962" y2="1034" stroke="#e5d9d0" stroke-width="1.3"/><line x1="715" y1="734" x2="1085" y2="734" stroke="#e5d9d0" stroke-width="1.3"/></svg>`);
+// numbers
+push(`<div class="a srv sd1 snum" style="left:105px;top:280px"><span>01</span><i></i></div>`);
+push(`<div class="a srv sd1 snum" style="left:1685px;top:280px;width:140px;justify-content:flex-end"><i></i><span>02</span></div>`);
+// pictures (their captions are part of the image files)
+push(`<div class="a srv sd2 simg" style="left:105px;top:387px;width:741px;height:377px"><img src="assets/sustain/1.png" alt="" draggable="false"></div>`);
+push(`<div class="a srv sd3 simg" style="left:1078px;top:397px;width:747px;height:383px"><img src="assets/sustain/2.png" alt="" draggable="false"></div>`);
+// left column
+push(box('left:105px;top:845px', 'Sustainability (ESG)', 'slab srv sd4'));
+push(box('left:105px;top:895px;width:700px;color:#957d69;white-space:nowrap', 'INTEGRITY, BEYOND<br>THE STONE.', 'h50 srv sd4'));
+push(box('left:105px;top:1050px;width:640px', 'Our commitments to responsible operations, transparency and the<br>communities we serve.', 'spar srv sd5'));
+push(`<a class="a scta srv sd5" href="#" style="left:105px;top:1163px"><span>OUR ESG APPROACH</span>${SARR}</a>`);
+// right column
+push(box('left:1425px;top:872px;width:400px;text-align:right', 'CSR', 'slab srv sd4'));
+push(box('left:1183px;top:923px;width:650px;color:#957d69;white-space:nowrap', 'GIVING BACK, AROUND<br>THE WORLD.', 'h50 srv sd4'));
+push(box('left:1085px;top:1075px;width:740px;text-align:right;white-space:nowrap', 'Education, community and social initiatives supported by IGI.', 'spar srv sd5'));
+push(`<a class="a scta scta-r srv sd5" href="#" style="left:1520px;top:1163px"><span>VISIT THE CSR MICROSITE</span>${SARR}</a>`);
+push('</section>');
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
