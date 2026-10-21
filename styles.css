@@ -2,7 +2,7 @@
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #viewport{width:100%;overflow:clip}
-#stage{position:relative;width:1920px;height:10513px;overflow:hidden;background:#fff;transform-origin:0 0}
+#stage{position:relative;width:1920px;height:10888px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
 p{margin:0}
@@ -140,9 +140,9 @@ img{max-width:none}
 
 /* #trade */
 .trow{cursor:default}
-.trnum{font:500 22px/30px 'Montserrat',sans-serif;color:#8a8a8a}
-.trtitle{display:flex;align-items:center;font:500 37.5px/48px 'Montserrat',sans-serif;color:#1e1e1e}
-.trdesc{display:flex;align-items:center;font:400 17.2px/28.1px 'Manrope',sans-serif;color:#6d6d6d;letter-spacing:.2px}
+.trnum{font:500 20px/30px 'Montserrat',sans-serif;color:#6d6d6d}
+.trtitle{display:flex;align-items:center;font:500 27px/34px 'Montserrat',sans-serif;color:#1e1e1e}
+.trdesc{display:flex;align-items:center;font:400 16px/30px 'Manrope',sans-serif;color:#6d6d6d;letter-spacing:.2px}
 .trbtn{display:flex;align-items:center;justify-content:center;border:1px solid #c3c3c3;border-radius:50%;color:#8c8c8c;transition:background .3s,color .3s,border-color .3s}
 .trow:hover .trbtn,.trbtn:focus-visible{background:#111;border-color:#111;color:#fff}
 .tricon{transition:transform .6s cubic-bezier(.2,.8,.2,1)}

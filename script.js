@@ -1,7 +1,7 @@
 // The design is authored on a fixed 1920px-wide stage; scale it to the viewport width.
 // The hero is pinned while scrolling: LOVE -> COLOR -> GROWN -> STONE, then the rest of the hero fades in.
 (function () {
-  var DESIGN_W = 1920, DESIGN_H = 10513;
+  var DESIGN_W = 1920, DESIGN_H = 10888;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
   var LEFT_END = 510, RIGHT_START = 1320, EDGE_PAD = 8; // left halves end at LEFT_END, right halves start at RIGHT_START
   var viewport = document.getElementById('viewport');
@@ -72,7 +72,7 @@
     var momentInView = botY > 5480 && topY < 5740;
     fab.classList.toggle('show', s > run * 0.95 && !momentInView);
     // #trade: counters count up and the arcs draw in the first time the row comes on screen
-    if (!tradeIn && botY > TRADE_Y + 1000) { tradeIn = true; trade.classList.add('in'); countUp(); }
+    if (!tradeIn && botY > TRADE_Y + 1250) { tradeIn = true; trade.classList.add('in'); countUp(); }
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep

@@ -264,37 +264,39 @@ push(`<a class="btn solid" href="#" style="left:209px;top:8287px"><span>CAMPUS E
 push('</div>');
 
 /* ---------- the trade (#trade) ---------- */
-const T0 = 8143, TH = 2370;               // section top / height on the stage
+const T0 = 8143, TH = 2745;               // section top / height on the stage
+// [title, description, icon file]  (icon files in assets/list are numbered by artwork, not by row)
 const ROWS = [
-  ['Diamond<br>Screening &amp;<br>Sorting', 'High-throughput detection of<br>laboratory-grown stones and simulants.'],
-  ['Laser Inscription', 'Microscopic inscriptions that link each<br>stone to its report.'],
-  ['Origin Services', 'Documentation that traces a diamond\u2019s<br>journey from its source.'],
-  ['Appraisals &amp;<br>Updated Reports', 'Independent valuations, duplicate and<br>updated reports.']
+  ['Diamond<br>Screening &amp;Sorting', 'High-throughput detection of laboratory-<br>grown stones and simulants.', 1],
+  ['Laser Inscription', 'Microscopic inscriptions that link each stone<br>to its report.', 4],
+  ['Origin Services', 'Documentation that traces a diamond\u2019s<br>journey from its source.', 2],
+  ['Appraisals &amp; Updated<br>Reports', 'Independent valuations, duplicate and<br>updated reports.', 5],
+  ['Registration &amp; Recovery', 'Register diamonds and report loss or theft to<br>support recovery.', 6],
+  ['Retail Training &amp; Co-<br>Branding', 'Equip retail teams with gemological<br>knowledge and branded certification.', 3],
+  ['Tools &amp; Technology', 'Advanced screening equipment and POS<br>solutions for retail.', 7]
 ];
-const COUNTS = [['1975', 1975, '', 'Founded in Antwerp'], ['30+', 30, '+', 'Laboratories worldwide'], ['10+', 10, '+', 'Countries of operation'], ['18', 18, '', 'Schools of Gemology']];
+const COUNTS = [['1975', 1975, '', 'Founded in Antwerp', 101, 330], ['30+', 30, '+', 'Laboratories worldwide', 595, 824], ['10+', 10, '+', 'Countries of operation', 1096, 1325], ['18', 18, '', 'Schools of Gemology', 1597, 1833]];
+const ROW_TOP = 1268, ROW_H = 200;
 push(`<section class="a" id="trade" style="left:0;top:${T0}px;width:1920px;height:${TH}px;background:#f4f4f4">`);
-push(img('list/top', 'png', 'class="a" style="left:943px;top:90px;width:892px;height:830px;max-width:none" draggable="false"'));
-push(box('left:290px;top:112px', 'The Trade \u00b7 Industry', 'eyebrow'));
-push(box('left:290px;top:253px;width:760px;font-size:107px;line-height:104px;color:#1e1e1e', 'Millions<br>Of Stones.<br>One<br>Standard.', 'mont5'));
-push(box('left:290px;top:717px;width:620px;font-size:24px;line-height:46.4px;color:#111;letter-spacing:1.6px', 'From manufacturers and traders to retailers<br>&nbsp;on the high street \u2014 the trade relies on IGI<br>&nbsp;to grade at scale, without ever compromising<br>&nbsp;the standard.', 'man3'));
-push(box('left:261px;top:919px;width:1391px;height:1px;background:#dcdcdc'));
-// counters
+push(img('list/main', 'png', 'class="a" style="left:962px;top:138px;width:767px;height:713px;max-width:none" draggable="false"'));
+push(box('left:208px;top:166px', 'The Trade \u00b7 Industry', 'eyebrow'));
+push(box('left:208px;top:252px;width:900px;font-size:101px;line-height:111px;color:#1e1e1e;white-space:nowrap', 'Millions Of<br>Stones.<br>One Standard.', 'mont5'));
+push(box('left:202px;top:634px;width:620px;font-size:23.5px;line-height:47px;color:#111;letter-spacing:1.5px;white-space:nowrap', 'From manufacturers and traders to retailers<br>&nbsp;on the high street \u2014 the trade relies on IGI<br>&nbsp;to grade at scale, without ever compromising<br>&nbsp;the standard.', 'man3'));
+push(box('left:40px;top:955px;width:1840px;height:1px;background:#dcdcdc'));
 COUNTS.forEach((c, i) => {
-  const x = 261 + 348 * i;
-  if (i) push(box(`left:${x}px;top:1015px;width:1px;height:174px;background:#dcdcdc`));
-  push(box(`left:${x + 64}px;top:1048px;font-size:78px;line-height:90px;color:#111;white-space:nowrap`, `<span class="cnt" data-to="${c[1]}" data-s="${c[2]}">${c[0]}</span>`, 'mont5'));
-  push(box(`left:${x + 64}px;top:1162px;font-size:16px;line-height:24px;color:#8a8a8a;white-space:nowrap`, c[3], 'man4'));
-  push(`<svg class="a tarc" style="left:${x + 194}px;top:1021px;width:104px;height:104px;overflow:visible" viewBox="0 0 104 104" fill="none"><path class="tarcp" d="M0 0A96 96 0 0 1 96 96" stroke="#cfcfcf" stroke-width="1.3" pathLength="1"/><circle class="tdot" cx="96" cy="96" r="4.5" fill="#957d69"/></svg>`);
+  if (i) push(box(`left:${[454, 965, 1473][i - 1]}px;top:1040px;width:1px;height:150px;background:#dcdcdc`));
+  push(box(`left:${c[4]}px;top:1055px;font-size:78px;line-height:90px;color:#111;white-space:nowrap`, `<span class="cnt" data-to="${c[1]}" data-s="${c[2]}">${c[0]}</span>`, 'mont5'));
+  push(box(`left:${c[4]}px;top:1168px;font-size:16px;line-height:24px;color:#8a8a8a;white-space:nowrap`, c[3], 'man4'));
+  push(`<svg class="a tarc" style="left:${c[5] - 96}px;top:1027px;width:104px;height:104px;overflow:visible" viewBox="0 0 104 104" fill="none"><path class="tarcp" d="M0 0A96 96 0 0 1 96 96" stroke="#cfcfcf" stroke-width="1.3" pathLength="1"/><circle class="tdot" cx="96" cy="96" r="4.5" fill="#957d69"/></svg>`);
 });
-// list
-for (let i = 0; i <= 4; i++) push(box(`left:261px;top:${1290 + 247 * i}px;width:1391px;height:1px;background:#dcdcdc`));
-ROWS.forEach((r, i) => push(`<div class="a trow" style="left:261px;top:${1290 + 247 * i}px;width:1391px;height:247px">` +
-  `<div class="a trnum" style="left:0;top:107px">0${i + 1}</div>` +
-  img(`list/${i + 1}`, 'png', 'class="a tricon" style="left:97px;top:31px;width:200px;height:200px;max-width:none" draggable="false"') +
-  `<div class="a trtitle" style="left:365px;top:0;width:400px;height:247px">${r[0]}</div>` +
-  `<div class="a" style="left:777px;top:73px;width:1px;height:100px;background:#d6d6d6"></div>` +
-  `<div class="a trdesc" style="left:844px;top:0;width:420px;height:247px;white-space:nowrap">${r[1]}</div>` +
-  `<a class="a trbtn" href="#" aria-label="${r[0].replace(/<br>/g, ' ')}" style="left:1283px;top:78px;width:90px;height:90px"><svg width="34" height="14" viewBox="0 0 34 14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h31M26 1l6 6-6 6"/></svg></a>` +
+for (let i = 0; i <= ROWS.length; i++) push(box(`left:40px;top:${ROW_TOP + ROW_H * i}px;width:1840px;height:1px;background:#dcdcdc`));
+ROWS.forEach((r, i) => push(`<div class="a trow" style="left:40px;top:${ROW_TOP + ROW_H * i}px;width:1840px;height:${ROW_H}px">` +
+  `<div class="a trnum" style="left:229px;top:${ROW_H / 2 - 15}px">0${i + 1}</div>` +
+  img(`list/${r[2]}`, 'png', `class="a tricon" style="left:322px;top:${ROW_H / 2 - 72}px;width:145px;height:145px;max-width:none" draggable="false"`) +
+  `<div class="a trtitle" style="left:589px;top:0;width:420px;height:${ROW_H}px">${r[0]}</div>` +
+  `<div class="a" style="left:1003px;top:${ROW_H / 2 - 50}px;width:1px;height:100px;background:#d6d6d6"></div>` +
+  `<div class="a trdesc" style="left:1073px;top:0;width:430px;height:${ROW_H}px;white-space:nowrap">${r[1]}</div>` +
+  `<a class="a trbtn" href="#" aria-label="${r[0].replace(/<br>/g, ' ')}" style="left:1508px;top:${ROW_H / 2 - 32}px;width:64px;height:64px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M10 2v16M2 10h16"/></svg></a>` +
   `</div>`));
 push('</section>');
 
