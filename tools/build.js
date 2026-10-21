@@ -328,7 +328,7 @@ push(`<div class="a wrv wd3 wpills" style="left:518px;top:1365px;width:883px;hei
 push('</section>');
 
 /* ---------- epilogue: media & events (#epilogue) ---------- */
-const E0 = 12448, EH = 1404;               // directly below #world
+const E0 = 12448, EH = 1190;               // directly below #world
 const ARR = '<svg width="20" height="12" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h17M13 1l5 5-5 5"/></svg>';
 const CARDS_E = [
   { x: 105, w: 640, img: 1, tag: 'PRESS RELEASE', tagX: 15, tagW: 165, title: 'Headline For The Lead Press Release Sits<br>Here, Across Two Lines.', sub: 'Short standfirst summarising the announcement. \u00b7 [Date]' },
@@ -350,9 +350,10 @@ CARDS_E.forEach((c, i) => push(`<a class="a ecard erv ed${i + 2}" href="#" style
 push('</section>');
 
 /* ---------- sustainability (#sustain) ---------- */
-const S0 = 13852, SH = 1351;               // directly below the epilogue
+const S0 = 13638, SH = 1171, SLIFT = 180;   // content lifted 180px to close the empty band above the numbers               // directly below the epilogue
 const SARR = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#b8863a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6"/></svg>';
 push(`<section class="a" id="sustain" style="left:0;top:${S0}px;width:1920px;height:${SH}px;background:#f4f2ef;overflow:hidden">`);
+push(`<div class="a" style="left:0;top:-${SLIFT}px;width:1920px;height:${SH + SLIFT}px">`);
 // soft light behind the centre (the line artwork bg.png is the section's CSS background)
 push(`<div class="a" style="left:360px;top:90px;width:1200px;height:1200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 62%);pointer-events:none"></div>`);
 // numbers
@@ -371,6 +372,7 @@ push(box('left:1425px;top:872px;width:400px;text-align:right', 'CSR', 'slab srv 
 push(box('left:1183px;top:923px;width:650px;color:#957d69;white-space:nowrap', 'GIVING BACK, AROUND<br>THE WORLD.', 'h50 srv sd4'));
 push(box('left:1085px;top:1075px;width:740px;text-align:right;white-space:nowrap', 'Education, community and social initiatives supported by IGI.', 'spar srv sd5'));
 push(`<a class="a scta scta-r srv sd5" href="#" style="left:1520px;top:1163px"><span>VISIT THE CSR MICROSITE</span>${SARR}</a>`);
+push('</div>');
 push('</section>');
 
 const html = `<!doctype html>

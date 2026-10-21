@@ -2,7 +2,7 @@
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #viewport{width:100%;overflow:clip}
-#stage{position:relative;width:1920px;height:15203px;overflow:hidden;background:#fff;transform-origin:0 0}
+#stage{position:relative;width:1920px;height:14819px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
 p{margin:0}
