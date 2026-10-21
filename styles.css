@@ -164,3 +164,6 @@ img{max-width:none}
 .tdot{opacity:0;transition:opacity .4s 1.1s}
 #trade.in .tarcp{stroke-dashoffset:0}
 #trade.in .tdot{opacity:1}
+/* the big word rises from a little further below than the other step text */
+.lstep.bigw{translate:0 90px}
+.lstep.bigw.on{translate:0 0}
