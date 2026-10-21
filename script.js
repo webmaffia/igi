@@ -1,7 +1,7 @@
 // The design is authored on a fixed 1920px-wide stage; scale it to the viewport width.
 // The hero is pinned while scrolling: LOVE -> COLOR -> GROWN -> STONE, then the rest of the hero fades in.
 (function () {
-  var DESIGN_W = 1920, DESIGN_H = 10888;
+  var DESIGN_W = 1920, DESIGN_H = 12353;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
   var LEFT_END = 510, RIGHT_START = 1320, EDGE_PAD = 8; // left halves end at LEFT_END, right halves start at RIGHT_START
   var viewport = document.getElementById('viewport');
@@ -16,7 +16,7 @@
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
-  var trade = document.getElementById('trade'), tradeIn = false, TRADE_Y = 8143;
+  var trade = document.getElementById('trade'), tradeIn = false, worldIn = false, TRADE_Y = 8143;
   function countUp() {
     [].slice.call(trade.querySelectorAll('.cnt')).forEach(function (b) {
       var to = +b.dataset.to, suf = b.dataset.s || '', from = to > 1000 ? 1900 : 0, t0 = performance.now();
@@ -72,6 +72,7 @@
     var momentInView = botY > 5480 && topY < 5740;
     fab.classList.toggle('show', s > run * 0.95 && !momentInView);
     // #trade: counters count up and the arcs draw in the first time the row comes on screen
+    if (!worldIn && botY > 10888 + 700) { worldIn = true; document.getElementById('world').classList.add('in'); }
     if (!tradeIn && botY > TRADE_Y + 1250) { tradeIn = true; trade.classList.add('in'); countUp(); }
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);

@@ -300,6 +300,17 @@ ROWS.forEach((r, i) => push(`<div class="a trow" style="left:40px;top:${ROW_TOP 
   `</div>`));
 push('</section>');
 
+/* ---------- the world (#world) ---------- */
+const W0 = 10888, WH = 1465;              // directly below #trade
+push(`<section class="a" id="world" style="left:0;top:${W0}px;width:1920px;height:${WH}px;background:#f8f7f4;overflow:hidden">`);
+push(img('map/map', 'png', 'class="a wmap" style="left:115px;top:463px;width:1670px;height:942px;max-width:none" draggable="false"'));
+// soft pulse on the Antwerp dot (dot is at 727,348 inside the 1670x942 image)
+push(`<div class="a wpulse" style="left:${115 + 727 - 18}px;top:${463 + 348 - 18}px;width:36px;height:36px"></div>`);
+push(box('left:0;top:78px;width:1920px;text-align:center', 'The World \u00b7 About IGI', 'eyebrow wrv'));
+push(box('left:0;top:166px;width:1920px;text-align:center;font-size:79px;line-height:91.5px;color:#1e1e1e;white-space:nowrap', 'It Began In Antwerp, 1975.<br>Now It Travels everywhere<br><span style="color:#b99a6a">Diamonds Do.</span>', 'mont5 wrv wd1'));
+push(box('left:0;top:462px;width:1920px;text-align:center;font-size:26px;line-height:45px;color:#111;white-space:nowrap', 'Laboratories and schools in the world\u2019s great diamond and jewellery<br>centres \u2014 one standard, wherever you are.', 'man4 wrv wd2'));
+push('</section>');
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
