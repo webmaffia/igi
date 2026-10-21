@@ -29,6 +29,7 @@ push(box(inset(0.12, 22.66, 89.14, 17.34), img('glow1', 'svg', 'class="fill"')))
 push(bg(7459, 1093));
 
 /* ---------- header ---------- */
+push('<div class="a" id="site-header" style="left:0;top:0">');
 push(box('left:74px;top:40px;width:154px;height:66px', img('untitled21', 'png', 'class="cover"')));
 push(`<nav class="a" style="left:732px;top:49px;width:357px;height:24px">
   <a class="navlink" href="#customers" style="left:0">Customers</a>
@@ -38,6 +39,7 @@ const hbtn = (frame, label) => `<a class="hbtn" href="#">${img(label ? 'ibtn' : 
 const hpill = (bgName, frame, label, w) => `<a class="hpill" href="#" style="width:${w}px">${img(bgName, 'svg', 'class="hbg"')}<span class="hin">${frame ? img(frame, 'svg', 'class="hico"') : ''}<span class="inter">${label}</span></span></a>`;
 push(`<div class="a hdr-row" style="left:1470px;top:30px">` +
   hbtn('frame') + hbtn('frame1') + hpill('pill', 'frame2', 'Verify Report', 146.5) + hbtn('frame3') + hpill('pill1', null, 'Menu', 79) + `</div>`);
+push('</div>');
 
 /* ---------- hero ---------- */
 push(`<div class="a" id="hero" style="left:0;top:0">`);
