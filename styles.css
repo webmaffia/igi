@@ -131,3 +131,13 @@ img{max-width:none}
 .wquad.on:hover{background:transparent}
 .wtab.hov{color:#957d69}
 #cgem{pointer-events:none}
+
+/* fixed "verify a report" bar */
+.fab{position:fixed;left:50%;bottom:26px;z-index:55;display:flex;align-items:center;gap:12px;padding:7px 7px 7px 24px;border-radius:50px;background:#262c35;border:1px solid rgba(255,255,255,.06);box-shadow:0 20px 40px -10px rgba(0,0,0,.45);transform:translate(-50%,170%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.fab.show{transform:translate(-50%,0)}
+.fab input{width:230px;background:transparent;border:0;outline:0;color:#fff;font:400 15px/1 'Manrope',sans-serif}
+.fab input::placeholder{color:#8496b0}
+.fab button{border:0;border-radius:50px;padding:13px 24px;background:#bf9c5a;color:#fff;font:700 13px/1 'Manrope',sans-serif;letter-spacing:1.4px;text-transform:uppercase;cursor:pointer;transition:background .25s}
+.fab button:hover{background:#a9874d}
+.fab:focus-within{box-shadow:0 0 0 2px rgba(191,156,90,.6),0 20px 40px -10px rgba(0,0,0,.45)}
+@media(max-width:600px){.fab input{width:140px}}

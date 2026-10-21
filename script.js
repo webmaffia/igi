@@ -15,6 +15,7 @@
   var words = [].slice.call(document.querySelectorAll('.word'));
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fab = document.getElementById('fab');
   var lab = document.getElementById('lab');
   var lsteps = [].slice.call(lab.querySelectorAll('.lstep')), csteps = [].slice.call(lab.querySelectorAll('.cstep'));
   var tabs = [].slice.call(lab.querySelectorAll('.steps span')), fills = [].slice.call(lab.querySelectorAll('.tabfill'));
@@ -55,6 +56,10 @@
     else off = s - run - labRun - repRun;
     stage.style.transform = 'translate3d(0,' + (-off) + 'px,0) scale(' + scale + ')';
     var p = run ? clamp(s / run, 0, 1) : 1;
+    // fixed verify bar: shows once the hero is over, hides while the #moment form is on screen
+    var topY = off / scale, botY = (off + window.innerHeight) / scale;
+    var momentInView = botY > 5480 && topY < 5740;
+    fab.classList.toggle('show', s > run * 0.95 && !momentInView);
     var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
     var fl = Math.min(Math.floor(x), 2);
     var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep
@@ -256,6 +261,14 @@
     });
     setC('carat');
   })();
+
+  // the fixed bar hands the number over to the #moment form and scrolls to it
+  fab.addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('vnum').value = document.getElementById('fabnum').value;
+    window.scrollTo({ top: 4834 * scale + run + labRun + repRun, behavior: 'smooth' });
+    setTimeout(function () { document.getElementById('vnum').focus({ preventScroll: true }); }, 700);
+  });
 
   fitWords();
   fitTitles();
