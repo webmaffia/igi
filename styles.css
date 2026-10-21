@@ -216,10 +216,7 @@ img{max-width:none}
 .fform button:hover{background:#957d69}
 .fform:focus-within{box-shadow:0 0 0 2px rgba(149,125,105,.5)}
 .wmap{mix-blend-mode:darken}
-.diaw{transition:opacity .6s}
-#lab[data-s="4"] .diaw{opacity:0}
 /* built report card (Report step) */
-.rpt{box-sizing:border-box;background:#fff;border:1px solid #e8e6e1;border-radius:4px;padding:26px 34px 22px;rotate:-3deg;box-shadow:0 28px 50px -26px rgba(18,32,43,.28);display:flex;flex-direction:column}
 .rpt-top{display:flex;align-items:center;gap:18px;border-bottom:1.5px solid #1e1e1e;padding-bottom:14px;margin-bottom:6px}
 .rpt-logo{width:78px;height:auto;flex:none;display:block}
 .rpt-ttl{display:flex;flex-direction:column;gap:3px}
@@ -231,3 +228,13 @@ img{max-width:none}
 .rpt-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;height:62px}
 .rpt-foot>span{font:400 13.5px/1 'Manrope',sans-serif;color:#8a8a8a}
 .rpt-stamp{width:66px;height:66px;border:1.5px solid #957d69;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font:700 9.5px/12px 'Montserrat',sans-serif;letter-spacing:2px;color:#957d69;rotate:-12deg}
+.rpt{box-sizing:border-box;background:#fff;border:1px solid #ebe9e4;border-radius:3px;padding:22px 34px 14px;box-shadow:0 22px 44px -26px rgba(18,32,43,.3);display:flex;flex-direction:column}
+.rpt-top{padding-bottom:12px;margin-bottom:2px}
+.rpt-logo{width:66px}
+.rpt-ttl b{font-size:15px;line-height:20px}
+.rpt-ttl span{font-size:12.5px;line-height:16px}
+.rpt-row span{font-size:15px}.rpt-row b{font-size:15.5px}
+.rpt-foot{margin-top:6px;height:56px}
+.rpt-stamp{width:58px;height:58px;font-size:8.5px;line-height:11px}
+.cpanel,.cpoly{transition:opacity .6s}
+#lab[data-s="4"] .cpanel,#lab[data-s="4"] .cpoly{opacity:0}
