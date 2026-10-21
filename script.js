@@ -3,7 +3,7 @@
 (function () {
   var DESIGN_W = 1920, DESIGN_H = 8552;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
-  var LEFT_END = 510, RIGHT_START = 1320, LEFT_ROOM = 470, RIGHT_ROOM = 580; // left halves end at LEFT_END, right halves start at RIGHT_START
+  var LEFT_END = 510, RIGHT_START = 1320, EDGE_PAD = 8; // left halves end at LEFT_END, right halves start at RIGHT_START
   var viewport = document.getElementById('viewport');
   var pin = document.getElementById('pin');
   var stage = document.getElementById('stage');
@@ -21,23 +21,16 @@
   var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
   var easeOut = function (t) { t = clamp(t, 0, 1); return 1 - Math.pow(1 - t, 3); };
 
-  // one shared size for every word: the widest half decides, so nothing touches the circle.
-  // all words share one baseline and the diamond slot stays fixed
+  // every word uses the same 347px size and baseline around the fixed diamond slot;
+  // a half that would run off the screen is nudged inward just enough to stay visible
   function fitWords() {
-    words.forEach(function (w) {
-      w.querySelectorAll('.wl, .wr').forEach(function (el) { el.style.fontSize = WORD_FONT + 'px'; });
-    });
-    var f = 1;
-    words.forEach(function (w) {
-      f = Math.min(f, LEFT_ROOM / w.querySelector('.wl').offsetWidth, RIGHT_ROOM / w.querySelector('.wr').offsetWidth);
-    });
-    var size = WORD_FONT * f, top = BASELINE - ASCENT * size;
+    var top = BASELINE - ASCENT * WORD_FONT;
     words.forEach(function (w) {
       var l = w.querySelector('.wl'), r = w.querySelector('.wr');
-      l.style.fontSize = r.style.fontSize = size + 'px';
+      l.style.fontSize = r.style.fontSize = WORD_FONT + 'px';
       l.style.top = r.style.top = top + 'px';
-      l.style.left = (LEFT_END - l.offsetWidth) + 'px';
-      r.style.left = RIGHT_START + 'px';
+      l.style.left = Math.max(EDGE_PAD, LEFT_END - l.offsetWidth) + 'px';
+      r.style.left = Math.min(RIGHT_START, DESIGN_W - EDGE_PAD - r.offsetWidth) + 'px';
     });
   }
 

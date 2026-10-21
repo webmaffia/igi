@@ -57,7 +57,7 @@ push(`<div class="a" id="hero-ring">` +
   `</div></div>`);
 
 // scroll-driven words: the diamond sits where the O is; STONE is the final word
-const words = [['L', 'VE'], ['C', 'LOR'], ['GR', 'WN'], ['ST', 'NE']];
+const words = [['L', 'VE'], ['CR', 'WN'], ['GR', 'WN'], ['ST', 'NE']];
 push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
   `<div class="word${i === words.length - 1 ? ' final' : ''}" data-i="${i}"><span class="wl">${w[0]}</span><span class="wr">${w[1]}</span></div>`).join('') + `</div>`);
 push(box('left:595px;top:371px;width:640px;height:427px', img('diamond', 'png', 'class="cover"')));
