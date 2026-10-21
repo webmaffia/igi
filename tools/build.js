@@ -164,13 +164,12 @@ push(box('left:calc(50% + 20px);top:3047px;width:582px;height:388px;transform:tr
 // Report step: a portrait grading-report page (like the real certificate), up on the right where the small card was
 const GRES = [['Shape &amp; Cut', 'Round Brilliant'], ['Carat Weight', '1.02 ct'], ['Color Grade', 'F'], ['Clarity Grade', 'VVS2'], ['Cut Grade', 'Excellent']];
 const GADD = [['Polish', 'Excellent'], ['Symmetry', 'Excellent'], ['Fluorescence', 'None'], ['Inscription', 'IGI XX000000000']];
-push(`<div class="a ov o4 rpt" style="left:1140px;top:2836px;width:400px;height:560px">` +
+push(`<div class="a ov o4 rpt" style="left:1548px;top:2836px;width:350px;height:560px">` +
   `<div class="rpt-in">` +
     `<div class="rpt-head">${img('social/logo', 'png', 'class="rpt-logo" draggable="false"')}<b>Natural Diamond<br>Grading Report</b></div>` +
     `<div class="rpt-meta"><div><span>Report No.</span><b>XX 000 000 000</b></div><div><span>Date</span><b>00 Month 0000</b></div></div>` +
     `<div class="rpt-sec">Grading Results</div>` +
-    `<div class="rpt-res"><div class="rpt-tbl">` + GRES.map(r => `<div class="rpt-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('') + `</div>` +
-      `<div class="rpt-dia">${img('diamond', 'png', 'draggable="false"')}</div></div>` +
+    `<div class="rpt-res"><div class="rpt-tbl">` + GRES.map(r => `<div class="rpt-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('') + `</div></div>` +
     `<div class="rpt-sec">Additional Information</div>` +
     `<div class="rpt-tbl">` + GADD.map(r => `<div class="rpt-row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('') + `</div>` +
     `<div class="rpt-foot"><div class="rpt-bar"></div><div class="rpt-ver"><span>Verify online</span><b>igi.org</b></div><div class="rpt-stamp">IGI<br>VERIFIED</div></div>` +
