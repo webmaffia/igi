@@ -142,6 +142,7 @@
       var natV = clamp(1 + Math.min(0, t) * 2.2, 0, 1);  // moving left hides the natural copy
       txtLab.style.opacity = labV; txtLab.style.translate = (1 - labV) * 40 + 'px 0';
       txtNat.style.opacity = natV; txtNat.style.translate = -(1 - natV) * 40 + 'px 0';
+      txtLab.style.pointerEvents = labV < 0.3 ? 'none' : ''; txtNat.style.pointerEvents = natV < 0.3 ? 'none' : '';
       knob.setAttribute('aria-valuenow', Math.round(cx / DESIGN_W * 100));
     }
     function fromEvent(e) { return (e.clientX - stage.getBoundingClientRect().left) / scale; }
