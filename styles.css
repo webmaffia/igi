@@ -212,5 +212,5 @@ img{max-width:none}
 .scta-r{min-width:300px;justify-content:space-between}
 .scta svg{transition:transform .3s}
 .scta:hover svg{transform:translateX(6px)}
-/* bg.png fills the whole #sustain section */
-#sustain{background:url(assets/sustain/bg.png) center/cover no-repeat,#f4f2ef!important}
+/* bg.png starts at the top of #sustain, full width at its natural proportions */
+#sustain{background:url(assets/sustain/bg.png) center top/1920px auto no-repeat,#f4f2ef!important}
