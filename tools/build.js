@@ -82,7 +82,7 @@ push(box('left:571.47px;top:1633.46px;width:777.058px;height:777.058px', img('el
 const ARC = (id, extra) => `<div class="a" id="${id}" style="left:571.47px;top:1633.46px;width:777.058px;height:777.058px;${extra}">` +
   `<div class="a rc" style="left:388.53px;top:0;width:388.529px;height:777.058px"><div style="flex:none;position:relative;width:777.058px;height:388.529px;transform:rotate(90deg)"><div class="a" style="inset:-0.64% -0.32% 0 -0.32%">${img('ellipse17', 'svg', 'class="fill"')}</div></div></div>` +
   line(388.53, -3.46, 8, 90, 'line11') + line(388.53, 777.54, 8, 90, 'line11')  + `</div>`;
-push(ARC('arc', ''));
+push(ARC('arc', 'opacity:0'));
 push(ARC('arcL', 'transform:scaleX(-1);opacity:0'));
 push(line(1349, 2029, 8, 0, 'line10').replace('left:1345px', 'left:1345px'));
 push(box('left:502.18px;top:1564.17px;width:915.642px;height:915.642px', img('ellipse13', 'svg', 'class="fill"')));

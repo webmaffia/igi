@@ -144,8 +144,8 @@
       knob.style.left = (cx - KNOB_R) + 'px';
       lab.style.clipPath = 'inset(0 0 0 ' + clamp((cx - CMP_L) / CMP_W, 0, 1) * 100 + '%)';
       var t = (cx - MID) / REACH;                       // -1 (left stop) .. 1 (right stop)
-      // the grey half-arc stays left/right: right half while lab-grown, left half once natural takes over
-      arc.style.opacity = t <= 0 ? 1 : clamp(1 - t * 2.2, 0, 1);
+      // the grey half-arc is hidden at the start; dragging left shows the right half (lab-grown), dragging right shows the left half (natural)
+      arc.style.opacity = clamp(-t * 2.2, 0, 1);
       arcL.style.opacity = clamp(t * 2.2, 0, 1);
       // dragged left: the new lab-grown copy takes the left side and the original lab-grown copy stays on the right.
       // dragged right: the new natural copy takes the right side and the original natural copy stays on the left.
