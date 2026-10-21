@@ -301,7 +301,7 @@ ROWS.forEach((r, i) => push(`<div class="a trow" style="left:40px;top:${ROW_TOP 
 push('</section>');
 
 /* ---------- the world (#world) ---------- */
-const W0 = 10888, WH = 1465;              // directly below #trade
+const W0 = 10888, WH = 1560;              // directly below #trade
 push(`<section class="a" id="world" style="left:0;top:${W0}px;width:1920px;height:${WH}px;background:#f8f7f4;overflow:hidden">`);
 push(img('map/map', 'png', 'class="a wmap" style="left:115px;top:463px;width:1670px;height:942px;max-width:none" draggable="false"'));
 // soft pulse on the Antwerp dot (dot is at 727,348 inside the 1670x942 image)
@@ -309,6 +309,12 @@ push(`<div class="a wpulse" style="left:${115 + 727 - 18}px;top:${463 + 348 - 18
 push(box('left:0;top:78px;width:1920px;text-align:center', 'The World \u00b7 About IGI', 'eyebrow wrv'));
 push(box('left:0;top:166px;width:1920px;text-align:center;font-size:79px;line-height:91.5px;color:#1e1e1e;white-space:nowrap', 'It Began In Antwerp, 1975.<br>Now It Travels everywhere<br><span style="color:#b99a6a">Diamonds Do.</span>', 'mont5 wrv wd1'));
 push(box('left:0;top:462px;width:1920px;text-align:center;font-size:26px;line-height:45px;color:#111;white-space:nowrap', 'Laboratories and schools in the world\u2019s great diamond and jewellery<br>centres \u2014 one standard, wherever you are.', 'man4 wrv wd2'));
+// location picker + links (pills), below the map
+push(`<div class="a wrv wd3 wpills" style="left:518px;top:1365px;width:883px;height:68px">` +
+  `<div class="wsel" style="left:0;width:316px"><select aria-label="Find a location"><option>Choose a laboratory or school…</option><option>Antwerp</option><option>Mumbai</option><option>New York</option><option>Dubai</option><option>Hong Kong</option><option>Tel Aviv</option><option>Bangkok</option><option>Tokyo</option></select><svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l6 6 6-6"/></svg></div>` +
+  `<a class="wpill" href="#" style="left:345px;width:212px">Find a Store Near You</a>` +
+  `<a class="wpill" href="#" style="left:586px;width:133px">Our Legacy</a>` +
+  `<a class="wpill" href="#" style="left:748px;width:135px">Leadership</a></div>`);
 push('</section>');
 
 const html = `<!doctype html>

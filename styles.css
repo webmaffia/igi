@@ -2,7 +2,7 @@
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #viewport{width:100%;overflow:clip}
-#stage{position:relative;width:1920px;height:12353px;overflow:hidden;background:#fff;transform-origin:0 0}
+#stage{position:relative;width:1920px;height:12448px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
 p{margin:0}
@@ -171,3 +171,9 @@ img{max-width:none}
 .wpulse{border-radius:50%;border:1.5px solid rgba(190,155,94,.7);opacity:0;pointer-events:none}
 #world.in .wpulse{animation:wpulse 2.6s ease-out 1.4s infinite}
 @keyframes wpulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+.wd3{transition-delay:.55s}
+.wsel,.wpill{position:absolute;top:0;height:68px;border:1px solid #d6d3cc;border-radius:34px;background:transparent;transition:background .25s,border-color .25s}
+.wsel select{position:absolute;inset:0;width:100%;height:100%;padding:0 60px 0 30px;border:0;background:transparent;font:400 15.5px/1 'Manrope',sans-serif;color:#111;appearance:none;-webkit-appearance:none;cursor:pointer;outline:0;border-radius:34px;text-overflow:ellipsis}
+.wsel svg{position:absolute;right:30px;top:29px;pointer-events:none}
+.wpill{display:flex;align-items:center;justify-content:center;font:400 15.5px/1 'Manrope',sans-serif;color:#111;white-space:nowrap}
+.wsel:hover,.wpill:hover,.wsel:focus-within{background:#fff;border-color:#b99a6a}
