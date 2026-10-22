@@ -110,10 +110,10 @@ push(line(571, 2030, 8, 0, 'line10'));
 const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
   push(`<div class="a side" id="${id}" style="left:0;top:0">`);
   if (cta) {
-    // long copy (shown while dragging): no small label on top (the other side already shows it), smaller heading so it clears the rings, plus a CTA
-    push(box(`left:${left}px;top:${top + 40}px;font-size:36px;line-height:47px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
-    push(box(`left:${left + 2}px;top:${top + 166}px;width:330px`, body, 'body18'));
-    push(box(`left:${left + 2}px;top:2212px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
+    // long copy (shown while dragging): no small label on top (the other side already shows it); heading uses the same size and top as the original copy, plus a CTA
+    push(box(`left:${left}px;top:${top + 96}px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
+    push(box(`left:${left + 2}px;top:${top + 222}px;width:330px`, body, 'body18'));
+    push(box(`left:${left + 2}px;top:2290px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
   } else {
     push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
     // original design copy (shown at the start, with the handle in the middle)
