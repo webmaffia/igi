@@ -2,7 +2,7 @@
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #viewport{width:100%;overflow:clip}
-#stage{position:relative;width:1920px;height:15704px;overflow:hidden;background:#fff;transform-origin:0 0}
+#stage{position:relative;width:1920px;height:15933px;overflow:hidden;background:#fff;transform-origin:0 0}
 .a{position:absolute}
 .rc{display:flex;align-items:center;justify-content:center}
 p{margin:0}
@@ -199,7 +199,7 @@ img{max-width:none}
 .scta svg{transition:transform .3s}
 .scta:hover svg{transform:translateX(6px)}
 /* bg.png: its line artwork starts ~120px below the file's top edge, so it is scaled up and pulled up to start at the section's top edge and still reach the bottom */
-#sustain{background:url(assets/sustain/bg.png) 50% -139px/2090px auto no-repeat,#f4f2ef!important}
+#sustain{background:url(assets/sustain/bg.png) 50% -167px/2500px auto no-repeat,#f4f2ef!important}
 
 /* #footer */
 .fsoc{display:flex;align-items:center;justify-content:center}

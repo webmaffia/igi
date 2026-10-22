@@ -361,10 +361,12 @@ CARDS_E.forEach((c, i) => push(`<a class="a ecard erv ed${i + 2}" href="#" style
 push('</section>');
 
 /* ---------- sustainability (#sustain) ---------- */
-const S0 = 13638, SH = 1171, SLIFT = 180;   // content lifted 180px to close the empty band above the numbers               // directly below the epilogue
+const S0 = 13638, SH = 1400, SLIFT = -50;   // directly below the epilogue; content sits 50px lower to make room for the heading
 const SARR = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="#b8863a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6"/></svg>';
 push(`<section class="a" id="sustain" style="left:0;top:${S0}px;width:1920px;height:${SH}px;background:#f4f2ef;overflow:hidden">`);
 push(`<div class="a" style="left:0;top:-${SLIFT}px;width:1920px;height:${SH + SLIFT}px">`);
+push(box('left:105px;top:43px', 'Sustainability · ESG &amp; CSR', 'eyebrow'));
+push(box('left:105px;top:100px;font-size:81px;line-height:110px;color:#12202b;white-space:nowrap', 'Responsible By <span style="color:#b99a6a">Design.</span>', 'mont5'));
 // soft light behind the centre (the line artwork bg.png is the section's CSS background)
 push(`<div class="a" style="left:360px;top:90px;width:1200px;height:1200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 62%);pointer-events:none"></div>`);
 // numbers
@@ -387,7 +389,7 @@ push('</div>');
 push('</section>');
 
 /* ---------- footer (#footer) ---------- */
-const F0 = 14809, FH = 895;                 // directly below #sustain
+const F0 = 15038, FH = 895;                 // directly below #sustain
 const COLS = [
   ['Company', 645, ['Careers', 'Life at IGI', 'Investors', 'Affiliations', 'RJC']],
   ['Contact Us', 950, ['Offices', 'Schools', 'Write to Us', 'Report Concerns']],
