@@ -57,7 +57,7 @@ push(`<div class="a" id="hero-ring">` +
   `</div></div>`);
 
 // scroll-driven words: the diamond sits where the O is; STONE is the final word
-// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, JOY = round diamond, ADORE = square diamond, STONE = the diamond
+// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, JOY and ADORE = square portraits shown whole in the circle, STONE = the diamond
 const words = [['L', 'VE'], ['J', 'Y'], ['AD', 'RE'], ['ST', 'NE']];
 // glow.png has a white backdrop: only its outer rim is feathered, the whole picture stays visible
 const SOFT = '-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%)';
@@ -65,8 +65,8 @@ const WIMG = [
   // LOVE: the photo fills the whole circle (clean circular crop, no soft edge); sits just inside the ring so the ring and arc stay visible
   `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px;border-radius:50%;overflow:hidden"><img src="assets/hero/love.png" alt="" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:56% 50%;display:block"></div>`,
   // CROWN / GLOW / STONE: full pictures in exactly the diamond's box (640x427)
-  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('hero/JOY', 'png', 'class="cover" draggable="false"')}</div>`,
-  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('hero/Adore', 'png', 'class="cover" draggable="false"')}</div>`,
+  `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px"><img src="assets/hero/JOY.png" alt="" draggable="false" style="width:100%;height:100%;display:block"></div>`,
+  `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px"><img src="assets/hero/Adore.png" alt="" draggable="false" style="width:100%;height:100%;display:block"></div>`,
   `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
 ];
 push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
