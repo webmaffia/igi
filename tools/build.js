@@ -109,21 +109,21 @@ push(line(571, 2030, 8, 0, 'line10'));
 
 const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
   push(`<div class="a side" id="${id}" style="left:0;top:0">`);
-  push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
   if (cta) {
-    // long copy (shown while dragging): smaller heading so it clears the rings, plus a CTA
-    push(box(`left:${left}px;top:${top + 96}px;font-size:36px;line-height:47px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
-    push(box(`left:${left + 2}px;top:${top + 222}px;width:330px`, body, 'body18'));
-    push(box(`left:${left + 2}px;top:2268px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
+    // long copy (shown while dragging): no small label on top (the other side already shows it), smaller heading so it clears the rings, plus a CTA
+    push(box(`left:${left}px;top:${top + 40}px;font-size:36px;line-height:47px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
+    push(box(`left:${left + 2}px;top:${top + 166}px;width:330px`, body, 'body18'));
+    push(box(`left:${left + 2}px;top:2212px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
   } else {
+    push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
     // original design copy (shown at the start, with the handle in the middle)
     push(box(`left:${left}px;top:${top + 96}px`, `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`, 'h50'));
     push(box(`left:${left + 2}px;top:${top + 222}px;width:282px`, body, 'body18'));
   }
   push('</div>');
 };
-const NAT = ['NATURAL DIAMOND', 'Shaped', 'by nature', 'Born deep within the Earth, natural diamonds form over billions of years under extraordinary heat and pressure. Rare, enduring and timeless, each carries a story shaped by nature — and no two are exactly alike.', 'Natural diamonds'];
-const LAB = ['LAB-GROWN DIAMOND', 'Created', 'by innovation', 'Grown with advanced technology that replicates nature’s own process, lab-grown diamonds share the same physical, chemical and optical properties as natural ones. Modern in origin, identical in composition, and made to shine just as beautifully.', 'Lab grown diamonds'];
+const NAT = ['NATURAL DIAMOND', 'Shaped', 'by nature', 'Born deep within the Earth, natural diamonds form over billions of years under extraordinary heat and pressure. Rare, enduring and timeless, each carries a story shaped by nature — and no two are exactly alike.', 'Know more'];
+const LAB = ['LAB-GROWN DIAMOND', 'Created', 'by innovation', 'Grown with advanced technology that replicates nature’s own process, lab-grown diamonds share the same physical, chemical and optical properties as natural ones. Modern in origin, identical in composition, and made to shine just as beautifully.', 'Know more'];
 // start (handle in the middle): the original short copy on each side; dragging brings in the longer copy on the side you drag toward
 const ORIG = 'Created deep within the Earth under intense heat and pressure over millions of years.';
 side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', ORIG, null, 'txt-natL');
