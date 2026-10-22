@@ -57,8 +57,8 @@ push(`<div class="a" id="hero-ring">` +
   `</div></div>`);
 
 // scroll-driven words: the diamond sits where the O is; STONE is the final word
-// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, CROWN = crown, GLOW = glow, STONE = the diamond
-const words = [['L', 'VE'], ['CR', 'WN'], ['GL', 'W'], ['ST', 'NE']];
+// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, JOY = crown, ADORE = glow, STONE = the diamond
+const words = [['L', 'VE'], ['J', 'Y'], ['AD', 'RE'], ['ST', 'NE']];
 // glow.png has a white backdrop: only its outer rim is feathered, the whole picture stays visible
 const SOFT = '-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%)';
 const WIMG = [
