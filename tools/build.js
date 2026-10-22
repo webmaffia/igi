@@ -127,12 +127,13 @@ const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
 };
 const NAT = ['NATURAL DIAMOND', 'Shaped', 'by nature', 'Born deep within the Earth, natural diamonds form over billions of years under extraordinary heat and pressure. Rare, enduring and timeless, each carries a story shaped by nature — and no two are exactly alike.', 'Know more'];
 const LAB = ['LAB-GROWN DIAMOND', 'Created', 'by innovation', 'Grown with advanced technology that replicates nature’s own process, lab-grown diamonds share the same physical, chemical and optical properties as natural ones. Modern in origin, identical in composition, and made to shine just as beautifully.', 'Know more'];
+// all four copies share one top (1805) so the headings line up when the copy swaps sides;
 // start (handle in the middle): the original short copy on each side; dragging brings in the longer copy on the side you drag toward
 const ORIG = 'Created deep within the Earth under intense heat and pressure over millions of years.';
-side(126, 1815, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', ORIG, null, 'txt-natL');
-side(1511, 1795, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', ORIG, null, 'txt-labR');
-side(126, 1815, ...LAB, 'txt-labL');
-side(1480, 1795, ...NAT, 'txt-natR');
+side(126, 1805, 'NATURAL DIAMOND', 'FORMED', 'BY TIME', ORIG, null, 'txt-natL');
+side(1511, 1805, 'LAB-GROWN DIAMOND', 'GROWN', 'BY SCIENCE', ORIG, null, 'txt-labR');
+side(126, 1805, ...LAB, 'txt-labL');
+side(1480, 1805, ...NAT, 'txt-natR');
 
 /* ---------- process / inscription (#lab: pinned, five scroll-driven steps) ---------- */
 const STEPS = [
