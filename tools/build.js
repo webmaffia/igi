@@ -109,18 +109,18 @@ push(line(571, 2030, 8, 0, 'line10'));
 
 const side = (left, top, eyebrow, l1, l2, body, cta, id) => {
   // every heading uses the same size (38px) so the longest line ("BY INNOVATION") ends before the outer ring
-  const H = `left:${left}px;top:${top + 96}px;font-size:38px;line-height:42px`;
+  const HS = 'font-size:38px;line-height:42px';
   const HT = `<span style="color:#ccb4a0">${l1}</span><br><span style="color:#000">${l2}</span>`;
   push(`<div class="a side" id="${id}" style="left:0;top:0">`);
   if (cta) {
-    // long copy (shown while dragging): no small label on top (the other side already shows it), plus a CTA
-    push(box(H, HT, 'h50'));
-    push(box(`left:${left + 2}px;top:${top + 200}px;width:330px`, body, 'body18'));
-    push(box(`left:${left + 2}px;top:2278px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
+    // long copy (shown while dragging): no small label of its own, so its big heading starts at the height of the small label on the other side
+    push(box(`left:${left}px;top:${top}px;${HS}`, HT, 'h50'));
+    push(box(`left:${left + 2}px;top:${top + 104}px;width:300px`, body, 'body18'));
+    push(box(`left:${left + 2}px;top:${top + 330}px`, `<a href="#">${cta}</a>`, 'eyebrow clink'));
   } else {
     // original design copy (shown at the start, with the handle in the middle)
     push(box(`left:${left}px;top:${top}px`, eyebrow, 'eyebrow'));
-    push(box(H, HT, 'h50'));
+    push(box(`left:${left}px;top:${top + 96}px;${HS}`, HT, 'h50'));
     push(box(`left:${left + 2}px;top:${top + 200}px;width:282px`, body, 'body18'));
   }
   push('</div>');
