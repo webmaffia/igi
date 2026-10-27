@@ -1,5 +1,5 @@
 // The design is authored on a fixed 1920px-wide stage; scale it to the viewport width.
-// The hero is pinned while scrolling: LOVE -> COLOR -> GROWN -> STONE, then the rest of the hero fades in.
+// The hero is pinned while scrolling: STONE stays; the circle picture and right-hand copy change over six steps, the last one shows the CTAs.
 (function () {
   var DESIGN_W = 1920, DESIGN_H = 15933;
   var BASELINE = 671.5, WORD_FONT = 347.409, ASCENT = 0.8585; // baseline offset inside a line-height:1 box
@@ -13,6 +13,7 @@
   var header = document.getElementById('site-header');
   var RING_CY = 601;
   var words = [].slice.call(document.querySelectorAll('.word'));
+  var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.76;
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
@@ -73,22 +74,24 @@
     fab.classList.toggle('show', s > run * 0.95 && !momentInView);
     // #trade: counters count up and the arcs draw in the first time the row comes on screen
     if (!tradeIn && botY > TRADE_Y + 1250) { tradeIn = true; trade.classList.add('in'); countUp(); }
-    var x = 3 * clamp(p / 0.58, 0, 1);               // 0..3 across the four words
-    var fl = Math.min(Math.floor(x), 2);
-    var xs = x >= 3 ? 3 : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each word, then sweep
-    // LOVE top-right, COLOR bottom-right, GROWN bottom-left, STONE back round to top-right
-    wedge.style.rotate = (xs <= 2 ? 90 * xs : 180 + 180 * (xs - 2)) + 'deg';
-    words.forEach(function (w, i) {
+    var N = STEPS - 1;
+    var x = N * clamp(p / STEP_END, 0, 1);            // 0..5 across the six screens
+    var fl = Math.min(Math.floor(x), N - 1);
+    var xs = x >= N ? N : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each screen, then sweep
+    wedge.style.rotate = (360 / N * xs) + 'deg';
+    var swap = function (el, i) {
       var d = xs - i, v, y;
-      if (i === words.length - 1 && d >= 0) { v = 1; y = 0; }
+      if (i === N && d >= 0) { v = 1; y = 0; }
       else { v = clamp(1 - 2 * Math.abs(d), 0, 1); y = -d * 80; }
-      w.style.opacity = v;
-      w.style.translate = '0 ' + y + 'px';
-    });
-    // keep the ring centred on screen throughout (it starts at the design position, under the menu)
-    // the fill grows with every word (a quarter more per word) and is a full circle when STONE lands; scrolling back un-fills it
-    var sweep = xs / 3;
+      el.style.opacity = v;
+      el.style.translate = '0 ' + y + 'px';
+    };
+    cimgs.forEach(function (el, i) { swap(el, i); });
+    hcs.forEach(function (el) { swap(el, +el.dataset.i); });
+    // the fill grows with every screen and is a full circle on the last; scrolling back un-fills it
+    var sweep = xs / N;
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
+    // keep the ring centred on screen throughout (it starts at the design position, under the menu)
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * smooth(p / 0.05) + 'px';
     // menu only shows on the first screen; it slides up as soon as scrolling begins (and returns on scroll back)
@@ -96,7 +99,7 @@
     header.style.opacity = h;
     header.style.translate = '0 ' + (-(1 - h) * 70) + 'px';
     header.style.pointerEvents = h < 0.5 ? 'none' : '';
-    var q = clamp((p - 0.74) / 0.26, 0, 1);
+    var q = clamp((p - STEP_END) / 0.24, 0, 1);
     lates.forEach(function (el) {
       var t = easeOut((q - (+el.dataset.d) * 0.07) / 0.6);
       el.style.opacity = t;
@@ -118,7 +121,7 @@
 
   function fit() {
     scale = window.innerWidth / DESIGN_W;
-    run = reduced ? 0 : window.innerHeight * 3.5;
+    run = reduced ? 0 : window.innerHeight * 5;
     labRun = reduced ? 0 : window.innerHeight * 4.5;
     yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
     repRun = 0; // reports are hover-driven, no scroll pinning

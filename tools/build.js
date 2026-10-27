@@ -56,28 +56,28 @@ push(`<div class="a" id="hero-ring">` +
   line(919, 601, 920.008, 45, 'line15') + line(919, 601, 920.008, 135, 'line17') +
   `</div></div>`);
 
-// scroll-driven words: the diamond sits where the O is; STONE is the final word
-// each word carries its own picture in the O slot (centre 915,585): LOVE = the proposal photo, JOY and ADORE = square portraits shown whole in the circle, STONE = the diamond
-const words = [['L', 'VE'], ['J', 'Y'], ['AD', 'RE'], ['ST', 'NE']];
-// glow.png has a white backdrop: only its outer rim is feathered, the whole picture stays visible
-const SOFT = '-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 0%,#000 36%,rgba(0,0,0,.6) 58%,rgba(0,0,0,.22) 80%,transparent 100%)';
-const WIMG = [
-  // LOVE: the photo fills the whole circle (clean circular crop, no soft edge); sits just inside the ring so the ring and arc stay visible
-  `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px;border-radius:50%;overflow:hidden"><img src="assets/hero/love.png" alt="" draggable="false" style="width:100%;height:100%;object-fit:cover;object-position:56% 50%;display:block"></div>`,
-  // CROWN / GLOW / STONE: full pictures in exactly the diamond's box (640x427)
-  `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px"><img src="assets/hero/JOY.png" alt="" draggable="false" style="width:100%;height:100%;display:block"></div>`,
-  `<div class="a wpic" style="left:582px;top:264px;width:674px;height:674px"><img src="assets/hero/Adore.png" alt="" draggable="false" style="width:100%;height:100%;display:block"></div>`,
-  `<div class="a wpic" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
+// STONE stays put; the picture in the O and the copy on the right change with every scroll step
+// (centre of the ring: 919,601). Each picture is centred in the ring at its own width.
+const ring = (w, h, name, ext = 'png', dy = 0) => `<div class="a cimg" style="left:${919 - w / 2}px;top:${601 - h / 2 + dy}px;width:${w}px;height:${h}px"><img src="assets/hero/circle/${name}.${ext}" alt="" draggable="false" class="cover"></div>`;
+const CIMGS = [
+  ring(460, 455, 1),
+  ring(482, 460, 2),
+  ring(430, 362, 3),
+  ring(365, 360, 4, 'png', 8),
+  ring(520, 332, 5),
+  `<div class="a cimg" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
 ];
-push(`<div class="a" id="words" style="left:0;top:0">` + words.map((w, i) =>
-  `<div class="word${i === words.length - 1 ? ' final' : ''}" data-i="${i}"><span class="wl">${w[0]}</span><span class="wr">${w[1]}</span>${WIMG[i]}</div>`).join('') + `</div>`);
-push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw late" data-d="0'));
-push(box('left:126px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', 'Carries', 'mont6 caps nw late" data-d="1'));
-push(box('left:126px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', 'a Story', 'mont6 caps nw late" data-d="2'));
-push(box('left:325px;top:875px;transform:translateX(-50%);font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111;text-align:center', 'We make sure it’s true', 'man4 nw late" data-d="3'));
-const btn = (top, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:1571px;top:${top}px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
-push(btn(716.3, 'EXPLORE IGI', 'arrow', 'solid', 4));
-push(btn(773.88, 'VERIFY A REPORT', 'arrow1', 'ghost', 5));
+push(`<div class="a" id="words" style="left:0;top:0"><div class="word final"><span class="wl">ST</span><span class="wr">NE</span></div>` + CIMGS.join('') + `</div>`);
+push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw'));
+const COPY = [['Has been', 'graded'], ['Has', 'fairness'], ['Have', 'fairness'], ['Have', 'protection'], ['Have', 'truth'], ['Carries', 'a Story']];
+COPY.forEach((c, i) => {
+  push(box('left:1352px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', c[0], 'mont6 caps nw hc" data-i="' + i));
+  push(box('left:1352px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', c[1], 'mont6 caps nw hc" data-i="' + i));
+});
+push(box('left:1352px;top:861px;font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111', 'We make sure it’s true', 'man4 nw late" data-d="0'));
+const btn = (left, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:${left}px;top:957px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
+push(btn(1352, 'EXPLORE IGI', 'arrow', 'solid', 1));
+push(btn(1565, 'VERIFY A REPORT', 'arrow1', 'ghost', 2));
 push('</div>');
 push(line(960.5, 3598.5, 1649, 0, 'line18'));
 push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"'), 'nopt'));

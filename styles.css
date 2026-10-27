@@ -51,7 +51,8 @@ img{max-width:none}
 .word.final{opacity:1}
 .wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:500;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
 #wedge{will-change:rotate}
-.late{will-change:opacity,translate}
+.late,.cimg,.hc{will-change:opacity,translate}
+.cimg,.hc{opacity:0;pointer-events:none}
 #site-header{will-change:opacity,translate}
 .fill-disc{border-radius:50%;background:rgba(149,125,105,.1);--a:90deg;-webkit-mask:conic-gradient(#000 var(--a),transparent var(--a));mask:conic-gradient(#000 var(--a),transparent var(--a))}
 
