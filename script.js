@@ -132,6 +132,9 @@
     vidv.style.opacity = 1; vidv.style.pointerEvents = 'auto';
     vidv.play();
   });
+  // pausing from the controls brings the play button back (the paused frame stays visible); playing hides it
+  vidv.addEventListener('pause', function () { vplay.style.display = ''; });
+  vidv.addEventListener('play', function () { vplay.style.display = 'none'; });
   vidv.addEventListener('ended', function () { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; });
 
   function fit() {
