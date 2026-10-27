@@ -13,8 +13,8 @@
   var header = document.getElementById('site-header');
   var RING_CY = 601;
   var words = [].slice.call(document.querySelectorAll('.word'));
-  var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.64, VID_START = 0.82;
-  var vid = document.getElementById('vid'), vidv = document.getElementById('vidv'), vplay = document.getElementById('vplay');
+  var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.64, VID_START = 0.8;
+  var vidOn = false, cblur = document.querySelector('.cblur'), vid = document.getElementById('vid'), vidv = document.getElementById('vidv'), vplay = document.getElementById('vplay');
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
@@ -92,13 +92,16 @@
     // the fill grows with every screen and is a full circle on the last; scrolling back un-fills it
     var sweep = xs / N;
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
-    // last phase: the diamond blurs and the video circle grows over it (scrolling back undoes both)
-    var v = easeOut((p - VID_START) / (1 - VID_START - 0.02));
-    cimgs[N].style.filter = v > 0 ? 'blur(' + v * 14 + 'px)' : '';
-    vid.style.opacity = clamp(v * 2, 0, 1);
-    vid.style.scale = 0.3 + 0.7 * v;
-    vid.style.pointerEvents = v > 0.9 ? 'auto' : 'none';
-    if (v < 0.5 && !vidv.paused) { vidv.pause(); vidv.currentTime = 0; vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
+    // last phase: once the scroll gets there, a pre-blurred copy of the diamond fades in and the video circle grows over it
+    // (timed transitions, so it stays smooth whatever the wheel does); scrolling back undoes both
+    var vOn = p > VID_START;
+    if (vOn !== vidOn) {
+      vidOn = vOn;
+      vid.classList.toggle('on', vOn);
+      cblur.classList.toggle('on', vOn);
+      if (!vOn && !vidv.paused) { vidv.pause(); }
+      if (!vOn) { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
+    }
     // keep the ring centred on screen throughout (it starts at the design position, under the menu)
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * smooth(p / 0.05) + 'px';

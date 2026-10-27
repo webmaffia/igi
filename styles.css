@@ -243,7 +243,10 @@ img{max-width:none}
 #lab[data-s="4"] .cpanel,#lab[data-s="4"] .cpoly{opacity:0}
 
 /* hero video circle */
-#vid{border-radius:50%;overflow:hidden;opacity:0;pointer-events:none;will-change:opacity,scale;box-shadow:0 30px 80px rgba(0,0,0,.18)}
+#vid{border-radius:50%;overflow:hidden;opacity:0;transform:scale(.3);pointer-events:none;will-change:transform,opacity;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .6s ease;box-shadow:0 30px 80px rgba(0,0,0,.18)}
+#vid.on{opacity:1;transform:none;pointer-events:auto}
+.cblur{opacity:0;pointer-events:none;filter:blur(14px);will-change:opacity;transition:opacity .9s ease}
+.cblur.on{opacity:1}
 #vid video{background:#000}
 #vplay{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;padding:0;border:0;background:none;cursor:pointer;transition:transform .2s}
 #vplay:hover{transform:scale(1.1)}
