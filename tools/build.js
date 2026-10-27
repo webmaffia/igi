@@ -67,7 +67,7 @@ const CIMGS = [
   ring(520, 332, 5),
   `<div class="a cimg" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
 ];
-push(`<div class="a" id="words" style="left:0;top:0"><div class="word final"><span class="wl">ST</span><span class="wr">NE</span></div>` + CIMGS.join('') + CIMGS[CIMGS.length - 1].replace('cimg', 'cblur') + `</div>`);
+push(`<div class="a" id="words" style="left:0;top:0"><div class="word final"><span class="wl">ST</span><span class="wr">NE</span></div>` + CIMGS.join('') + `</div>`);
 push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw'));
 const COPY = [['Has been', 'graded'], ['Has', 'fairness'], ['Have', 'fairness'], ['Have', 'protection'], ['Have', 'truth'], ['Carries', 'a Story']];
 COPY.forEach((c, i) => {

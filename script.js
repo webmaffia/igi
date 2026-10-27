@@ -14,7 +14,7 @@
   var RING_CY = 601;
   var words = [].slice.call(document.querySelectorAll('.word'));
   var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.64, VID_START = 0.8;
-  var vidOn = false, cblur = document.querySelector('.cblur'), vid = document.getElementById('vid'), vidv = document.getElementById('vidv'), vplay = document.getElementById('vplay');
+  var vidOn = false, ring = document.getElementById('hero-ring'), vid = document.getElementById('vid'), vidv = document.getElementById('vidv'), vplay = document.getElementById('vplay');
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
@@ -92,13 +92,14 @@
     // the fill grows with every screen and is a full circle on the last; scrolling back un-fills it
     var sweep = xs / N;
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
-    // last phase: once the scroll gets there, a pre-blurred copy of the diamond fades in and the video circle grows over it
+    // last phase: once the scroll gets there, the whole ring circle and the diamond blur and the video circle grows over it
     // (timed transitions, so it stays smooth whatever the wheel does); scrolling back undoes both
     var vOn = p > VID_START;
     if (vOn !== vidOn) {
       vidOn = vOn;
       vid.classList.toggle('on', vOn);
-      cblur.classList.toggle('on', vOn);
+      ring.classList.toggle('blur', vOn);
+      cimgs[STEPS - 1].classList.toggle('blur', vOn);
       if (!vOn && !vidv.paused) { vidv.pause(); }
       if (!vOn) { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
     }
