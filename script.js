@@ -13,7 +13,8 @@
   var header = document.getElementById('site-header');
   var RING_CY = 601;
   var words = [].slice.call(document.querySelectorAll('.word'));
-  var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.76;
+  var cimgs = [].slice.call(document.querySelectorAll('.cimg')), hcs = [].slice.call(document.querySelectorAll('.hc')), STEPS = cimgs.length, STEP_END = 0.64, VID_START = 0.82;
+  var vid = document.getElementById('vid'), vidv = document.getElementById('vidv'), vplay = document.getElementById('vplay');
   var lates = [].slice.call(document.querySelectorAll('.late'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fab = document.getElementById('fab');
@@ -91,6 +92,13 @@
     // the fill grows with every screen and is a full circle on the last; scrolling back un-fills it
     var sweep = xs / N;
     fill.style.setProperty('--a', (90 + 270 * sweep) + 'deg');
+    // last phase: the diamond blurs and the video circle grows over it (scrolling back undoes both)
+    var v = easeOut((p - VID_START) / (1 - VID_START - 0.02));
+    cimgs[N].style.filter = v > 0 ? 'blur(' + v * 14 + 'px)' : '';
+    vid.style.opacity = clamp(v * 2, 0, 1);
+    vid.style.scale = 0.3 + 0.7 * v;
+    vid.style.pointerEvents = v > 0.9 ? '' : 'none';
+    if (v < 0.5 && !vidv.paused) { vidv.pause(); vidv.currentTime = 0; vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
     // keep the ring centred on screen throughout (it starts at the design position, under the menu)
     var dy = (window.innerHeight / 2) / scale - RING_CY;
     hero.style.translate = '0 ' + dy * smooth(p / 0.05) + 'px';
@@ -99,7 +107,7 @@
     header.style.opacity = h;
     header.style.translate = '0 ' + (-(1 - h) * 70) + 'px';
     header.style.pointerEvents = h < 0.5 ? 'none' : '';
-    var q = clamp((p - STEP_END) / 0.24, 0, 1);
+    var q = clamp((p - STEP_END) / 0.16, 0, 1);
     lates.forEach(function (el) {
       var t = easeOut((q - (+el.dataset.d) * 0.07) / 0.6);
       el.style.opacity = t;
@@ -119,9 +127,16 @@
     fills.forEach(function (f, i) { f.style.transform = 'scaleX(' + (i < st ? 1 : i === st ? local : 0) + ')'; });
   }
 
+  vplay.addEventListener('click', function () {
+    vplay.style.display = 'none';
+    vidv.style.opacity = 1; vidv.style.pointerEvents = 'auto';
+    vidv.play();
+  });
+  vidv.addEventListener('ended', function () { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; });
+
   function fit() {
     scale = window.innerWidth / DESIGN_W;
-    run = reduced ? 0 : window.innerHeight * 5;
+    run = reduced ? 0 : window.innerHeight * 6;
     labRun = reduced ? 0 : window.innerHeight * 4.5;
     yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
     repRun = 0; // reports are hover-driven, no scroll pinning

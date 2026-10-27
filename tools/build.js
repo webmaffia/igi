@@ -78,6 +78,8 @@ push(box('left:1352px;top:861px;font-size:36.7px;line-height:36.317px;letter-spa
 const btn = (left, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:${left}px;top:957px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
 push(btn(1352, 'EXPLORE IGI', 'arrow', 'solid', 1));
 push(btn(1565, 'VERIFY A REPORT', 'arrow1', 'ghost', 2));
+// last scroll phase: the diamond blurs and a bigger circle with the video pops up over it; the play button starts the video
+push(`<div class="a" id="vid" style="left:439px;top:121px;width:960px;height:960px"><img class="cover" src="assets/hero/circle/vIDEOTHUMB.png" alt="" draggable="false"><video id="vidv" class="cover" src="assets/hero/circle/video.mp4" preload="none" playsinline controls controlslist="nodownload noplaybackrate" style="opacity:0;pointer-events:none"></video><button id="vplay" type="button" aria-label="Play video"><img src="assets/hero/circle/play-button.png" alt="" draggable="false"></button></div>`);
 push('</div>');
 push(line(960.5, 3598.5, 1649, 0, 'line18'));
 push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;transform:translateX(-50%)', img('maskgroup', 'svg', 'class="fill"'), 'nopt'));
