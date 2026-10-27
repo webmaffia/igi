@@ -97,7 +97,7 @@
     cimgs[N].style.filter = v > 0 ? 'blur(' + v * 14 + 'px)' : '';
     vid.style.opacity = clamp(v * 2, 0, 1);
     vid.style.scale = 0.3 + 0.7 * v;
-    vid.style.pointerEvents = v > 0.9 ? '' : 'none';
+    vid.style.pointerEvents = v > 0.9 ? 'auto' : 'none';
     if (v < 0.5 && !vidv.paused) { vidv.pause(); vidv.currentTime = 0; vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
     // keep the ring centred on screen throughout (it starts at the design position, under the menu)
     var dy = (window.innerHeight / 2) / scale - RING_CY;
