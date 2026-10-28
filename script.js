@@ -345,6 +345,10 @@
   var tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
   document.head.appendChild(tag);
+  // YouTube switches subtitles on from the viewer's own settings: keep switching them off
+  function noCaptions(p) {
+    try { p.unloadModule('captions'); p.unloadModule('cc'); p.setOption('captions', 'track', {}); } catch (err) {}
+  }
   window.onYouTubeIframeAPIReady = function () {
     new YT.Player('gemyt', {
       host: 'https://www.youtube-nocookie.com',
@@ -353,11 +357,13 @@
       events: {
         onReady: function (e) {
           e.target.mute();
-          e.target.unloadModule('captions');
+          noCaptions(e.target);
+          [500, 1500, 3500].forEach(function (t) { setTimeout(function () { noCaptions(e.target); }, t); });
           e.target.playVideo();
           document.getElementById('gemyt').classList.add('ready');
         },
         onStateChange: function (e) {
+          noCaptions(e.target);
           if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(0); e.target.playVideo(); }
         }
       }
