@@ -414,3 +414,13 @@
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') shut(); });
   window.addEventListener('resize', function () { if (isOpen()) layout(); });
 })();
+
+// #moment background video: plays once as the section scrolls into view, then holds its last frame
+(function () {
+  var v = document.getElementById('momentvid');
+  if (!v) return;
+  var played = false;
+  function go() { if (played) return; played = true; var p = v.play(); if (p && p.catch) p.catch(function () { played = false; }); }
+  if (!('IntersectionObserver' in window)) { go(); return; }
+  new IntersectionObserver(function (es) { if (es[0].isIntersecting) go(); }, { threshold: 0.4 }).observe(v);
+})();
