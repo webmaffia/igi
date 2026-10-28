@@ -138,6 +138,8 @@
   // pausing from the controls brings the play button back (the paused frame stays visible); playing hides it
   vidv.addEventListener('pause', function () { vplay.style.display = ''; });
   vidv.addEventListener('play', function () { vplay.style.display = 'none'; });
+  // the video is served from the CMS; if that address fails, fall back to the copy in the project
+  vidv.addEventListener('error', function () { var f = vidv.dataset.fallback; if (f && vidv.getAttribute('src') !== f) { vidv.setAttribute('src', f); vidv.load(); } });
   // no native controls (no progress bar): click the picture to pause, the big play button resumes
   vidv.addEventListener('click', function () { vidv.pause(); });
   vidv.addEventListener('pause', function () { if (vidv.ended) return; vplay.style.display = ''; });
