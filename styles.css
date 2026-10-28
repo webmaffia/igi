@@ -265,3 +265,16 @@ img{max-width:none}
 #gemcard.playing #gembtn .i-pause{display:block}
 #gemcard.playing #gembtn{opacity:0}
 #gemcard.playing:hover #gembtn,#gemcard.playing.tap #gembtn{opacity:1}
+
+/* click play: the card grows to a big 16:9 player in the middle of the screen over a dimmed page; close with x, Esc or a click outside */
+#gemcard{transition:left .7s cubic-bezier(.2,.7,.2,1),top .7s cubic-bezier(.2,.7,.2,1),width .7s cubic-bezier(.2,.7,.2,1),height .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s}
+#gemyt{transition:width .7s cubic-bezier(.2,.7,.2,1),height .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+#gemcard.open{z-index:6;cursor:default;box-shadow:0 40px 120px rgba(0,0,0,.45)}
+#gemcard.open #gemyt{width:100%;height:100%;transform:translate(-50%,-50%) scale(1.04)}
+#gembd{z-index:5;opacity:0;pointer-events:none;background:rgba(24,17,12,.8);transition:opacity .6s ease}
+#gembd.on{opacity:1;pointer-events:auto}
+#gemx{position:absolute;right:26px;top:26px;width:60px;height:60px;padding:0;border:0;border-radius:50%;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+#gemcard.open #gemx{display:flex}
+#gemx:hover{background:rgba(0,0,0,.75)}
+html.gem-open{overflow:hidden}
+html.gem-open #fab{opacity:0;pointer-events:none}

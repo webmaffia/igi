@@ -372,7 +372,42 @@
     clearTimeout(tapTimer);
     tapTimer = setTimeout(function () { card.classList.remove('tap'); }, ms);
   }
+  // open: the card grows to a 16:9 box centred on the screen (positions are converted into the scaled stage's units); close shrinks it back
+  var group = card.parentElement, bd = document.getElementById('gembd'), close = document.getElementById('gemx');
+  var home = { l: card.style.left, t: card.style.top, w: card.style.width, h: card.style.height };
+  var root = document.documentElement;
+  function layout() {
+    var sc = window.innerWidth / 1920, gr = group.getBoundingClientRect(), vw = window.innerWidth, vh = window.innerHeight;
+    var w = Math.min(vw * 0.88, vh * 0.84 * 16 / 9), h = w * 9 / 16;
+    card.style.left = ((vw - w) / 2 - gr.left) / sc + 'px';
+    card.style.top = ((vh - h) / 2 - gr.top) / sc + 'px';
+    card.style.width = w / sc + 'px';
+    card.style.height = h / sc + 'px';
+    bd.style.left = -gr.left / sc + 'px';
+    bd.style.top = -gr.top / sc + 'px';
+    bd.style.width = vw / sc + 'px';
+    bd.style.height = vh / sc + 'px';
+  }
+  function open() {
+    card.classList.add('open');
+    bd.classList.add('on');
+    root.classList.add('gem-open');
+    layout();
+  }
+  function shut() {
+    if (!card.classList.contains('open')) return;
+    card.classList.remove('open', 'playing', 'tap');
+    bd.classList.remove('on');
+    root.classList.remove('gem-open');
+    card.style.left = home.l; card.style.top = home.t; card.style.width = home.w; card.style.height = home.h;
+    if (player && player.pauseVideo) player.pauseVideo();
+  }
+  close.addEventListener('click', function (ev) { ev.stopPropagation(); shut(); });
+  bd.addEventListener('click', shut);
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') shut(); });
+  window.addEventListener('resize', function () { if (card.classList.contains('open')) layout(); });
   card.addEventListener('click', function () {
+    if (!card.classList.contains('open')) open();
     if (!player || !player.getPlayerState) return;
     if (card.classList.contains('playing')) {
       player.pauseVideo();
