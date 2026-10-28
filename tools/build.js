@@ -88,7 +88,7 @@ push(box('left:calc(50% + 1.44px);top:1720px;width:2818.874px;height:2930.301px;
 
 /* ---------- natural vs lab ---------- */
 push(box('left:699px;top:1218px;font-size:64px;line-height:103.054px;color:#ccb4a0', 'ONE WAS BORN', 'mont6 caps nw'));
-push(box('left:472px;top:1292px;font-size:64px;line-height:103.054px;color:#1e1e1e', 'in the earth One in a lab', 'mont6 caps nw'));
+push(box('left:462px;top:1292px;font-size:64px;line-height:103.054px;color:#1e1e1e', 'in the earth, One in a lab', 'mont6 caps nw'));
 push(box('left:980px;top:1406px;width:764px;height:131px;transform:translateX(-50%);text-align:center;letter-spacing:1px;color:#111;font-size:20px;line-height:26px', 'Natural diamonds form deep underground over millions of years. Lab-grown diamonds form in weeks. Chemically and optically they are the same. <span style="color:#000">So how can you tell them apart?</span>', 'man3'));
 // diagram
 push(box('left:571.47px;top:1633.46px;width:777.058px;height:777.058px', img('ellipse12', 'svg', 'class="fill"')));
