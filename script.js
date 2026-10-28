@@ -359,13 +359,19 @@
         onStateChange: function (e) {
           var S = YT.PlayerState;
           noCaptions(e.target);
-          if (e.data === S.PLAYING) { card.classList.add('started', 'playing'); }
+          if (e.data === S.PLAYING) { card.classList.add('started', 'playing'); cover(3500); }
           else if (e.data === S.PAUSED || e.data === S.BUFFERING && !card.classList.contains('playing')) { card.classList.remove('playing'); }
           else if (e.data === S.ENDED) { card.classList.remove('playing', 'started'); e.target.seekTo(0); e.target.pauseVideo(); }
         }
       }
     });
   };
+  // YouTube draws its own pause circle in the middle for a few seconds after a start: our (solid, bigger) button stays on top of it until it is gone
+  function cover(ms) {
+    card.classList.add('tap');
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(function () { card.classList.remove('tap'); }, ms);
+  }
   card.addEventListener('click', function () {
     if (!player || !player.getPlayerState) return;
     if (card.classList.contains('playing')) {
@@ -374,9 +380,8 @@
     } else {
       player.unMute();
       player.playVideo();
-      card.classList.add('started', 'playing', 'tap');
-      clearTimeout(tapTimer);
-      tapTimer = setTimeout(function () { card.classList.remove('tap'); }, 1500);
+      card.classList.add('started', 'playing');
+      cover(3500);
     }
   });
 })();

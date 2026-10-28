@@ -256,7 +256,7 @@ img{max-width:none}
 #gemyt{position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);pointer-events:none}
 #gempos{transition:opacity .5s ease;pointer-events:none}
 #gemcard.started #gempos{opacity:0}
-#gembtn{position:absolute;left:50%;top:50%;width:118px;height:118px;margin:-59px 0 0 -59px;padding:0;border:0;border-radius:50%;background:rgba(48,36,30,.78);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s,transform .2s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+#gembtn{position:absolute;left:50%;top:50%;width:136px;height:136px;margin:-68px 0 0 -68px;padding:0;border:0;border-radius:50%;background:#3a2f2a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s,transform .2s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
 #gembtn:hover{transform:scale(1.06)}
 #gembtn svg{display:block}
 #gembtn .i-play{margin-left:5px}
