@@ -251,3 +251,5 @@ img{max-width:none}
 #vplay{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;padding:0;border:0;background:none;cursor:pointer;transition:transform .2s}
 #vplay:hover{transform:scale(1.1)}
 #vplay img{width:100%;height:100%;display:block}
+#gemyt{position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);opacity:0;transition:opacity 1s}
+#gemyt.ready{opacity:1}

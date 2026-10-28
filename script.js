@@ -337,3 +337,30 @@
   });
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+// gemologists background video: YouTube player driven by its API (no playlist, so no prev/next buttons); loops by seeking back to 0
+(function () {
+  var el = document.getElementById('gemyt');
+  if (!el) return;
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady = function () {
+    new YT.Player('gemyt', {
+      host: 'https://www.youtube-nocookie.com',
+      videoId: el.dataset.yt,
+      playerVars: { autoplay: 1, mute: 1, controls: 0, modestbranding: 1, playsinline: 1, rel: 0, disablekb: 1, iv_load_policy: 3, fs: 0, cc_load_policy: 0 },
+      events: {
+        onReady: function (e) {
+          e.target.mute();
+          e.target.unloadModule('captions');
+          e.target.playVideo();
+          document.getElementById('gemyt').classList.add('ready');
+        },
+        onStateChange: function (e) {
+          if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(0); e.target.playVideo(); }
+        }
+      }
+    });
+  };
+})();
