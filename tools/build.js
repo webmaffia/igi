@@ -78,9 +78,9 @@ COPY.forEach((c, i) => {
 [['Cut', 737, 472], ['Color', 710, 537], ['Clarity', 710, 630], ['Carat', 737, 710]].forEach((l) =>
   push(box(`left:${l[1] - 200}px;top:${l[2] - 12}px;width:200px;text-align:right;font-size:17px;line-height:24px;letter-spacing:1px;color:#222`, l[0], 'mont4 caps nw hc" data-i="0')));
 push(box('left:1352px;top:861px;font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111', 'We make sure it’s true', 'man4 nw late" data-d="0'));
-const btn = (left, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:${left}px;top:957px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
+const btn = (left, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:${left}px;top:951px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
 push(btn(1352, 'EXPLORE IGI', 'arrow', 'solid', 1));
-push(btn(1564, 'VERIFY A REPORT', 'arrow1', 'ghost', 2));
+push(btn(1612, 'VERIFY A REPORT', 'arrow1', 'ghost', 2));
 // last scroll phase: the diamond blurs and a bigger circle with the video pops up over it; the play button starts the video
 push(`<div class="a" id="vid" style="left:439px;top:121px;width:960px;height:960px"><img class="cover" src="assets/hero/circle/vIDEOTHUMB.png" alt="" draggable="false"><video id="vidv" class="cover" src="assets/hero/circle/video.mp4" preload="none" playsinline controls controlslist="nodownload noplaybackrate" style="opacity:0;pointer-events:none"></video><button id="vplay" type="button" aria-label="Play video"><img src="assets/hero/circle/play-button.png" alt="" draggable="false"></button></div>`);
 push('</div>');
