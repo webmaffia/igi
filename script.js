@@ -138,6 +138,9 @@
   // pausing from the controls brings the play button back (the paused frame stays visible); playing hides it
   vidv.addEventListener('pause', function () { vplay.style.display = ''; });
   vidv.addEventListener('play', function () { vplay.style.display = 'none'; });
+  // no native controls (no progress bar): click the picture to pause, the big play button resumes
+  vidv.addEventListener('click', function () { vidv.pause(); });
+  vidv.addEventListener('pause', function () { if (vidv.ended) return; vplay.style.display = ''; });
   vidv.addEventListener('ended', function () { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; });
 
   function fit() {
