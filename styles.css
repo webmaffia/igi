@@ -266,8 +266,7 @@ img{max-width:none}
 #gembtn .i-pause{display:none}
 #gemcard.playing #gembtn .i-play{display:none}
 #gemcard.playing #gembtn .i-pause{display:block}
-#gemcard.playing #gembtn{opacity:0}
-#gemcard.playing:hover #gembtn,#gemcard.playing.tap #gembtn{opacity:1}
+#gemcard.playing #gembtn{opacity:0;pointer-events:none}
 
 /* click play: the card grows to a big 16:9 player in the middle of the screen over a dimmed page; close with x, Esc or a click outside */
 #gemcard{transition:left .7s cubic-bezier(.2,.7,.2,1),top .7s cubic-bezier(.2,.7,.2,1),width .7s cubic-bezier(.2,.7,.2,1),height .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s}
