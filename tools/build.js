@@ -62,13 +62,14 @@ const ring = (w, h, name, ext = 'png', dy = 0) => `<div class="a cimg" style="le
 const CIMGS = [
   ring(460, 455, 1),
   ring(482, 460, 2),
+  ring(430, 362, 3),
   ring(365, 360, 4, 'png', 8),
   ring(520, 332, 5),
   `<div class="a cimg" style="left:595px;top:371px;width:640px;height:427px">${img('diamond', 'png', 'class="cover" draggable="false"')}</div>`
 ];
 push(`<div class="a" id="words" style="left:0;top:0"><div class="word final"><span class="wl">ST</span><span class="wr">NE</span></div>` + CIMGS.join('') + `</div>`);
 push(box('left:119px;top:221px;font-size:63.8px;line-height:278.538px;letter-spacing:5px;color:#1e1e1e', 'Every', 'mont4 caps nw'));
-const COPY = [['Has been', 'graded'], ['Has', 'fairness'], ['Has', 'protection'], ['Has', 'truth'], ['Carries', 'a Story']];
+const COPY = [['Has been', 'graded'], ['Has', 'fairness'], ['Have', 'fairness'], ['Has', 'protection'], ['Has', 'truth'], ['Carries', 'a Story']];
 COPY.forEach((c, i) => {
   push(box('left:1352px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', c[0], 'mont6 caps nw hc" data-i="' + i));
   push(box('left:1352px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', c[1], 'mont6 caps nw hc" data-i="' + i));

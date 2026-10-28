@@ -76,7 +76,7 @@
     // #trade: counters count up and the arcs draw in the first time the row comes on screen
     if (!tradeIn && botY > TRADE_Y + 1250) { tradeIn = true; trade.classList.add('in'); countUp(); }
     var N = STEPS - 1;
-    var x = N * clamp(p / STEP_END, 0, 1);            // 0..4 across the five screens
+    var x = N * clamp(p / STEP_END, 0, 1);            // 0..5 across the six screens
     var fl = Math.min(Math.floor(x), N - 1);
     var xs = x >= N ? N : fl + smooth((x - fl - 0.3) / 0.4); // dwell on each screen, then sweep
     wedge.style.rotate = (360 / N * xs) + 'deg';
@@ -143,7 +143,7 @@
 
   function fit() {
     scale = window.innerWidth / DESIGN_W;
-    run = reduced ? 0 : window.innerHeight * 5.5;
+    run = reduced ? 0 : window.innerHeight * 6;
     labRun = reduced ? 0 : window.innerHeight * 4.5;
     yLab = Math.max(0, LAB_CENTER * scale - window.innerHeight / 2);
     repRun = 0; // reports are hover-driven, no scroll pinning
