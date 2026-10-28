@@ -361,14 +361,20 @@
         onStateChange: function (e) {
           var S = YT.PlayerState;
           noCaptions(e.target);
-          if (e.data === S.PLAYING) { card.classList.add('started', 'playing'); cover(3500); }
+          if (e.data === S.PLAYING) { card.classList.add('playing'); revealVideo(); }
           else if (e.data === S.PAUSED || e.data === S.BUFFERING && !card.classList.contains('playing')) { card.classList.remove('playing'); }
-          else if (e.data === S.ENDED) { card.classList.remove('playing', 'started'); e.target.seekTo(0); e.target.pauseVideo(); }
+          else if (e.data === S.ENDED) { clearTimeout(revealTimer); card.classList.remove('playing', 'started'); e.target.seekTo(0); e.target.pauseVideo(); }
         }
       }
     });
   };
   // YouTube draws its own pause circle in the middle for a few seconds after a start: our (solid, bigger) button stays on top of it until it is gone
+  // YouTube draws its own pause circle for the first moments of playback: the poster stays over the player until that is gone, then fades away
+  var revealTimer = 0;
+  function revealVideo() {
+    clearTimeout(revealTimer);
+    revealTimer = setTimeout(function () { if (card.classList.contains('playing')) card.classList.add('started'); }, 3500);
+  }
   function cover(ms) {
     card.classList.add('tap');
     clearTimeout(tapTimer);
@@ -418,7 +424,8 @@
     } else {
       player.unMute();
       player.playVideo();
-      card.classList.add('started', 'playing');
+      card.classList.add('playing');
+      revealVideo();
       cover(3500);
     }
   });
