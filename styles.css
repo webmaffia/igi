@@ -245,8 +245,8 @@ img{max-width:none}
 /* hero video circle */
 #vid{border-radius:50%;overflow:hidden;opacity:0;transform:scale(.3);pointer-events:none;will-change:transform,opacity;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .6s ease;box-shadow:0 30px 80px rgba(0,0,0,.18)}
 #vid.on{opacity:1;transform:none;pointer-events:auto;transition-delay:.9s}
-#hero-ring,.cimg{transition:filter .8s ease}
-#hero-ring.blur,.cimg.blur{filter:blur(9px)}
+#hero>*{transition:filter .8s ease}
+#hero.vo>:not(#vid){filter:blur(7px)}
 #vid video{background:#000}
 #vplay{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;padding:0;border:0;background:none;cursor:pointer;transition:transform .2s}
 #vplay:hover{transform:scale(1.1)}

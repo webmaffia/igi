@@ -98,8 +98,7 @@
     if (vOn !== vidOn) {
       vidOn = vOn;
       vid.classList.toggle('on', vOn);
-      ring.classList.toggle('blur', vOn);
-      cimgs[STEPS - 1].classList.toggle('blur', vOn);
+      hero.classList.toggle('vo', vOn);
       if (!vOn && !vidv.paused) { vidv.pause(); }
       if (!vOn) { vidv.style.opacity = 0; vidv.style.pointerEvents = 'none'; vplay.style.display = ''; }
     }
