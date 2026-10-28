@@ -338,11 +338,10 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// gemologists video card: a YouTube player (no YouTube controls) under a poster; our own button plays and pauses it
+// gemologists video card: a YouTube player (no YouTube controls) that plays muted and loops by seeking back to 0 (no playlist, so no prev/next buttons)
 (function () {
-  var card = document.getElementById('gemcard'), el = document.getElementById('gemyt');
-  if (!card || !el) return;
-  var player = null, tapTimer = 0;
+  var el = document.getElementById('gemyt');
+  if (!el) return;
   var tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
   document.head.appendChild(tag);
@@ -351,37 +350,22 @@
     try { p.unloadModule('captions'); p.unloadModule('cc'); p.setOption('captions', 'track', {}); } catch (err) {}
   }
   window.onYouTubeIframeAPIReady = function () {
-    player = new YT.Player('gemyt', {
+    new YT.Player('gemyt', {
       host: 'https://www.youtube-nocookie.com',
       videoId: el.dataset.yt,
-      playerVars: { autoplay: 0, controls: 0, modestbranding: 1, playsinline: 1, rel: 0, disablekb: 1, iv_load_policy: 3, fs: 0, cc_load_policy: 0 },
+      playerVars: { autoplay: 1, mute: 1, controls: 0, modestbranding: 1, playsinline: 1, rel: 0, disablekb: 1, iv_load_policy: 3, fs: 0, cc_load_policy: 0 },
       events: {
-        onStateChange: function (e) {
-          var S = YT.PlayerState;
+        onReady: function (e) {
+          e.target.mute();
           noCaptions(e.target);
-          if (e.data === S.PLAYING) { card.classList.add('started', 'playing'); cover(3500); }
-          else if (e.data === S.PAUSED || e.data === S.BUFFERING && !card.classList.contains('playing')) { card.classList.remove('playing'); }
-          else if (e.data === S.ENDED) { card.classList.remove('playing', 'started'); e.target.seekTo(0); e.target.pauseVideo(); }
+          e.target.playVideo();
+        },
+        onStateChange: function (e) {
+          noCaptions(e.target);
+          if (e.data === YT.PlayerState.PLAYING) document.getElementById('gemyt').classList.add('ready');
+          if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(0); e.target.playVideo(); }
         }
       }
     });
   };
-  // YouTube draws its own pause circle in the middle for a few seconds after a start: our (solid, bigger) button stays on top of it until it is gone
-  function cover(ms) {
-    card.classList.add('tap');
-    clearTimeout(tapTimer);
-    tapTimer = setTimeout(function () { card.classList.remove('tap'); }, ms);
-  }
-  card.addEventListener('click', function () {
-    if (!player || !player.getPlayerState) return;
-    if (card.classList.contains('playing')) {
-      player.pauseVideo();
-      card.classList.remove('playing');
-    } else {
-      player.unMute();
-      player.playVideo();
-      card.classList.add('started', 'playing');
-      cover(3500);
-    }
-  });
 })();

@@ -251,17 +251,6 @@ img{max-width:none}
 #vplay{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;padding:0;border:0;background:none;cursor:pointer;transition:transform .2s}
 #vplay:hover{transform:scale(1.1)}
 #vplay img{width:100%;height:100%;display:block}
-/* gemologists video card: the YouTube player sits under a poster; our own button plays and pauses it */
-#gemcard{cursor:pointer}
-#gemyt{position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);pointer-events:none}
-#gempos{transition:opacity .5s ease;pointer-events:none}
-#gemcard.started #gempos{opacity:0}
-#gembtn{position:absolute;left:50%;top:50%;width:136px;height:136px;margin:-68px 0 0 -68px;padding:0;border:0;border-radius:50%;background:#3a2f2a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s,transform .2s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-#gembtn:hover{transform:scale(1.06)}
-#gembtn svg{display:block}
-#gembtn .i-play{margin-left:5px}
-#gembtn .i-pause{display:none}
-#gemcard.playing #gembtn .i-play{display:none}
-#gemcard.playing #gembtn .i-pause{display:block}
-#gemcard.playing #gembtn{opacity:0}
-#gemcard.playing:hover #gembtn,#gemcard.playing.tap #gembtn{opacity:1}
+/* gemologists video card: background video that plays continuously */
+#gemyt{position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);pointer-events:none;opacity:0;transition:opacity 1s}
+#gemyt.ready{opacity:1}

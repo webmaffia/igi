@@ -295,9 +295,9 @@ push(box(`left:740px;top:${T + 207}px;width:80px;height:1px;background:#cdbfae`)
 push(box(`left:130px;top:${T + 270}px;width:900px;font-size:69.7px;line-height:96px;letter-spacing:-.5px;color:#1e1e1e`, 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice.', 'mont5'));
 push(box(`left:134px;top:${T + 683}px;width:760px;font-size:36px;line-height:50px;color:#6b6560`, 'We don’t just grade diamonds — we teach the world how.', 'man3'));
 push(`<a class="btn solid" href="#" style="left:130px;top:${T + 830}px;height:72px;padding:0 54px;gap:26px;font-size:16px;letter-spacing:3.2px;border-radius:60px"><span>EXPLORE THE CAMPUS</span>${img('arrow', 'svg', 'class="btn-arrow" style="width:30px;height:30px"')}</a>`);
-// video card: poster image + our own play/pause button over the YouTube player (YouTube for now; swap for a local .mp4 <video> if needed)
+// video card: background video, plays continuously (YouTube for now; swap for a local .mp4 <video> if needed)
 const YT = '4XTCtpBPiKc';
-push(`<div class="a gem-vid" id="gemcard" style="left:1094px;top:${T + 77}px;width:706px;height:896px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><div id="gemyt" data-yt="${YT}"></div><img id="gempos" class="cover" src="assets/hero/circle/poster-image-lady.png" alt="" draggable="false"><button id="gembtn" type="button" aria-label="Play video"><svg class="i-play" viewBox="0 0 24 24" width="38" height="38"><path d="M8.5 5.2v13.6L19.6 12z" fill="#fff"/></svg><svg class="i-pause" viewBox="0 0 24 24" width="38" height="38"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="#fff"/></svg></button></div>`);
+push(`<div class="a nopt gem-vid" id="gemcard" style="left:1094px;top:${T + 77}px;width:706px;height:896px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><div id="gemyt" data-yt="${YT}"></div></div>`);
 push(box(`left:1097px;top:${T + 995}px;font-size:17px;line-height:24px;color:#9a8878`, 'A closer look at the art of diamond grading', 'man3 nw'));
 push(box(`left:1436px;top:${T + 1007}px;width:68px;height:1px;background:#cdbfae`));
 push('</div>');
