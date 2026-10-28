@@ -30,6 +30,8 @@ img{max-width:none}
 .btn.solid:hover{background:#7d6858}
 .btn.ghost{border:.25px solid #111;color:#111}
 .btn.ghost:hover{background:#111;color:#fff}
+.btn.ghost .btn-arrow{transition:filter .2s}
+.btn.ghost:hover .btn-arrow{filter:brightness(0) invert(1)}
 .btn.late{width:240px;height:58px;font-size:15px;line-height:22px;letter-spacing:1.6px;box-sizing:border-box;justify-content:space-between}
 .steps span{position:absolute;top:0;font-size:13px;line-height:65.5px;letter-spacing:3.5px;text-transform:uppercase;white-space:pre;color:#010101}
 .card .ct{color:#b3b3b3;white-space:normal;transition:color .25s}
