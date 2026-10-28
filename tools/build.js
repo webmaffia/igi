@@ -300,7 +300,7 @@ const YT = '4XTCtpBPiKc';
 push(`<div class="a nopt gem-vid" style="left:1094px;top:${T + 77}px;width:706px;height:896px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><iframe src="https://www.youtube-nocookie.com/embed/${YT}?autoplay=1&mute=1&loop=1&playlist=${YT}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&enablejsapi=1" title="" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" onload="var f=this;this.style.opacity=1;[300,1200,3000].forEach(function(t){setTimeout(function(){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['captions']}),'*');f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['cc']}),'*')}catch(e){}},t)})" style="position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);opacity:0;transition:opacity 1s"></iframe><div class="a" style="left:0;right:0;bottom:0;height:200px;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0))"></div></div>`);
 push(box(`left:1138px;top:${T + 925}px;font-size:15px;line-height:20px;letter-spacing:4.5px;color:#fff`, 'Watch the craft', 'man4 caps nw nopt'));
 push(box(`left:1097px;top:${T + 995}px;font-size:17px;line-height:24px;color:#9a8878`, 'A closer look at the art of diamond grading', 'man3 nw'));
-push(box(`left:1535px;top:${T + 1007}px;width:68px;height:1px;background:#cdbfae`));
+push(box(`left:1436px;top:${T + 1007}px;width:68px;height:1px;background:#cdbfae`));
 push('</div>');
 
 /* ---------- the trade (#trade) ---------- */
