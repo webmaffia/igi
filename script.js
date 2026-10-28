@@ -342,42 +342,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// gemologists video popup: a YouTube player (no YouTube controls) under a poster. WATCH VIDEO opens it and plays; the viewer can't pause it, it loops until the popup is closed
+// gemologists video popup: an mp4 (from the CMS) under a poster. WATCH VIDEO opens it and plays; the viewer can't pause it, it loops until the popup is closed
 (function () {
-  var card = document.getElementById('gemcard'), el = document.getElementById('gemyt');
-  if (!card || !el) return;
-  var player = null, ready = false;
-  var tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
+  var card = document.getElementById('gemcard'), vid = document.getElementById('gemv');
+  if (!card || !vid) return;
   function isOpen() { return card.classList.contains('open'); }
-  // YouTube switches subtitles on from the viewer's own settings: keep switching them off
-  function noCaptions(p) {
-    try { p.unloadModule('captions'); p.unloadModule('cc'); p.setOption('captions', 'track', {}); } catch (err) {}
-  }
   function start() {
-    if (!ready) return;
-    player.unMute();
-    player.playVideo();
-    card.classList.add('started', 'playing');
+    var p = vid.play();
+    if (p && p.catch) p.catch(function () {});
   }
-  window.onYouTubeIframeAPIReady = function () {
-    player = new YT.Player('gemyt', {
-      host: 'https://www.youtube-nocookie.com',
-      videoId: el.dataset.yt,
-      playerVars: { autoplay: 0, controls: 0, modestbranding: 1, playsinline: 1, rel: 0, disablekb: 1, iv_load_policy: 3, fs: 0, cc_load_policy: 0 },
-      events: {
-        onReady: function () { ready = true; if (isOpen()) start(); },
-        onStateChange: function (e) {
-          var S = YT.PlayerState;
-          noCaptions(e.target);
-          if (e.data === S.PLAYING) card.classList.add('started', 'playing');
-          else if (e.data === S.ENDED && isOpen()) { e.target.seekTo(0); e.target.playVideo(); }
-          else if (e.data === S.PAUSED && isOpen()) e.target.playVideo();
-        }
-      }
-    });
-  };
+  vid.addEventListener('playing', function () { card.classList.add('started', 'playing'); });
+  // nothing can pause it while the popup is open
+  vid.addEventListener('pause', function () { if (isOpen() && !vid.ended) start(); });
   // open: the card grows to a 16:9 box centred on the screen (positions are converted into the scaled stage's units); close shrinks it back
   var group = card.parentElement, bd = document.getElementById('gembd'), close = document.getElementById('gemx');
   var home = { l: card.style.left, t: card.style.top, w: card.style.width, h: card.style.height };
@@ -408,7 +384,7 @@
     bd.classList.remove('on');
     root.classList.remove('gem-open');
     card.style.left = home.l; card.style.top = home.t; card.style.width = home.w; card.style.height = home.h;
-    if (ready) player.pauseVideo();
+    vid.pause();
   }
   document.getElementById('gemgo').addEventListener('click', open);
   close.addEventListener('click', shut);
