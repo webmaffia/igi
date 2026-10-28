@@ -257,7 +257,7 @@ img{max-width:none}
 /* gemologists video card: the YouTube player sits under a poster; our own button plays and pauses it */
 #gemcard{cursor:pointer}
 #gemyt{position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);pointer-events:none}
-#gempos{transition:opacity .9s ease;pointer-events:none}
+#gempos{transition:opacity .5s ease;pointer-events:none}
 #gemcard.started #gempos{opacity:0}
 #gembtn{position:absolute;left:50%;top:50%;width:136px;height:136px;margin:-68px 0 0 -68px;padding:0;border:0;border-radius:50%;background:#3a2f2a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .3s,transform .2s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
 #gembtn:hover{transform:scale(1.06)}
@@ -291,3 +291,10 @@ html.gem-open #fab{opacity:0;pointer-events:none}
 #gemcard.open{opacity:1;visibility:visible}
 #gemgo{cursor:pointer;font-family:'Manrope',sans-serif}
 #gemgo:hover{background:#1e1e1e;color:#fff}
+
+/* loading spinner over YouTube's own circle during the first seconds of playback */
+#gembtn .i-spin{display:none;animation:gemspin 1s linear infinite}
+#gemcard.playing.tap #gembtn{opacity:1;pointer-events:none}
+#gemcard.playing.tap #gembtn .i-pause{display:none}
+#gemcard.playing.tap #gembtn .i-spin{display:block}
+@keyframes gemspin{to{transform:rotate(360deg)}}
