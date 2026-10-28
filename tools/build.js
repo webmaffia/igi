@@ -234,7 +234,9 @@ push('</div>');
 /* ---------- the moment (#moment) ---------- */
 push('<div class="a" id="moment" style="left:0;top:0;width:1920px">');
 // flush with the section's background (4834..6008) and clipped to it, so no strip shows above the sleeve or below the arm
-push(`<div class="a" style="left:0;top:4834px;width:1920px;height:1174px;overflow:hidden">` + img('moment', 'png', 'class="a" style="left:0;top:0;width:1920px;height:1174px;max-width:none" draggable="false"') + `</div>`);
+push(`<div class="a" style="left:0;top:4834px;width:1920px;height:1174px;overflow:hidden">` + img('moment', 'png', 'class="a" style="left:0;top:0;width:1920px;height:1174px;max-width:none" draggable="false"') +
+  // background video: loops muted with no controls and can't be clicked; the picture underneath shows until it starts
+  `<video class="a nopt" src="assets/moment.mp4" poster="assets/moment.png" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" style="left:0;top:0;width:1920px;height:1174px;max-width:none;object-fit:cover"></video>` + `</div>`);
 push(box('left:276px;top:4971px', 'The Moment', 'eyebrow'));
 push(box('left:274px;top:5046px;width:1000px;font-size:103px;line-height:103.054px;color:#1e1e1e;white-space:nowrap', 'Somewhere,<br>Someone Is About<br>To Say &nbsp;<span style="color:#ccb4a0">Yes.</span>', 'mont5'));
 push(box('left:274px;top:5397px;width:728px;font-size:24px;line-height:46px;color:#111', 'Before they do, they deserve to know that what they\u2019re holding is exactly what they were promised. It takes one number.', 'man4'));
