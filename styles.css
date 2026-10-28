@@ -278,3 +278,8 @@ img{max-width:none}
 #gemx:hover{background:rgba(0,0,0,.75)}
 html.gem-open{overflow:hidden}
 html.gem-open #fab{opacity:0;pointer-events:none}
+
+/* label over the poster; goes away once the video has started */
+#gemlab{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0));pointer-events:none;transition:opacity .5s ease}
+#gemlab span{position:absolute;left:42px;bottom:36px;font-family:'Manrope',sans-serif;font-size:15px;line-height:20px;letter-spacing:4.5px;text-transform:uppercase;color:#fff;white-space:nowrap}
+#gemcard.started #gemlab{opacity:0}
