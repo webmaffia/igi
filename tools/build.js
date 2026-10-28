@@ -290,8 +290,8 @@ push('</div>');
 /* ---------- outro (the gemologists) ---------- */
 push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
 const T = 7459; // section top on the stage
-// background: the original photo
-push(img('lady', 'png', `class="a" style="left:0;top:${T}px;width:1920px;height:1093px;max-width:none" draggable="false"`));
+// background video: plays once when the section scrolls into view and stays on its last frame; muted, no controls, can't be clicked. Its first frame is the poster, so the start is seamless
+push(`<video id="gemvid" class="a nopt" src="assets/gemologists.mp4?v=1" poster="assets/gemologists-poster.jpg" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" style="left:0;top:${T}px;width:1920px;height:1093px;max-width:none;object-fit:cover"></video>`);
 // eyebrow with a trailing hairline
 push(box(`left:130px;top:${T + 170}px;font-size:15px;line-height:74px;letter-spacing:6px;color:#8a7667`, 'The Gemologists <span style="color:#1e1e1e;font-weight:600">· School of Gemology</span>', 'eyebrow'));
 push(box(`left:740px;top:${T + 207}px;width:80px;height:1px;background:#cdbfae`));
