@@ -50,7 +50,7 @@ img{max-width:none}
 .word{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity,translate}
 .word.final{opacity:1}
 .wl,.wr{position:absolute;font-family:'Montserrat',sans-serif;font-weight:500;font-size:347.409px;line-height:1;color:#1e1e1e;text-transform:uppercase;white-space:nowrap}
-#wedge{will-change:rotate}
+#wedge{display:none}
 .late,.cimg,.hc{will-change:opacity,translate}
 .cimg,.hc{opacity:0;pointer-events:none}
 #site-header{will-change:opacity,translate}
