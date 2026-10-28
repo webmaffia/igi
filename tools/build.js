@@ -74,6 +74,9 @@ COPY.forEach((c, i) => {
   push(box('left:1352px;top:705px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#cbb4a0', c[0], 'mont6 caps nw hc" data-i="' + i));
   push(box('left:1352px;top:774px;font-size:63.8px;line-height:69px;letter-spacing:5px;color:#080808', c[1], 'mont6 caps nw hc" data-i="' + i));
 });
+// first screen: the four graded qualities, right-aligned against the diamond (they leave with the first picture)
+[['Cut', 737, 472], ['Color', 710, 537], ['Clarity', 710, 630], ['Carat', 737, 710]].forEach((l) =>
+  push(box(`left:${l[1] - 200}px;top:${l[2] - 12}px;width:200px;text-align:right;font-size:17px;line-height:24px;letter-spacing:1px;color:#222`, l[0], 'mont4 caps nw hc" data-i="0')));
 push(box('left:1352px;top:861px;font-size:36.7px;line-height:36.317px;letter-spacing:1.4px;color:#111', 'We make sure it’s true', 'man4 nw late" data-d="0'));
 const btn = (left, label, arrow, cls, d) => `<a class="btn ${cls} late" data-d="${d}" href="#" style="left:${left}px;top:957px"><span>${label}</span>${img(arrow, 'svg', 'class="btn-arrow"')}</a>`;
 push(btn(1352, 'EXPLORE IGI', 'arrow', 'solid', 1));
