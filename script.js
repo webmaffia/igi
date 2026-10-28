@@ -344,7 +344,7 @@
 (function () {
   var card = document.getElementById('gemcard'), el = document.getElementById('gemyt');
   if (!card || !el) return;
-  var player = null, tapTimer = 0;
+  var player = null;
   var tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
   document.head.appendChild(tag);
@@ -368,12 +368,6 @@
       }
     });
   };
-  // YouTube draws its own pause circle in the middle for the first seconds of playback: a loading spinner on a solid disc covers it until it is gone
-  function cover(ms) {
-    card.classList.add('tap');
-    clearTimeout(tapTimer);
-    tapTimer = setTimeout(function () { card.classList.remove('tap'); }, ms);
-  }
   // open: the card grows to a 16:9 box centred on the screen (positions are converted into the scaled stage's units); close shrinks it back
   var group = card.parentElement, bd = document.getElementById('gembd'), close = document.getElementById('gemx');
   var home = { l: card.style.left, t: card.style.top, w: card.style.width, h: card.style.height };
@@ -398,7 +392,7 @@
   }
   function shut() {
     if (!card.classList.contains('open')) return;
-    card.classList.remove('open', 'playing', 'tap');
+    card.classList.remove('open', 'playing');
     bd.classList.remove('on');
     root.classList.remove('gem-open');
     card.style.left = home.l; card.style.top = home.t; card.style.width = home.w; card.style.height = home.h;
@@ -419,7 +413,6 @@
       player.unMute();
       player.playVideo();
       card.classList.add('started', 'playing');
-      cover(3500);
     }
   });
 })();

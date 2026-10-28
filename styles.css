@@ -291,10 +291,3 @@ html.gem-open #fab{opacity:0;pointer-events:none}
 #gemcard.open{opacity:1;visibility:visible}
 #gemgo{cursor:pointer;font-family:'Manrope',sans-serif}
 #gemgo:hover{background:#1e1e1e;color:#fff}
-
-/* loading spinner over YouTube's own circle during the first seconds of playback */
-#gembtn .i-spin{display:none;animation:gemspin 1s linear infinite}
-#gemcard.playing.tap #gembtn{opacity:1;pointer-events:none}
-#gemcard.playing.tap #gembtn .i-pause{display:none}
-#gemcard.playing.tap #gembtn .i-spin{display:block}
-@keyframes gemspin{to{transform:rotate(360deg)}}
