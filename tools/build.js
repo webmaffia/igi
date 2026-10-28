@@ -286,12 +286,21 @@ push('</div>');
 
 /* ---------- outro (the gemologists) ---------- */
 push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
-// background video as a card on the right, level with the copy (YouTube for now; swap for a local .mp4 <video> if needed)
+// background: warm cream that fades in from the section above and out into the one below
+const T = 7459; // section top on the stage
+push(box(`left:0;top:${T}px;width:1920px;height:1093px;background:linear-gradient(180deg,rgba(250,248,243,0) 0,#faf8f3 150px,#faf8f3 940px,rgba(250,248,243,0) 100%)`));
+// eyebrow with a trailing hairline
+push(box(`left:130px;top:${T + 170}px;font-size:15px;line-height:74px;letter-spacing:6px;color:#8a7667`, 'The Gemologists <span style="color:#1e1e1e;font-weight:600">· School of Gemology</span>', 'eyebrow'));
+push(box(`left:740px;top:${T + 207}px;width:80px;height:1px;background:#cdbfae`));
+push(box(`left:130px;top:${T + 270}px;width:900px;font-size:69.7px;line-height:96px;letter-spacing:-.5px;color:#1e1e1e`, 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice.', 'mont5'));
+push(box(`left:134px;top:${T + 683}px;width:760px;font-size:36px;line-height:50px;color:#6b6560`, 'We don’t just grade diamonds — we teach the world how.', 'man3'));
+push(`<a class="btn solid" href="#" style="left:130px;top:${T + 830}px;height:72px;padding:0 54px;gap:26px;font-size:16px;letter-spacing:3.2px;border-radius:60px"><span>EXPLORE THE CAMPUS</span>${img('arrow', 'svg', 'class="btn-arrow" style="width:30px;height:30px"')}</a>`);
+// video card (YouTube for now; swap for a local .mp4 <video> if needed)
 const YT = '4XTCtpBPiKc';
-push(`<div class="a nopt gem-vid" style="left:1130px;top:7607px;width:680px;height:727px;overflow:hidden;border-radius:28px;background:#d8d4cf;box-shadow:0 30px 70px rgba(0,0,0,.18)"><iframe src="https://www.youtube-nocookie.com/embed/${YT}?autoplay=1&mute=1&loop=1&playlist=${YT}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&enablejsapi=1" title="" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" onload="var f=this;this.style.opacity=1;[300,1200,3000].forEach(function(t){setTimeout(function(){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['captions']}),'*');f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['cc']}),'*')}catch(e){}},t)})" style="position:absolute;left:50%;top:50%;width:1293px;height:727px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);opacity:0;transition:opacity 1s"></iframe></div>`);
-push(box('left:209px;top:7607px', 'The Gemologists \u00b7 School of Gemology', 'eyebrow'));
-push(box('left:209px;top:7689px;width:870px;font-size:69.7px;line-height:94.8px;color:#1e1e1e', 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice. We Don\'t Just Grade Diamonds \u2014 We Teach The World How.', 'mont5'));
-push(`<a class="btn solid" href="#" style="left:209px;top:8287px"><span>CAMPUS EXPERIENCE</span>${img('arrow', 'svg', 'class="btn-arrow"')}</a>`);
+push(`<div class="a nopt gem-vid" style="left:1094px;top:${T + 77}px;width:706px;height:896px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><iframe src="https://www.youtube-nocookie.com/embed/${YT}?autoplay=1&mute=1&loop=1&playlist=${YT}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&enablejsapi=1" title="" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" onload="var f=this;this.style.opacity=1;[300,1200,3000].forEach(function(t){setTimeout(function(){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['captions']}),'*');f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['cc']}),'*')}catch(e){}},t)})" style="position:absolute;left:50%;top:50%;width:1593px;height:896px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);opacity:0;transition:opacity 1s"></iframe><div class="a" style="left:0;right:0;bottom:0;height:200px;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0))"></div></div>`);
+push(box(`left:1138px;top:${T + 925}px;font-size:15px;line-height:20px;letter-spacing:4.5px;color:#fff`, 'Watch the craft', 'man4 caps nw nopt'));
+push(box(`left:1097px;top:${T + 995}px;font-size:17px;line-height:24px;color:#9a8878`, 'A closer look at the art of diamond grading', 'man3 nw'));
+push(box(`left:1535px;top:${T + 1007}px;width:68px;height:1px;background:#cdbfae`));
 push('</div>');
 
 /* ---------- the trade (#trade) ---------- */
