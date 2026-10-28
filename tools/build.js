@@ -286,7 +286,6 @@ push('</div>');
 
 /* ---------- outro (the gemologists) ---------- */
 push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
-push(img('lady', 'png', 'class="a" style="left:0;top:7459px;width:1920px;height:1093px;max-width:none" draggable="false"'));
 // background video as a card on the right, level with the copy (YouTube for now; swap for a local .mp4 <video> if needed)
 const YT = '4XTCtpBPiKc';
 push(`<div class="a nopt gem-vid" style="left:1130px;top:7607px;width:680px;height:727px;overflow:hidden;border-radius:28px;background:#d8d4cf;box-shadow:0 30px 70px rgba(0,0,0,.18)"><iframe src="https://www.youtube-nocookie.com/embed/${YT}?autoplay=1&mute=1&loop=1&playlist=${YT}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&cc_load_policy=0&enablejsapi=1" title="" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" onload="var f=this;this.style.opacity=1;[300,1200,3000].forEach(function(t){setTimeout(function(){try{f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['captions']}),'*');f.contentWindow.postMessage(JSON.stringify({event:'command',func:'unloadModule',args:['cc']}),'*')}catch(e){}},t)})" style="position:absolute;left:50%;top:50%;width:1293px;height:727px;max-width:none;border:0;transform:translate(-50%,-50%) scale(1.15);opacity:0;transition:opacity 1s"></iframe></div>`);
