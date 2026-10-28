@@ -264,7 +264,7 @@ img{max-width:none}
 #gemyt{transition:width .7s cubic-bezier(.2,.7,.2,1),height .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 #gemcard.open{z-index:6;cursor:default;border-radius:0 !important;box-shadow:0 30px 90px rgba(60,45,35,.28)}
 #gemcard.open #gemyt{width:100%;height:100%;transform:translate(-50%,-50%) scale(1.04)}
-#gembd{z-index:5;opacity:0;pointer-events:none;background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:opacity .6s ease}
+#gembd{z-index:5;opacity:0;pointer-events:none;background:none;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .6s ease}
 #gembd.on{opacity:1;pointer-events:auto}
 #gemx{position:absolute;right:26px;top:26px;width:60px;height:60px;padding:0;border:0;border-radius:50%;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:2}
 #gemcard.open #gemx{display:flex}
