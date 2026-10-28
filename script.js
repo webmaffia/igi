@@ -340,17 +340,24 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// gemologists video card: a YouTube player (no YouTube controls) under a poster; our own button plays and pauses it
+// gemologists video popup: a YouTube player (no YouTube controls) under a poster. WATCH VIDEO opens it and plays; the viewer can't pause it, it loops until the popup is closed
 (function () {
   var card = document.getElementById('gemcard'), el = document.getElementById('gemyt');
   if (!card || !el) return;
-  var player = null;
+  var player = null, ready = false;
   var tag = document.createElement('script');
   tag.src = 'https://www.youtube.com/iframe_api';
   document.head.appendChild(tag);
+  function isOpen() { return card.classList.contains('open'); }
   // YouTube switches subtitles on from the viewer's own settings: keep switching them off
   function noCaptions(p) {
     try { p.unloadModule('captions'); p.unloadModule('cc'); p.setOption('captions', 'track', {}); } catch (err) {}
+  }
+  function start() {
+    if (!ready) return;
+    player.unMute();
+    player.playVideo();
+    card.classList.add('started', 'playing');
   }
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player('gemyt', {
@@ -358,12 +365,13 @@
       videoId: el.dataset.yt,
       playerVars: { autoplay: 0, controls: 0, modestbranding: 1, playsinline: 1, rel: 0, disablekb: 1, iv_load_policy: 3, fs: 0, cc_load_policy: 0 },
       events: {
+        onReady: function () { ready = true; if (isOpen()) start(); },
         onStateChange: function (e) {
           var S = YT.PlayerState;
           noCaptions(e.target);
-          if (e.data === S.PLAYING) { card.classList.add('started', 'playing'); }
-          else if (e.data === S.PAUSED || e.data === S.BUFFERING && !card.classList.contains('playing')) { card.classList.remove('playing'); }
-          else if (e.data === S.ENDED) { card.classList.remove('playing', 'started'); e.target.seekTo(0); e.target.pauseVideo(); }
+          if (e.data === S.PLAYING) card.classList.add('started', 'playing');
+          else if (e.data === S.ENDED && isOpen()) { e.target.seekTo(0); e.target.playVideo(); }
+          else if (e.data === S.PAUSED && isOpen()) e.target.playVideo();
         }
       }
     });
@@ -385,34 +393,24 @@
     bd.style.height = vh / sc + 'px';
   }
   function open() {
+    if (isOpen()) return;
     card.classList.add('open');
     bd.classList.add('on');
     root.classList.add('gem-open');
     layout();
+    start();
   }
   function shut() {
-    if (!card.classList.contains('open')) return;
+    if (!isOpen()) return;
     card.classList.remove('open', 'playing');
     bd.classList.remove('on');
     root.classList.remove('gem-open');
     card.style.left = home.l; card.style.top = home.t; card.style.width = home.w; card.style.height = home.h;
-    if (player && player.pauseVideo) player.pauseVideo();
+    if (ready) player.pauseVideo();
   }
-  document.getElementById('gemgo').addEventListener('click', function () { card.click(); });
-  close.addEventListener('click', function (ev) { ev.stopPropagation(); shut(); });
+  document.getElementById('gemgo').addEventListener('click', open);
+  close.addEventListener('click', shut);
   bd.addEventListener('click', shut);
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') shut(); });
-  window.addEventListener('resize', function () { if (card.classList.contains('open')) layout(); });
-  card.addEventListener('click', function () {
-    if (!card.classList.contains('open')) open();
-    if (!player || !player.getPlayerState) return;
-    if (card.classList.contains('playing')) {
-      player.pauseVideo();
-      card.classList.remove('playing');
-    } else {
-      player.unMute();
-      player.playVideo();
-      card.classList.add('started', 'playing');
-    }
-  });
+  window.addEventListener('resize', function () { if (isOpen()) layout(); });
 })();
