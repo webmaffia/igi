@@ -404,6 +404,7 @@
     card.style.left = home.l; card.style.top = home.t; card.style.width = home.w; card.style.height = home.h;
     if (player && player.pauseVideo) player.pauseVideo();
   }
+  document.getElementById('gemgo').addEventListener('click', function () { card.click(); });
   close.addEventListener('click', function (ev) { ev.stopPropagation(); shut(); });
   bd.addEventListener('click', shut);
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') shut(); });

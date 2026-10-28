@@ -287,20 +287,19 @@ push('</div>');
 
 /* ---------- outro (the gemologists) ---------- */
 push('<div class="a" id="gem" style="left:0;top:-409px;width:1920px">');
-// background: warm cream that fades in from the section above and out into the one below
 const T = 7459; // section top on the stage
-push(box(`left:0;top:${T}px;width:1920px;height:1093px;background:linear-gradient(180deg,rgba(250,248,243,0) 0,#faf8f3 150px,#faf8f3 940px,rgba(250,248,243,0) 100%)`));
+// background: the original photo
+push(img('lady', 'png', `class="a" style="left:0;top:${T}px;width:1920px;height:1093px;max-width:none" draggable="false"`));
 // eyebrow with a trailing hairline
 push(box(`left:130px;top:${T + 170}px;font-size:15px;line-height:74px;letter-spacing:6px;color:#8a7667`, 'The Gemologists <span style="color:#1e1e1e;font-weight:600">· School of Gemology</span>', 'eyebrow'));
 push(box(`left:740px;top:${T + 207}px;width:80px;height:1px;background:#cdbfae`));
 push(box(`left:130px;top:${T + 270}px;width:900px;font-size:69.7px;line-height:96px;letter-spacing:-.5px;color:#1e1e1e`, 'Behind Every Grade Is A Trained Eye, A Steady Hand And Years Of Practice.', 'mont5'));
 push(box(`left:134px;top:${T + 683}px;width:760px;font-size:36px;line-height:50px;color:#6b6560`, 'We don’t just grade diamonds — we teach the world how.', 'man3'));
 push(`<a class="btn solid" href="#" style="left:130px;top:${T + 830}px;height:72px;padding:0 54px;gap:26px;font-size:16px;letter-spacing:3.2px;border-radius:60px"><span>EXPLORE THE CAMPUS</span>${img('arrow', 'svg', 'class="btn-arrow" style="width:30px;height:30px"')}</a>`);
-// video card: poster image + our own play/pause button over the YouTube player (YouTube for now; swap for a local .mp4 <video> if needed)
+push(`<button class="btn ghost" id="gemgo" type="button" style="left:541px;top:${T + 830}px;height:72px;padding:0 54px;gap:22px;font-size:16px;letter-spacing:3.2px;border-radius:60px;border:1px solid #1e1e1e;background:none"><span>WATCH VIDEO</span><svg viewBox="0 0 24 24" width="22" height="22" class="btn-arrow" style="width:22px;height:22px"><path d="M7 4.5v15L19.5 12z" fill="currentColor"/></svg></button>`);
+// video popup: opened by the WATCH VIDEO button; poster image + our own play/pause button over the YouTube player (YouTube for now; swap for a local .mp4 <video> if needed)
 const YT = '4XTCtpBPiKc';
-push(`<div class="a" id="gembd"></div><div class="a gem-vid" id="gemcard" style="left:1094px;top:${T + 77}px;width:706px;height:896px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><div id="gemyt" data-yt="${YT}"></div><img id="gempos" class="cover" src="assets/hero/circle/poster-image-lady.png" alt="" draggable="false"><div id="gemlab"><span>Watch the craft · 01:21</span></div><button id="gembtn" type="button" aria-label="Play video"><svg class="i-play" viewBox="0 0 24 24" width="38" height="38"><path d="M8.5 5.2v13.6L19.6 12z" fill="#fff"/></svg><svg class="i-pause" viewBox="0 0 24 24" width="38" height="38"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="#fff"/></svg></button><button id="gemx" type="button" aria-label="Close video"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M5 5l14 14M19 5L5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button></div>`);
-push(box(`left:1097px;top:${T + 995}px;font-size:17px;line-height:24px;color:#9a8878`, 'A closer look at the art of diamond grading', 'man3 nw'));
-push(box(`left:1436px;top:${T + 1007}px;width:68px;height:1px;background:#cdbfae`));
+push(`<div class="a" id="gembd"></div><div class="a gem-vid" id="gemcard" style="left:541px;top:${T + 830}px;width:384px;height:72px;overflow:hidden;border-radius:30px;background:#d8d4cf;border:2px solid #dcc08a;box-shadow:0 30px 70px rgba(120,90,50,.18)"><div id="gemyt" data-yt="${YT}"></div><img id="gempos" class="cover" src="assets/hero/circle/poster-image-lady.png" alt="" draggable="false"><div id="gemlab"><span>Watch the craft · 01:21</span></div><button id="gembtn" type="button" aria-label="Play video"><svg class="i-play" viewBox="0 0 24 24" width="38" height="38"><path d="M8.5 5.2v13.6L19.6 12z" fill="#fff"/></svg><svg class="i-pause" viewBox="0 0 24 24" width="38" height="38"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="#fff"/></svg></button><button id="gemx" type="button" aria-label="Close video"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M5 5l14 14M19 5L5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button></div>`);
 push('</div>');
 
 /* ---------- the trade (#trade) ---------- */
